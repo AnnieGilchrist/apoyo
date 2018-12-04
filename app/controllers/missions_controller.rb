@@ -1,4 +1,6 @@
 class MissionsController < ApplicationController
+  before_action :set_mission, only: [:show, :edit, :update, :destroy]
+
   def index
     @missions = policy_scope(Mission)
   end
@@ -24,5 +26,9 @@ class MissionsController < ApplicationController
 
   def destroy
     authorize @mission
+  end
+
+  def set_mission
+    @mission = Mission.find(params[:id])
   end
 end

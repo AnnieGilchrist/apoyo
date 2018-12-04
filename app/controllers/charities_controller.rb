@@ -1,4 +1,6 @@
 class CharitiesController < ApplicationController
+  before_action :set_charity, only: [:show, :edit, :update, :destroy]
+
   def index
     @charities = policy_scope(Charity)
   end
@@ -24,5 +26,11 @@ class CharitiesController < ApplicationController
 
   def destroy
     authorize @charity
+  end
+
+  private
+
+  def set_charity
+    @charity = Charity.find(params[:id])
   end
 end
