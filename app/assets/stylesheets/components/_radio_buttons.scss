@@ -1,0 +1,13 @@
+.hidden-input {
+  display: none;
+}
+.button-label {
+  padding: 20px;
+  width: 50%;
+  background-color: blue;
+  text-align: center;
+  font-weight: normal;
+}
+input[type="radio"]:checked+label.button-label {
+  background-color: gray;
+}

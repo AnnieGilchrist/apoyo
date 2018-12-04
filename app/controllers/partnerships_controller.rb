@@ -1,4 +1,6 @@
 class PartnershipsController < ApplicationController
+  before_action :set_partnership, only: [:show, :edit, :update, :destroy]
+
   def index
     @partnerships = policy_scope(Partnership)
   end
@@ -24,5 +26,11 @@ class PartnershipsController < ApplicationController
 
   def destroy
     authorize @partnership
+  end
+
+  private
+
+  def set_partnership
+    @partnership = Partnership.find(params[:id])
   end
 end
