@@ -1,9 +1,13 @@
 <div class="landing-page">
-  <div id="content-box">
+  <div id="content-box" class="col-sm-12 col-md-9">
     <h1 class="primary-txt">Where business<br> and charities connect</h1>
     <p class="secondary-txt">Connect with charities that share <br>the same values and find opportunities</p>
   </div>
-  <%= link_to "Connect now", new_user_registration_path, class: "button big-btn purple-btn rounded" %>
+
+
+  <div class="butt">
+    <%= link_to "Connect now", new_user_registration_path, class: "button big-btn purple-btn rounded" %>
+  </div>
 
   <%= image_tag "landing-page-graphic.png", height: 300, class: "landing-page-image" %>
 </div>
