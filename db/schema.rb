@@ -10,10 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_161317) do
+ActiveRecord::Schema.define(version: 2018_12_03_212938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "website"
+    t.string "charity_preferences"
+    t.string "services_offered"
+    t.text "description"
+    t.string "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "charities", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.string "website"
+    t.string "category"
+    t.text "description"
+    t.string "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "missions", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "image"
+    t.integer "duration"
+    t.bigint "charity_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["charity_id"], name: "index_missions_on_charity_id"
+  end
+
+  create_table "partnerships", force: :cascade do |t|
+    t.text "details"
+    t.string "status", default: "pending"
+    t.bigint "mission_id"
+    t.bigint "business_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_partnerships_on_business_id"
+    t.index ["mission_id"], name: "index_partnerships_on_mission_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +68,14 @@ ActiveRecord::Schema.define(version: 2018_12_03_161317) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "organisation_type"
+    t.bigint "organisation_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["organisation_type", "organisation_id"], name: "index_users_on_organisation_type_and_organisation_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "missions", "charities"
+  add_foreign_key "partnerships", "businesses"
+  add_foreign_key "partnerships", "missions"
 end
