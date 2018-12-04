@@ -1,10 +1,9 @@
-class CharityPolicy < ApplicationPolicy
+class PartnershipPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
     end
   end
-
 
   def create?
     return true
@@ -21,6 +20,6 @@ class CharityPolicy < ApplicationPolicy
   private
 
   def user_is_owner?
-    user.organisation == record
+    user.organisation == record.mission.charity || user.organisation == record.business
   end
 end

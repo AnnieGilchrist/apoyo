@@ -1,0 +1,70 @@
+.button {
+
+  padding: 14px 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 10px 5px;
+  font-weight: 400;
+
+}
+
+.purple-btn {
+
+  background-color: $purple;
+  border: none;
+  color: white;
+
+}
+
+
+.purple-btn:hover {
+
+  background: white;
+  text-decoration: none;
+  border: 1px solid $purple;
+  color: $purple;
+  transition: background 0.3s ease;
+
+}
+
+.white-btn {
+
+  background-color: white;
+  border: 1px solid $purple;
+  color: $purple;
+
+
+}
+
+.white-btn:hover {
+
+  background: $purple;
+  color: white;
+  border: 2px solid white;
+  text-decoration: none;
+  transition: background 0.3s ease;
+
+}
+
+.big-btn {
+  padding: 15px 70px;
+  font-size: 20px;
+}
+
+.small-btn {
+  font-size: 14px;
+  padding: 6px 15px;
+
+
+}
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.rounded {
+  border-radius: 8px;
+}

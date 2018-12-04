@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root to: 'pages#home'
 
@@ -17,4 +18,6 @@ Rails.application.routes.draw do
   resources :businesses
 
   resources :partnerships, only: [:index, :show, :edit, :update, :destroy]
+
+  get 'feed', to: 'pages#index', as: :feed
 end
