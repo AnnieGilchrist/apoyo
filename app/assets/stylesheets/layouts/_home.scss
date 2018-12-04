@@ -6,15 +6,27 @@ body {
 
   padding: 50px 120px;
   height: 100vh;
+  position: relative;
 
 }
 
 #content-box {
-  width: 700px;
 
 }
 
 .landing-page-image {
-  margin-top: -100px;
-  margin-left: 50px;
+  position: absolute;
+  left: 430px;
+  bottom: 150px;
+  // margin-top: -100px;
+  // margin-left: 50px;
 }
+
+.butt {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  left: 130px;
+  top: 350px;
+}
+

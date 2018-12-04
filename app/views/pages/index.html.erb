@@ -1,0 +1,22 @@
+<%= form_tag feed_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search by charity, mission, location, category etc."
+  %>
+<% end %>
+
+
+<% @results.each do |element| %>
+  <h1><%= element.name %></h1>
+  <%= element.description%>
+  <% if element.class == Charity %>
+    <%= element.address %>
+  <% else %>
+    <%= element.charity.name%>
+    <%= element.charity.address %>
+  <% end %>
+
+<% end %>
+
+
