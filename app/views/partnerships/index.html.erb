@@ -1,2 +1,110 @@
 <h1>Partnerships#index</h1>
-<p>Find me in app/views/partnerships/index.html.erb</p>
+<p>Find me in app/views/partnerships/index.html.erb</p><div class="container dashboard">
+  <div class="dashboard-main-header">
+    <h1>Dashboard</h1>
+  </div>
+
+  <div class="dashboard-subheading">
+    <h3>Current Missions:</h3>
+    <% if @my_hostings.count > 0 %>
+    <div class="row">
+      <% @my_hostings.each do |mission| %>
+        <div class="col-xs-6 col-sm-4">
+          <%= link_to mission_path(mission) do %>
+            <div class="card">
+
+              <% if mission.room.room_images.count > 0 %>
+
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(mission.room.room_images[0].image) %>);">
+                  <div class="status-box">
+                    <h4 style="color: <%= mission.color %> !important">Status: <%= mission.status.capitalize %></h4>
+                    <div class="card-links">
+                      <% if mission.status == 'pending' %>
+
+                        <%= link_to 'Accept', mission_path(mission, status: 'accepted'), method: :patch %>
+                        <%= link_to 'Decline', mission_path(mission, status: 'declined'), method: :patch %>
+
+                      <% elsif mission.status == 'accepted' %>
+                        <p></p>
+                      <% else %>
+                        <p></p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+
+              <% else %>
+
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
+                  <div class="status-box">
+                    <h4 style="color: <%= mission.color %> !important">Status: <%= mission.status.capitalize %></h4>
+                    <div class="card-links">
+                      <% if mission.status == 'pending' %>
+
+                        <%= link_to 'Accept', mission_path(mission, status: 'accepted'), method: :patch %>
+                        <%= link_to 'Decline', mission_path(mission, status: 'declined'), method: :patch %>
+
+                        <% elsif mission.status == 'accepted' %>
+                        <p></p>
+                        <% else %>
+                        <p></p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+
+              <div class="card-description">
+                <h3><%= mission.room.charity_type %> in <%= mission.room %></h3>
+              </div>
+
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <% else %>
+    <p>🥺 You don't have any missions! Go out and find one!</p>
+    <% end %>
+  </div>
+
+  <div class="dashboard-subheading">
+    <h3>Past missions:</h3>
+    <% if @my_missions.count > 0 %>
+    <div class="row">
+      <% @my_missions.each do |mission| %>
+        <div class="col-xs-6 col-sm-4">
+          <%= link_to mission_path(mission) do %>
+            <div class="card">
+              <% if mission.room.room_images.count > 0 %>
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= cl_image_path(mission.room.room_images[0].image) %>);">
+                  <div class="status-box">
+                    <h4 style="color: <%= mission.color %> !important">Status: <%= mission.status.capitalize %></h4>
+                  </div>
+                </div>
+              <% else %>
+                <div class="picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1526142684086-7ebd69df27a5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f5767f515cad13d5aa42559ec8bb9a55&auto=format&fit=crop&w=1950&q=80');">
+                  <div class="status-box">
+                    <h4 style="color: <%= mission.color %> !important">Status: <%= mission.status.capitalize %></h4>
+                  </div>
+                </div>
+              <% end %>
+
+              <div class="card-description">
+                <h3><%= mission.room.instrument_type %> in <%= mission.room.location %></h3>
+                <p>Host: <%= User.find(mission.room.user_id).first_name %></p>
+                <p>Location: <%= mission.room.location %></p>
+                <p>Rental price: <%= mission.room.currency %>
+                  <%= mission.room.price %>/hr</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <% else %>
+    <p>😳 You don't have any upcoming rehearsals to go.</p>
+    <% end %>
+  </div>
+</div>
+
