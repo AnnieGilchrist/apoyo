@@ -17,8 +17,7 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-
-          <% if current_user.organisation.logo != nil %>
+          <% if current_user.organisation &&current_user.organisation.logo != nil %>
             <%= cl_image_tag current_user.organisation.logo.url(:navbar_image),  "data-toggle" => "dropdown" %>
           <% else %>
             <%= link_to '', "data-toggle" => "dropdown" do %>

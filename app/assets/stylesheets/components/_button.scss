@@ -7,7 +7,6 @@
   font-size: 18px;
   margin: 10px 5px;
   font-weight: 400;
-
 }
 
 .purple-btn {
@@ -15,6 +14,7 @@
   background-color: $purple;
   border: none;
   color: white;
+  transition: background 0.3s ease;
 
 }
 
@@ -25,7 +25,6 @@
   text-decoration: none;
   border: 1px solid $purple;
   color: $purple;
-  transition: background 0.3s ease;
 
 }
 
@@ -34,7 +33,7 @@
   background-color: white;
   border: 1px solid $purple;
   color: $purple;
-
+  transition: background 0.3s ease;
 
 }
 
@@ -44,13 +43,13 @@
   color: white;
   border: 2px solid white;
   text-decoration: none;
-  transition: background 0.3s ease;
 
 }
 
 .big-btn {
   padding: 15px 70px;
   font-size: 20px;
+  width: 280px;
 }
 
 .small-btn {

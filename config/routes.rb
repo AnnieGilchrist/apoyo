@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  get 'membership/create'
+  devise_for :users, :controllers => { :registrations => :registrations }
   root to: 'pages#home'
 
   resources :charities do

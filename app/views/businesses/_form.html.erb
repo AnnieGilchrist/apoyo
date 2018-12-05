@@ -1,0 +1,37 @@
+<%= simple_form_for(@business) do |f| %>
+  <div class="form-inputs">
+    <div class="left-input col-xs-7">
+      <%= f.input :name,
+                  required: true,
+                  placeholder: 'Company name',
+                  label: false,
+                  autofocus: true,
+                  input_html: { class: 'first-input'} %>
+      <%= f.input :address,
+                  required: true,
+                  placeholder: 'Head office location',
+                  label: false %>
+      <%= f.input :website,
+                  required: true,
+                  label: false,
+                  placeholder: 'Company website' %>
+      <%= f.input :description,
+                  required: true,
+                  label: false,
+                  placeholder: 'Description',
+                  input_html: { class: 'description-input' } %>
+      <div class="form-actions">
+        <%= link_to "Back to Feed", feed_path, class: 'form-return-link' %>
+        <%= f.button :submit, "Next", class: 'big-btn purple-btn form-btn' %>
+      </div>
+    </div>
+    <div class="right-input col-xs-5">
+        <%= f.file_field :logo, onchange: "readURL(this);" %>
+        <img id="blah" src="#" alt="your image" />
+    </div>
+
+  </div>
+
+
+<% end %>
+

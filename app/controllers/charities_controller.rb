@@ -9,11 +9,20 @@ class CharitiesController < ApplicationController
   end
 
   def new
+    @charity = Charity.new
     authorize @charity
   end
 
   def create
+    @charity = Charity.new(charity_params)
     authorize @charity
+    if @charity.save
+      current_user.organisation = @charity
+      current_user.save
+      redirect_to feed_path, notice: 'Charity successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -32,5 +41,9 @@ class CharitiesController < ApplicationController
 
   def set_charity
     @charity = Charity.find(params[:id])
+  end
+
+  def charity_params
+    params.require(:charity).permit(:name, :address, :website, :category, :description, :logo)
   end
 end
