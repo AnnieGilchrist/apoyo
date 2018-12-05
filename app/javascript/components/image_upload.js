@@ -28,7 +28,8 @@ function updateImageDisplay() {
 export default function() {
   var input = document.querySelector(".profileUploadInput");
   var preview = document.querySelector(".preview");
-
-  input.style.opacity = 0;
-  input.addEventListener("change", updateImageDisplay);
+  if (preview) {
+    input.style.opacity = 0;
+    input.addEventListener("change", updateImageDisplay);
+  }
 }
