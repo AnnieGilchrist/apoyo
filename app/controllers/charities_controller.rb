@@ -6,6 +6,7 @@ class CharitiesController < ApplicationController
   end
 
   def show
+    authorize @charity
   end
 
   def new
