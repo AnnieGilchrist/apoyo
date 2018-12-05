@@ -3,6 +3,10 @@ class PartnershipsController < ApplicationController
 
   def index
     @partnerships = policy_scope(Partnership)
+    @finished_partnerships = []
+    @partnerships.each do |partnership|
+      @finished_partnerships << partnership if partnership.status == 'completed'
+    end
   end
 
   def show

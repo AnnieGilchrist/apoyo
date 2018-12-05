@@ -9,11 +9,20 @@ class BusinessesController < ApplicationController
   end
 
   def new
+    @business = Business.new
     authorize @business
   end
 
   def create
+    @business = Business.new(business_params)
     authorize @business
+    if @business.save
+      current_user.organisation = @business
+      current_user.save
+      redirect_to feed_path, notice: 'Business successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -32,5 +41,9 @@ class BusinessesController < ApplicationController
 
   def set_business
     @business = Business.find(params[:id])
+  end
+
+  def business_params
+    params.require(:business).permit(:name, :address, :website, :description, :logo)
   end
 end
