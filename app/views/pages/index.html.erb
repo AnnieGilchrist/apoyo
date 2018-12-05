@@ -6,7 +6,7 @@
       <%= text_field_tag :query,
         params[:query],
         class: "search-field",
-        placeholder: "Search by charity, mission, location, category etc."
+        placeholder: "   Search by charity, mission, location, category etc."
       %><%= submit_tag 'Search', class: "button purple-btn small-btn" %>
 
     <% end %>
@@ -14,12 +14,10 @@
   </div>
 
 
-
   <div class="flex-container">
     <div class="browse">
       <% @results.each do |element| %>
         <% if element.class == Charity %>
-
           <div class="col-md-6" data-business-type="charity">
             <div class="browse-card floated">
               <%= image_tag "mission.jpg", class: "charity-image" %>
