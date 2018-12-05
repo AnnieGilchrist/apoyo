@@ -1,13 +1,77 @@
+
+.search-bar {
+  flex-direction: row;
+  width: 900px;
+  padding-left: 15px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  .search-field {
+    vertical-align: middle;
+    width: 400px;
+    height: 50px;
+    padding: 0px 0px;
+    margin: 0px 0px;
+
+  }
+  .small-btn {
+    vertical-align: middle;
+    padding: 15px 20px;
+
+    margin: 0px 0px;
+    margin-left: -1px;
+
+  }
+
+}
+
+
+.medium-txt {
+  text-align: center;
+}
+
+.flex-container{
+  height: 100%;
+  display: flex;
+}
+
+.follow-card {
+  margin-left: 30px;
+  border: 1px solid rgba(0,0,0,0);
+  width: 350px;
+  height: 100px;
+  .card-title {
+    margin-top: 25px;
+  }
+  .small-btn {
+    padding: 6px 20px;
+  }
+  .charity-image {
+    margin: 10px 10px;
+  }
+
+}
+
+.browse {
+    height: 100%;
+    width: 900px;
+
+
+}
+
+.card-box {
+}
+
 .browse-card {
-  // margin: 100px 100px;
   border: 1px solid $grey;
   display: flex;
-  width: 400px;
-  height: 270px;
+  width: 350px;
+  height: 230px;
+  margin-bottom: 20px;
+  margin-right: 10px;
 
   .mission-image {
-    width: 166px;
-    height: 268px;
+    width: 130px;
+    height: 228px;
     object-fit: cover;
   }
 
@@ -20,7 +84,7 @@
 }
 
 .card-title {
-  font-size: 23px;
+  font-size: 20px;
   font-weight: bold;
   line-height: 5px;
 
@@ -38,10 +102,10 @@
 
 
 .charity-image {
-    margin: 23px;
+    margin: 20px;
     margin-bottom: 10px;
-    width:100px;
-    height: 100px;
+    width:80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid $yellow;
@@ -53,7 +117,7 @@
 .floated {
   display: inline-block;
   .card-content {
-    margin: 50px 15px;
+    margin: 20px 15px;
     font-size: 15px;
 
   }

@@ -5,7 +5,13 @@ class PagesController < ApplicationController
   end
 
   def index
-    @charities = Charity.all
+
+    # if current_user.organisation.class == Business
+
+    #   @suggestions = Charity.all.where(category: current_user.organisation.charity_preferences)
+    # else
+    #   @suggestions = Business.all.where(charity_preferences: current_user.organisation.category)
+    # end
 
     sql_query_charity = "\
       charities.name @@ :query \
@@ -26,7 +32,8 @@ class PagesController < ApplicationController
     else
       @missions = Mission.all
       @charities = Charity.all
-      @results = @missions.shuffle + @charities.shuffle
+      results = @missions + @charities
+      @results = results.shuffle
     end
   end
 end

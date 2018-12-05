@@ -1,38 +1,85 @@
-<%= form_tag feed_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search by charity, mission, location, category etc."
-  %>
-<% end %>
+<div class="container">
+  <div class="search-bar flex-container">
 
 
-<% @results.each do |element| %>
-  <div class="container">
-    <% if element.class == Charity %>
-      <div class="browse-card floated">
-        <%= image_tag "mission.jpg", class: "charity-image" %>
-        <div class="card-content">
-          <h1 class="card-title"><%= element.name %></h1>
-          <p class="card-text-grey"><%= element.category %></p>
-          <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.address %></p>
+    <%= form_tag feed_path, class: "form-inline", method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "search-field",
+        placeholder: "Search by charity, mission, location, category etc."
+      %><%= submit_tag 'Search', class: "button purple-btn small-btn" %>
 
-          <p class="card-description"><%= element.description.first(210) + '...'%></p>
-        </div>
-      </div>
-    <% else %>
-      <div class="browse-card">
-        <%= image_tag "mission.jpg", class: "mission-image" %>
-        <div class="card-content">
-          <h1 class="card-title"><%= element.name %></h1>
-          <p class="card-text-grey"><%= element.charity.name%></p>
-          <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.address %></p>
-          <p class="card-description"> <%= element.description.first(210) + '...'%></p>
-        </div>
-      </div>
     <% end %>
+
   </div>
-<% end %>
+
+
+
+  <div class="flex-container">
+    <div class="browse">
+      <% @results.each do |element| %>
+        <% if element.class == Charity %>
+
+          <div class="col-md-6" data-business-type="charity">
+            <div class="browse-card floated">
+              <%= image_tag "mission.jpg", class: "charity-image" %>
+              <div class="card-content">
+                <h1 class="card-title"><%= element.name %></h1>
+                <p class="card-text-grey"><%= element.category %></p>
+                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.address %></p>
+
+                <p class="card-description"><%= element.description.first(170) + '...'%></p>
+              </div>
+            </div>
+          </div>
+
+        <% else %>
+          <div class="col-md-6 card-box">
+            <div class="browse-card">
+              <%= image_tag "mission.jpg", class: "mission-image" %>
+              <div class="card-content">
+                <h1 class="card-title"><%= element.name %></h1>
+                <p class="card-text-grey"><%= element.charity.name%></p>
+                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.address %></p>
+                <p class="card-description"> <%= element.description.first(170) + '...'%></p>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+
+    <div class="follow-cards">
+      <h1 class="medium-txt">Suggested for you</h1>
+      <div class="follow-card">
+        <%= image_tag "mission.jpg", class: "charity-image" %>
+        <h1 class="card-title">Name of Company</h1>
+        <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
+      </div>
+
+      <div class="follow-card">
+        <%= image_tag "mission.jpg", class: "charity-image" %>
+        <h1 class="card-title">Name of Company</h1>
+        <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
+      </div>
+
+      <div class="follow-card">
+        <%= image_tag "mission.jpg", class: "charity-image" %>
+        <h1 class="card-title">Name of Company</h1>
+        <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
+      </div>
+
+      <div class="follow-card">
+        <%= image_tag "mission.jpg", class: "charity-image" %>
+        <h1 class="card-title">Name of Company</h1>
+        <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
+      </div>
+    </div>
+
+
+  </div>
+</div>
 
 
 
