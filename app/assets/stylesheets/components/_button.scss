@@ -20,10 +20,10 @@
 
 
 .purple-btn:hover {
-
+  box-sizing: border-box;
   background: white;
   text-decoration: none;
-  border: 1px solid $purple;
+  outline: 1px solid $purple;
   color: $purple;
 
 }
