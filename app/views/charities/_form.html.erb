@@ -1,21 +1,26 @@
 <%= simple_form_for(@charity) do |f| %>
   <div class="form-inputs">
-    <div class="left-input col-xs-7">
+    <div class="left-input col-xs-8">
       <%= f.input :name,
                   required: true,
                   placeholder: 'Charity name',
                   label: false,
                   autofocus: true,
                   input_html: { class: 'first-input'} %>
+      <p></p>
+      <%= f.collection_radio_buttons :category,
+                  [['environment', 'Environment'], ['healthcare', 'Healthcare'], ['disaster relief', 'Disaster relief'], ['education', 'Education'], ['humanitarian', 'Humanitarian'], ['children', 'Children']],
+                  :first,
+                  :last do |b|
+                    b.radio_button(class: 'hidden-input') + b.label(class: 'button-label small')
+                  end %>
+      <p></p>
       <%= f.input :address,
                   required: true,
                   placeholder: 'Head office location',
-                  label: false %>
-      <%= f.input :website,
-                  required: true,
                   label: false,
-                  placeholder: 'Charity website' %>
-      <%= f.input :category,
+                  input_html: { class: 'first-input' } %>
+      <%= f.input :website,
                   required: true,
                   label: false,
                   placeholder: 'Charity website' %>
@@ -29,13 +34,17 @@
         <%= f.button :submit, "Next", class: 'big-btn purple-btn form-btn' %>
       </div>
     </div>
-    <div class="right-input col-xs-5">
-        <%= f.file_field :logo, onchange: "readURL(this);" %>
-        <img id="upload-logo" src="#" alt="your image" />
+    <div class="right-input col-xs-4">
+      <div class="circle-div">
+        <div class="preview">
+        </div>
+        <p class="circle-text">click to upload your logo</p>
+        <%= f.file_field :logo, class: 'profileUploadInput' %>
+      </div>
     </div>
 
   </div>
 
 
 <% end %>
-name address website category description logo
+
