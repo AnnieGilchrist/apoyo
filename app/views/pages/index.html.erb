@@ -23,7 +23,7 @@
               <%= image_tag "mission.jpg", class: "charity-image" %>
               <div class="card-content">
                 <h1 class="card-title"><%= element.name %></h1>
-                <p class="card-text-grey"><%= element.category %></p>
+                <p class="card-text-grey"><%= element.category.capitalize %></p>
                 <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.address %></p>
 
                 <p class="card-description"><%= element.description.first(170) + '...'%></p>
