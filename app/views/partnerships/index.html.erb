@@ -29,14 +29,14 @@
         </div>
       </div>
       <% end %>
-
     </div>
-  <% else %>
+    <% end %>
     <div class="dashboard-subheading">
       <h3>Past Missions:</h3>
     </div>
+  <% if @finished_partnerships.length > 0 %>
     <div class="row">
-      <% @partnerships.where(status: "complete").each do |partnership| %>
+      <% @finished_partnerships.each do |partnership| %>
       <div class="col-xs-12 col-sm-4">
         <div class="card">
           <div class="picture">
@@ -58,6 +58,8 @@
       </div>
       <% end %>
     </div>
-  <% end %>
   </div>
+  <% else %>
+     <h2>You don't have any partnerships! Go look for one <i class="far fa-handshake"></i></h2>
+  <% end %>
 

@@ -9,7 +9,8 @@ class PartnershipPolicy < ApplicationPolicy
         # scope.where("SELECT * FROM partnerships
         #               JOIN missions ON missions.id = partnerships.mission_id
         #               WHERE missions.charity_id = #{user.charity_id}")
-        scope.joins(:mission).where(mission: { charity_id: user.charity_id })
+        scope.joins("JOIN missions ON missions.id = partnerships.mission_id").where(missions: { charity_id: user.organisation_id })
+        # Partnership.joins(mission).where
       end
     end
   end
