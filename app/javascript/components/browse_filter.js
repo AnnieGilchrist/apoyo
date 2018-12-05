@@ -28,17 +28,20 @@ function hideMissions (){
 }
 
 
-if (searchBar) {
 
-  charityButton.addEventListener("click", (event) => {
-    selectedButton(charityButton)
-    hideMissions ();
-  });
+export default function() {
 
-  missionButton.addEventListener("click", (event) => {
-    selectedButton(missionButton)
-    hideCharities ();
-  });
+  if (searchBar) {
+    charityButton.addEventListener("click", (event) => {
+      selectedButton(charityButton)
+      hideMissions ();
+    });
 
+    missionButton.addEventListener("click", (event) => {
+      selectedButton(missionButton)
+      hideCharities ();
+    });
+
+  }
 }
 
