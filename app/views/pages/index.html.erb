@@ -8,15 +8,31 @@
 
 
 <% @results.each do |element| %>
-  <h1><%= element.name %></h1>
-  <%= element.description%>
-  <% if element.class == Charity %>
-    <%= element.address %>
-  <% else %>
-    <%= element.charity.name%>
-    <%= element.charity.address %>
-  <% end %>
+  <div class="container">
+    <% if element.class == Charity %>
+      <div class="browse-card floated">
+        <%= image_tag "mission.jpg", class: "charity-image" %>
+        <div class="card-content">
+          <h1 class="card-title"><%= element.name %></h1>
+          <p class="card-text-grey"><%= element.category %></p>
+          <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.address %></p>
 
+          <p class="card-description"><%= element.description.first(210) + '...'%></p>
+        </div>
+      </div>
+    <% else %>
+      <div class="browse-card">
+        <%= image_tag "mission.jpg", class: "mission-image" %>
+        <div class="card-content">
+          <h1 class="card-title"><%= element.name %></h1>
+          <p class="card-text-grey"><%= element.charity.name%></p>
+          <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.address %></p>
+          <p class="card-description"> <%= element.description.first(210) + '...'%></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+
 
 
