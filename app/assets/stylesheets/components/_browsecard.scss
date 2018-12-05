@@ -1,4 +1,7 @@
-
+.container {
+  margin-left: 30px;
+  margin-right: 30px;
+}
 .search-bar {
   flex-direction: row;
   width: 900px;
@@ -11,6 +14,7 @@
     height: 50px;
     padding: 0px 0px;
     margin: 0px 0px;
+    font-size: 15px;
 
   }
   .small-btn {
@@ -68,6 +72,7 @@
   height: 230px;
   margin-bottom: 20px;
   margin-right: 10px;
+  margin-left: 0px;
 
   .mission-image {
     width: 130px;
