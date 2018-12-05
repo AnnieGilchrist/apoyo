@@ -2,6 +2,20 @@
   margin-left: 30px;
   margin-right: 30px;
 }
+
+.filter {
+  margin-left: 30px;
+
+    .small-btn {
+    vertical-align: middle;
+    padding: 15px 20px;
+    margin: 0px 0px;
+    margin-left: -1px;
+
+  }
+
+
+}
 .search-bar {
   flex-direction: row;
   width: 900px;
@@ -20,7 +34,6 @@
   .small-btn {
     vertical-align: middle;
     padding: 15px 20px;
-
     margin: 0px 0px;
     margin-left: -1px;
 
@@ -85,11 +98,15 @@
     font-size: 15px;
 
   }
+  .card-description {
+    margin-left: 0px;
+
+}
 
 }
 
 .card-title {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
   line-height: 5px;
 
@@ -126,4 +143,9 @@
     font-size: 15px;
 
   }
+}
+
+.selected-btn {
+   font-weight: bold;
+
 }

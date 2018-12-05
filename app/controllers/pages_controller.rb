@@ -28,12 +28,14 @@ class PagesController < ApplicationController
     if params[:query].present?
       @charities = Charity.where(sql_query_charity, query: "%#{params[:query]}%")
       @missions = Mission.where(sql_query_mission, query: "%#{params[:query]}%")
-      @results = @missions.shuffle + @charities.shuffle
+      results = @missions + @charities
+      @results = results.shuffle
     else
       @missions = Mission.all
       @charities = Charity.all
       results = @missions + @charities
       @results = results.shuffle
     end
+
   end
 end

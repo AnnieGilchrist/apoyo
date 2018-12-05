@@ -1,7 +1,6 @@
 <div class="container">
   <div class="search-bar flex-container">
 
-
     <%= form_tag feed_path, class: "form-inline", method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -10,6 +9,10 @@
       %><%= submit_tag 'Search', class: "button purple-btn small-btn" %>
 
     <% end %>
+    <div class="filter">
+      <button class="button white-btn small-btn" id="charity">Charities</button>
+      <button class ="button white-btn small-btn" id="mission">Missions</button>
+    </div>
 
   </div>
 
@@ -18,7 +21,7 @@
     <div class="browse">
       <% @results.each do |element| %>
         <% if element.class == Charity %>
-          <div class="col-md-6" data-business-type="charity">
+          <div class="col-md-6" data-type="charity">
             <div class="browse-card floated">
               <%= image_tag "mission.jpg", class: "charity-image" %>
               <div class="card-content">
@@ -32,14 +35,14 @@
           </div>
 
         <% else %>
-          <div class="col-md-6 card-box">
+          <div class="col-md-6 card-box" data-type="mission">
             <div class="browse-card">
               <%= image_tag "mission.jpg", class: "mission-image" %>
               <div class="card-content">
                 <h1 class="card-title"><%= element.name %></h1>
                 <p class="card-text-grey"><%= element.charity.name%></p>
                 <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.address %></p>
-                <p class="card-description"> <%= element.description.first(170) + '...'%></p>
+                <p class="card-description"> <%= element.description.first(100) + '...'%></p>
               </div>
             </div>
           </div>
