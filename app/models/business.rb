@@ -5,4 +5,6 @@ class Business < ApplicationRecord
   validates :description, presence: true, allow_blank: false
   has_many :users, as: :organisation, dependent: :destroy
   has_many :partnerships, dependent: :destroy
+
+  mount_uploader :logo, PhotoUploader
 end
