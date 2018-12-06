@@ -6,7 +6,7 @@ class Partnership < ApplicationRecord
 
   def color
     if self.status == 'pending'
-      '#FFFFFF'
+      '#FFD300'
     elsif self.status == 'accepted'
       '#5B00FF'
     else

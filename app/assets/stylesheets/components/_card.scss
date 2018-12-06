@@ -43,6 +43,7 @@
   padding: 0;
   width: 100% !important;
   font-family: "Open Sans", "Helvetica", "sans-serif";
+  position: relative;
   .mission-image {
     width: 250px !important;
     height: auto !important;
@@ -55,6 +56,26 @@
   }
   .card-description {
     margin-left: 0px;
+  }
+  .status-identifier {
+    padding: 5px;
+    width: 150px;
+    border-radius: 2px;
+    background-color: $yellow;
+    color: white;
+    position: absolute;
+    top: 15px;
+    right: -10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0.8;
+  }
+  .mission-buttons {
+    position: absolute;
+    bottom: 20px;
+    left: 265px;
+
   }
 }
 .format-card {

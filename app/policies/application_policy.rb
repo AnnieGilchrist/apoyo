@@ -11,7 +11,7 @@ class ApplicationPolicy
   end
 
   def show?
-    record.id.present?
+    true
   end
 
   def create?
