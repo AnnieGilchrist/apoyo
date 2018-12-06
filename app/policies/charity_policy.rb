@@ -6,7 +6,7 @@ class CharityPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    true
   end
 
   def update?
@@ -15,6 +15,10 @@ class CharityPolicy < ApplicationPolicy
 
   def destroy?
     user_is_owner?
+  end
+
+  def follow?
+    true
   end
 
   private

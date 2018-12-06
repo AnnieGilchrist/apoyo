@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   resources :partnerships, only: [:index, :show, :edit, :update, :destroy]
 
   get 'feed', to: 'pages#index', as: :feed
+
+  post 'charities/:id/follow', to: 'charities#follow', as: :follow
 end
