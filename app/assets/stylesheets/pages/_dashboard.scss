@@ -40,7 +40,8 @@
   color: $light-gray;
   &:hover {
     text-decoration: none;
-    color: $purple;
+    background-color: $purple;
+    color: white;
     border-color: none !important;
   }
 }
@@ -49,3 +50,9 @@
     background-color: none !important;
   }
 }
+
+.dashboard {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
