@@ -1,0 +1,35 @@
+.small-mission-card {
+  height: 130px;
+  width: 300px;
+  border: 1px solid $grey;
+  display: flex;
+  position:relative;
+  margin-bottom: 30px;
+  .mission-image {
+    width: 100px;
+    height: 128px;
+    object-fit: cover;
+
+  }
+  .mission-details {
+    position: absolute;
+    left: 120px;
+    color: $black;
+  }
+
+
+  .card-text-grey {
+    margin-bottom: 15px;
+  }
+}
+
+.mission-cards-container {
+  margin-top: 20px;
+  width: 1000px;
+  margin-left: 130px;
+a {
+    text-decoration: none;
+  }
+
+}
+
