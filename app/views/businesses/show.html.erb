@@ -1,2 +1,9 @@
-<h1>Businesses#show</h1>
-<p>Find me in app/views/businesses/show.html.erb</p>
+<div class="container">
+  <% if @business == current_user.organisation %>
+    <h1>My Profile Page</h1>
+  <% else %>
+    <h1>Businesses#show</h1>
+    <p>Find me in app/views/businesses/show.html.erb</p>
+  <% end %>
+</div>
+

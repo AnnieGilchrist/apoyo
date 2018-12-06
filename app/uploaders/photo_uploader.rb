@@ -2,7 +2,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   version :navbar_image do
-    cloudinary_transformation width: 45, height: 45, gravity: 'center', radius: 'max', crop: 'pad'
+    cloudinary_transformation width: 45, height: 45, gravity: 'center', crop: 'pad'
   end
 
   version :profile_image do

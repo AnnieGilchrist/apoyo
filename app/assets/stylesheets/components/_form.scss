@@ -55,21 +55,31 @@ input[type="radio"]:checked+label.button-label-small {
 .form-actions {
   padding-top: 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 .form-btn {
   width: 60% !important;
 }
 .form-return-link {
   color: $light-gray;
-  transition: background 0.3s ease;
+  transition: color 0.3s ease;
   width: 30%;
   text-align: center;
+  line-height: 2;
   &:hover {
     text-decoration: none;
     color: $purple;
   }
+}
+.minor-link-div {
+  padding-top: 10px;
+}
+.minor-link {
+  width: auto !important;
+  font-size: 14px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 .form-image {
   padding-top: 100px;
@@ -117,5 +127,10 @@ input[type="radio"]:checked+label.button-label-small {
   background-repeat: no-repeat;
   background-position: center center;
 }
-
+.form-check {
+  margin-top: 20px;
+  .form-check-label {
+    margin-left: 10px;
+  }
+}
 
