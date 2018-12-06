@@ -8,6 +8,7 @@ class MissionsController < ApplicationController
   def show
     authorize @mission
     @charity = Charity.find(@mission.charity_id)
+    @partnership = Partnership.new
   end
 
   def new

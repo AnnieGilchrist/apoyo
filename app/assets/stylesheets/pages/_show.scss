@@ -13,10 +13,6 @@ p {
   margin-bottom: 10px;
 }
 
-.profile-banner {
-  margin-bottom: 120px;
-}
-
 .container.fafa {
   margin-top: -110px;
 }
@@ -27,6 +23,7 @@ p {
 
 .profile-banner {
   position: relative;
+  margin-bottom: 120px;
   .profile-image.top {
     position: absolute;
     bottom: 315px;
@@ -37,7 +34,18 @@ p {
     position: absolute;
     bottom: -25px;
     left: 400px;
-
+  }
+  .form-div {
+    position: absolute;
+    top: 325px;
+    right: 10vw;
+    width: 400px;
+    background-color: white;
+    border: 2px solid $grey;
+    padding: 20px;
+    .text-input {
+      height: 150px;
+    }
   }
 }
 
