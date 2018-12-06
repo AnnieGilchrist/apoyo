@@ -1,17 +1,17 @@
-<h1>Missions#show</h1>
-<p>Find me in app/views/missions/show.html.erb</p>
 <div class="whole-page-box">
-  <div class="container">
-    <div class="show-box show-box-room">
-      <div class="image-box">
-        <div class="show-image">
-          <%= link_to mission_path(@mission) do %>
-            <%= cl_image_tag @mission.image, class: "profile-image" %>
-          <% end %>
-          <%# end %>
-        </div>
+  <div class="show-box show-box-room">
+    <div class="image-box">
+      <div class="show-image">
+        <%= link_to mission_path(@mission) do %>
+        <% if @mission.image.nil?  %>
+        <%= image_tag 'mission.jpg', class: "image-show" %>
+        <% else %>
+          <%= cl_image_tag @mission.image, class: "image-show" %>
+        <% end %>
+        <% end %>
       </div>
-
+    </div>
+  <div class="container">
       <div class="title-box">
         <h1><%= @mission.name %> </h1>
       </div>
