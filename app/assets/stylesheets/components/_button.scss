@@ -10,8 +10,8 @@
 }
 
 .purple-btn {
-
   background-color: $purple;
+  text-align: center;
   border: none;
   color: white;
   transition: background 0.3s ease;
@@ -32,6 +32,7 @@
 
   background-color: white;
   border: 1px solid $purple;
+  text-align: center;
   color: $purple;
   transition: background 0.3s ease;
 
@@ -47,16 +48,17 @@
 }
 
 .big-btn {
-  padding: 15px 70px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   font-size: 20px;
   width: 280px;
+  text-align: center;
 }
 
 .small-btn {
   font-size: 14px;
   padding: 6px 15px;
-
-
+  text-align: center;
 }
 
 .disabled {

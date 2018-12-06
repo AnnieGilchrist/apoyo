@@ -4,7 +4,7 @@ class PartnershipPolicy < ApplicationPolicy
       if user.organisation_type == 'Business'
         # scope.where("SELECT * FROM partnerships
         #               WHERE partnerships.business_id = #{user.business_id}")
-        scope.where(business_id: user.business_id)
+        scope.where(business_id: user.organisation_id)
       elsif user.organisation_type == 'Charity'
         # scope.where("SELECT * FROM partnerships
         #               JOIN missions ON missions.id = partnerships.mission_id

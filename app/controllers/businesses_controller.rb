@@ -6,6 +6,7 @@ class BusinessesController < ApplicationController
   end
 
   def show
+    authorize @business
   end
 
   def new
@@ -31,6 +32,12 @@ class BusinessesController < ApplicationController
 
   def update
     authorize @business
+    @business.update(business_params)
+    if @business.save
+      redirect_to business_path(@business)
+    else
+      render :new
+    end
   end
 
   def destroy
