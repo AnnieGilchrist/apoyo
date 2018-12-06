@@ -1,5 +1,5 @@
 class CharitiesController < ApplicationController
-  before_action :set_charity, only: [:show, :edit, :update, :destroy]
+  before_action :set_charity, only: [:show, :edit, :update, :destroy, :follow]
 
   def index
     @charities = policy_scope(Charity)
@@ -36,6 +36,15 @@ class CharitiesController < ApplicationController
 
   def destroy
     authorize @charity
+  end
+
+  def follow
+    authorize @charity
+    @follow = Follow.new
+    @follow.charity = @charity
+    @follow.business = current_user.organisation
+    @follow.save
+    redirect_to charity_path(@charity), notice: "Now following #{@charity.name}"
   end
 
   private

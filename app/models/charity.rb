@@ -6,5 +6,8 @@ class Charity < ApplicationRecord
   has_many :missions, dependent: :destroy
 
   mount_uploader :logo, PhotoUploader
-end
 
+  def followers
+    Follow.where(charity_id: self.id).length
+  end
+end
