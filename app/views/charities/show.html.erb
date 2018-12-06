@@ -31,6 +31,29 @@
   </div>
 </div>
 
-<div class="missions">
-
+<div class="mission-cards-container">
+  <% @charity.missions.each do |mission| %>
+    <div class="col-md-4 col-sm-12">
+      <%= link_to mission_path(mission) do%>
+        <div class="small-mission-card">
+          <% if mission.image %>
+            <%= cl_image_tag @charity.logo, class: "mission-image" %>
+          <% else %>
+            <%= image_tag "mission.jpg", class: "mission-image" %>
+          <% end %>
+          <div class="mission-details">
+            <h1 class="card-title"><%= mission.name %></h1>
+            <p class="card-location card-text-grey"><i class="fas fa-map-marker-alt"></i> <%= @charity.address %></p>
+            <% if mission.duration %>
+              <p class="card-location"><strong>Duration:</strong> <%= mission.duration %> months</p>
+            <% else %>
+              <p class="card-location"><strong>Duration:</strong> not specified</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
+
+
