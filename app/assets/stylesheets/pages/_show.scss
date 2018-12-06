@@ -8,3 +8,53 @@
 p {
   max-width: 690px;
 }
+
+.container.mission-show {
+  margin-bottom: 10px;
+}
+
+.profile-banner {
+  margin-bottom: 120px;
+}
+
+.container.fafa {
+  margin-top: -110px;
+}
+
+.show-banner.top {
+  max-width: 944px;
+}
+
+.profile-banner {
+  position: relative;
+  .profile-image.top {
+    position: absolute;
+    bottom: 315px;
+    left: 840px;
+
+  }
+  .rounded.top {
+    position: absolute;
+    bottom: -25px;
+    left: 400px;
+
+  }
+}
+
+.yellow-btn {
+  background-color: $purple;
+  text-align: center;
+  border: none;
+  color: white;
+  transition: background 0.3s ease;
+  width: 200px;
+  padding: 20px !important;
+}
+
+
+.yellow-btn:not(.nohover):hover {
+  box-sizing: border-box;
+  background: $yellow;
+  text-decoration: none;
+  color: $black;
+}
