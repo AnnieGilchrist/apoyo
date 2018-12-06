@@ -1,0 +1,61 @@
+.show-banner {
+  width: 100vw;
+  height: 400px;
+  background-size: fit;
+  background-size: cover;
+  background-position: center;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid $yellow;
+}
+
+.profile-graphics {
+
+}
+.profile-banner {
+  position: relative;
+  .profile-image {
+    position: absolute;
+    bottom:-100px;
+    left: 150px;
+
+  }
+  .rounded {
+    position: absolute;
+    bottom: -25px;
+    left: 400px;
+
+  }
+}
+
+.profile-content {
+  margin-top: 110px;
+  margin-left: 150px;
+  width: 200px;
+  text-align: center;
+  p {
+    line-height: 15px;
+  }
+}
+
+.profile-category {
+  font-weight: 700;
+  color: $purple;
+}
+
+.profile-description {
+  width: 500px;
+  position:absolute;
+  right: 250px;
+  top: 100px;
+}
+
+.charity-profile {
+  display: flex;
+  position: relative;
+}
