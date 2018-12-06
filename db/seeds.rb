@@ -35,15 +35,15 @@ lewagon = Business.create(name: 'Le Wagon', description: "Le Wagon is Europe's b
 puts "Creating users..."
 ian = User.new(email: 'ian@mail.com', password: '12345678')
 ian.organisation = oxfam
-ian.save
+ian.save!
 
 annie = User.new(email: 'annie@mail.com', password: '12345678')
 annie.organisation = freshfields
-annie.save
+annie.save!
 
 xun = User.new(email: 'xun@mail.com', password: '12345678')
 xun.organisation = cancer_research
-xun.save
+xun.save!
 
 
 puts "Creating missions..."
@@ -51,7 +51,7 @@ puts "Creating missions..."
 10.times do
   mission = Mission.new(name: Faker::Job.field, description: Faker::BackToTheFuture.quote)
   mission.charity = Charity.all.sample
-  mission.save
+  mission.save!
 end
 
 puts "Creating partnerships..."
@@ -60,7 +60,7 @@ puts "Creating partnerships..."
   partnership = Partnership.new(details: details)
   partnership.business = Business.all.sample
   partnership.mission = Mission.all.sample
-  partnership.save
+  partnership.save!
 end
 
 puts "All created successfully."

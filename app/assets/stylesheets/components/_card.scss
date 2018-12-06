@@ -26,10 +26,25 @@
   border: 3px solid #FFD300;
 }
 }
-
 .card-description {
   h4 {
     margin: 0px;
   }
   margin-left: 15px;
+}
+.full-length-card {
+  display: flex;
+  justify-content: left;
+  background-color: white;
+  border-radius: 0 !important;
+  margin: 20px 0;
+  padding: 0;
+  width: 100% !important;
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+  .mission-image {
+    width: 250px !important;
+    height: auto !important;
+    object-fit: cover;
+    border-right: 2px solid $yellow;
+  }
 }

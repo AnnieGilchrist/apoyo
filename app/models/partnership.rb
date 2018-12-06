@@ -1,5 +1,6 @@
 class Partnership < ApplicationRecord
   validates :status, presence: true, allow_blank: false, inclusion: { in: ['pending', 'accepted', 'declined', 'completed'] }
+  validates :details, presence: true, allow_blank: false
   belongs_to :mission
   belongs_to :business
 

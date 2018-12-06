@@ -1,65 +1,27 @@
 <div class="container dashboard">
-  <div class="dashboard-main-header">
-    <h1>Dashboard</h1>
-  </div>
-  <div class="dashboard-subheading">
-    <h3>Current Missions:</h3>
-  </div>
-  <% if @partnerships.count > 0 %>
-    <div class="row">
+  <div>
+    <div class="dashboard-title">
+      <h1>Welcome to your Dashboard</h1>
+      <p class="secondary-txt">From this page, you can manage your charity connections and profile with ease!</p>
+    </div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs dashboard-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#active-partnerships" aria-controls="active-partnerships" role="tab" data-toggle="tab">Active Partnerships</a></li>
+      <li role="presentation"><a href="#inbox" aria-controls="inbox" role="tab" data-toggle="tab">Inbox</a></li>
+      <li role="presentation"><a href="#past-partnerships" aria-controls="past-partnerships" role="tab" data-toggle="tab">Past Partnerships</a></li>
+      <li role="presentation"><a href="#edit-org" aria-controls="edit-org" role="tab" data-toggle="tab">Edit Organisation Profile</a></li>
+    </ul>
 
-      <% @partnerships.each do |partnership| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card">
-          <div class="picture">
-            <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="">
-          </div>
-          <div class="card-description">
-            <h3><%= partnership.mission.name %></h3>
-            <p>Location: <%= partnership.mission.location %></p>
-          </div>
-          <div class="status">
-            <div class="status-box">
-              <h4 style="color: <%= partnership.color %> !important">Status: <%= partnership.status.capitalize %></h4>
-            </div>
-          </div>
-          <div class="card-links">
-              <%= link_to 'more info', partnership_path(partnership) %>
-          </div>
-        </div>
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="active-partnerships"><%= render 'active_partnerships' %></div>
+      <div role="tabpanel" class="tab-pane" id="inbox"><%= render 'inbox' %></div>
+      <div role="tabpanel" class="tab-pane" id="past-partnerships"><%= render 'past_partnerships' %></div>
+      <div role="tabpanel" class="tab-pane" id="edit-org">
+        <%= link_to "Click here to edit your profile...", edit_business_path(current_user.organisation) %>
       </div>
-      <% end %>
     </div>
-    <% end %>
-    <div class="dashboard-subheading">
-      <h3>Past Missions:</h3>
-    </div>
-  <% if @finished_partnerships.length > 0 %>
-    <div class="row">
-      <% @finished_partnerships.each do |partnership| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card">
-          <div class="picture">
-            <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" alt="">
-          </div>
-          <div class="card-description">
-            <h3><%= partnership.mission.name %></h3>
-            <p>Location: <%= partnership.mission.location %></p>
-          </div>
-          <div class="status">
-            <div class="status-box">
-              <h4 style="color: yellow%> !important">Status: Complete!</h4>
-            </div>
-          </div>
-          <div class="card-links">
-              <%= link_to 'more info', partnership_path(partnership) %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-    </div>
-  </div>
-  <% else %>
-     <h2>You don't have any partnerships! Go look for one <i class="far fa-handshake"></i></h2>
-  <% end %>
 
+  </div>
+
+</div>
