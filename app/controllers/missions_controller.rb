@@ -6,6 +6,8 @@ class MissionsController < ApplicationController
   end
 
   def show
+    authorize @mission
+    @charity = Charity.find(@mission.charity_id)
   end
 
   def new
