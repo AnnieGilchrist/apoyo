@@ -10,36 +10,64 @@ const missions = document.querySelectorAll("[data-type='mission']");
 const searchBar = document.querySelector('.search-bar')
 
 function selectedButton (button){
-  button.classList.remove("purple-btn");
-  button.classList.add("white-btn");
+  button.classList.remove("white-btn");
+  button.classList.add("purple-btn");
   button.classList.add("selected-btn");
 }
 
-function hideCharities (){
-  charities.forEach((charity) => {
-    charity.style.display = "none";
+
+function unselectedButton (button) {
+  button.classList.add("white-btn");
+  button.classList.remove("purple-btn");
+  button.classList.remove("selected-btn");
+
+}
+function hide (elements){
+  elements.forEach((element) => {
+    element.style.display = "none";
   });
 }
 
-function hideMissions (){
-  missions.forEach((mission) => {
-    mission.style.display = "none";
+function show (elements) {
+  elements.forEach((element) => {
+    element.style.display = "";
   });
 }
+
 
 
 
 export default function() {
 
   if (searchBar) {
+
     charityButton.addEventListener("click", (event) => {
-      selectedButton(charityButton)
-      hideMissions ();
+      if (charityButton.classList[4]) { //if charity button is slected
+        unselectedButton(charityButton);
+        show(missions);
+      } else { //if charity button is not selected
+        if (missionButton.classList[4]) {
+          unselectedButton(missionButton);
+          show(charities)
+        }
+        selectedButton(charityButton)
+        hide(missions);
+
+      }
     });
 
     missionButton.addEventListener("click", (event) => {
+      if (missionButton.classList[4]) {
+        unselectedButton(missionButton)
+        show(charities)
+      } else {
+        if (charityButton.classList[4]) {
+          unselectedButton(charityButton);
+          show(missions)
+        }
       selectedButton(missionButton)
-      hideCharities ();
+      hide(charities);
+      }
     });
 
   }

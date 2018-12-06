@@ -19,7 +19,7 @@
 }
 
 
-.purple-btn:hover {
+.purple-btn:not(.nohover):hover {
   box-sizing: border-box;
   background: white;
   text-decoration: none;
@@ -38,7 +38,7 @@
 
 }
 
-.white-btn:hover {
+.white-btn:not(.nohover):hover {
 
   background: $purple;
   color: white;
@@ -54,6 +54,13 @@
   width: 280px;
   text-align: center;
 }
+
+.medium-btn {
+  font-size: 15px;
+  padding: 10px 18px;
+  text-align: center;
+}
+
 
 .small-btn {
   font-size: 14px;
