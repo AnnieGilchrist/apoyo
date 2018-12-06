@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'applications/after_sign_in_path_for'
   get 'membership/create'
   devise_for :users, :controllers => { :registrations => :registrations }
   root to: 'pages#home'

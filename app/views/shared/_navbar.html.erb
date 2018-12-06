@@ -27,13 +27,26 @@
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <% if current_user.organisation_type == "Charity" %>
+              <%= link_to current_user.email, edit_user_registration_path(current_user) %>
+            </li>
+            <li>
+              <% if current_user.organisation_id == nil %>
+                <% if current_user.organisation_type == "Charity" %>
+                  <%= link_to new_charity_path do %>
+                    <%= t(".profile", default: "Create charity profile") %>
+                  <% end %>
+                <% else %>
+                  <%= link_to new_business_path do %>
+                    <%= t(".profile", default: "Create business profile") %>
+                  <% end %>
+                <% end %>
+              <% elsif current_user.organisation_type == "Charity" %>
                 <%= link_to charity_path(current_user.organisation) do %>
-                  <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                  <<%= t(".profile", default: "Charity Profile") %>
                 <% end %>
               <% else %>
                 <%= link_to business_path(current_user.organisation) do %>
-                  <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+                  <%= t(".profile", default: "Business Profile") %>
                 <% end %>
               <% end %>
 

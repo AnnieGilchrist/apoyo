@@ -1,0 +1,24 @@
+<div class="tab-container">
+  <% if @finished_partnerships.count > 0 %>
+
+    <div class="row">
+
+      <% @finished_partnerships.each do |partnership| %>
+        <div class="col-xs-12">
+          <div class="full-length-card browse-card">
+            <%= image_tag "mission.jpg", class: "mission-image" %>
+            <div class="card-content">
+              <h1 class="card-title"><%= partnership.mission.name %></h1>
+              <p class="card-text-grey"><%= partnership.mission.charity.name%></p>
+              <p class="card-location"><i class="fas fa-map-marker-alt"></i> Location: <%= partnership.mission.charity.address %></p>
+              <p class="card-description"> <%= partnership.mission.description.first(400) + '...'%></p>
+              <p>Status: Completed</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+
+  <% end %>
+</div>

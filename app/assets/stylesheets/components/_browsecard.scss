@@ -18,8 +18,10 @@
 }
 .search-bar {
   flex-direction: row;
+  justify-content: space-between;
   width: 900px;
   padding-left: 15px;
+  padding-right: 25px;
   margin-top: 10px;
   margin-bottom: 20px;
   .search-field {
@@ -69,27 +71,25 @@
 }
 
 .browse {
-    height: 100%;
-    width: 900px;
-
-
+  height: 100%;
+  flex: 0 0 900px;
 }
 
-.card-box {
+.follow-cards {
+  flex: 1 0 auto;
 }
 
 .browse-card {
   border: 1px solid $grey;
   display: flex;
-  width: 350px;
-  height: 230px;
+  width: 410px;
+  height: 300px;
   margin-bottom: 20px;
   margin-right: 10px;
   margin-left: 0px;
-
   .mission-image {
     width: 130px;
-    height: 228px;
+    height: 100%;
     object-fit: cover;
   }
 

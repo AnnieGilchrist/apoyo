@@ -19,6 +19,7 @@
 
   <div class="flex-container">
     <div class="browse">
+      <% counter = 0 %>
       <% @results.each do |element| %>
         <% if element.class == Charity %>
           <div class="col-md-6" data-type="charity">
@@ -42,17 +43,22 @@
                 <h1 class="card-title"><%= element.name %></h1>
                 <p class="card-text-grey"><%= element.charity.name%></p>
                 <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.address %></p>
-                <p class="card-description"> <%= element.description.first(100) + '...'%></p>
+                <p class="card-description"> <%= element.description.first(80) + '...'%></p>
+                <button type="button" class="button small-btn modal-button" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.address %>' data-description='<%= element.description %>'>
+                  More info
+                </button>
               </div>
             </div>
           </div>
+
         <% end %>
+        <% counter += 1 %>
       <% end %>
     </div>
 
 
     <div class="follow-cards">
-      <h1 class="medium-txt">Suggested for you</h1>
+      <h1 class="medium-text">Suggested for you</h1>
       <div class="follow-card">
         <%= image_tag "mission.jpg", class: "charity-image" %>
         <h1 class="card-title">Name of Company</h1>
@@ -82,5 +88,5 @@
   </div>
 </div>
 
-
+<%= render 'mission_modal' %>
 

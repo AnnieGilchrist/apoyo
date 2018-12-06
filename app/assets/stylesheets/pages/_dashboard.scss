@@ -1,0 +1,51 @@
+.dashboard-tabs {
+  margin-top: 50px;
+  border-bottom: 1px solid $purple;
+  li.active a {
+    background-color: white;
+    border-left: 1px solid $purple;
+    border-right: 1px solid $purple;
+    border-top: 1px solid $purple;
+    color: $purple !important;
+    font-weight: bold;
+    &:hover {
+      background-color: white;
+      color: $purple !important;
+      border-left: 1px solid $purple;
+      border-right: 1px solid $purple;
+      border-top: 1px solid $purple;
+    }
+    &:focus {
+      background-color: white;
+      color: $purple !important;
+      border-left: 1px solid $purple;
+      border-right: 1px solid $purple;
+      border-top: 1px solid $purple;
+    }
+  }
+}
+.tab-pane#edit-org {
+  padding-top: 40px;
+  padding-left: 10px;
+  a {
+    color: $light-gray;
+    &:hover {
+      text-decoration: none;
+      color: $purple;
+    }
+  }
+}
+.nav-tabs > li > a {
+  border-radius: 5px 5px 0 0 !important;
+  color: $light-gray;
+  &:hover {
+    text-decoration: none;
+    color: $purple;
+    border-color: none !important;
+  }
+}
+.nav li a {
+  &:hover {
+    background-color: none !important;
+  }
+}
