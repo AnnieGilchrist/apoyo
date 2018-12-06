@@ -43,3 +43,11 @@ ul {
   margin-bottom: 50px;
 }
 
+a {
+  color: $black;
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+    color: $black;
+  }
+}

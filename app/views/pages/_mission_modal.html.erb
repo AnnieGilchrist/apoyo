@@ -7,14 +7,15 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-info">
-        <h6>Charity: <span class="charity"></span></h6>
-        <i class="fas fa-map-marker-alt"></i><span class="location"></span>
+        <h5><strong><span class="charity"></span></strong></h5>
+        <h6><i class="fas fa-map-marker-alt"></i> <span class="location"></span></h6>
       </div>
       <div class="modal-body">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="button white-btn small-btn" data-dismiss="modal">Close</button>
+        <%= link_to "Visit Charity", "#" , class: "visit-charity-button button white-btn small-btn" %>
+        <%= link_to "Offer your help", "#" , class: "apply-button button white-btn small-btn" %>
       </div>
     </div>
   </div>

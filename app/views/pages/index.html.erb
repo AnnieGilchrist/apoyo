@@ -22,20 +22,22 @@
       <% counter = 0 %>
       <% @results.each do |element| %>
         <% if element.class == Charity %>
-          <div class="col-md-6" data-type="charity">
-            <div class="browse-card floated">
-              <%= image_tag "mission.jpg", class: "charity-image" %>
-              <div class="card-content">
-                <h1 class="card-title"><%= element.name %></h1>
-                <p class="card-text-grey"><%= element.category.capitalize %></p>
-                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.address %></p>
+          <div class="col-md-6 card-box" data-type="charity">
+            <%= link_to charity_path(element) do %>
+              <div class="browse-card format-card floated">
+                <%= image_tag "mission.jpg", class: "charity-image" %>
+                <div class="card-content-wrap">
+                  <h1 class="card-title"><%= element.name %></h1>
+                  <p class="card-text-grey"><%= element.category.capitalize %></p>
+                  <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.address %></p>
 
-                <p class="card-description"><%= element.description.first(170) + '...'%></p>
+                  <p class="card-description"><%= element.description.first(170) + '...'%></p>
+                </div>
+                <div class="identifier charity">
+                  Charity
+                </div>
               </div>
-              <div class="identifier">
-                Charity
-              </div>
-            </div>
+            <% end %>
           </div>
 
         <% else %>
@@ -47,11 +49,14 @@
                 <p class="card-text-grey"><%= element.charity.name%></p>
                 <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.address %></p>
                 <p class="card-description"> <%= element.description.first(80) + '...'%></p>
-                <button type="button" class="button small-btn modal-button" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.address %>' data-description='<%= element.description %>'>
+              </div>
+              <div>
+                <button type="button" class=" small-btn white-btn modal-button" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.address %>' data-description='<%= element.description %>' data-charity-path='<%= charity_path(element.charity) %>' data-apply-path='<%= mission_path(element) %>'>
                   More info
                 </button>
               </div>
-              <div class="identifier">
+
+              <div class="identifier mission">
                 Mission
               </div>
             </div>

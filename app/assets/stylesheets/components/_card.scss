@@ -48,3 +48,9 @@
     border-right: 2px solid $yellow;
   }
 }
+.format-card {
+  padding: 20px !important;
+  &:hover {
+    border: 4px solid $grey;
+  }
+}
