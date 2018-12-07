@@ -1,5 +1,5 @@
 .small-mission-card {
-  height: 130px;
+  height: 160px;
   width: 320px;
   border: 1px solid $grey;
   display: flex;
@@ -10,14 +10,14 @@
 
   }
   .mission-image {
-    width: 100px;
-    height: 128px;
+    width: 130px;
+    height: 100%;
     object-fit: cover;
 
   }
   .mission-details {
     position: absolute;
-    left: 120px;
+    left: 140px;
     bottom: 5px;
     top: 5px;
     color: $black;
