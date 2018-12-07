@@ -60,9 +60,7 @@
   .status {
     padding: 5px;
     width: 150px;
-    height: 30px;
     border-radius: 2px;
-    color: white;
     text-align: center;
     font-size: 14px;
     font-weight: bold;
@@ -72,30 +70,34 @@
     position: absolute;
     top: 15px;
     right: -10px;
-  }
-  .link-header {
-    position: absolute;
-    top: 55px;
-    right: 35px;
-    font-size: 14px;
+    color: white;
   }
   .accepted-btn {
+    width: 100px;
     position: absolute;
-    top: 80px;
+    top: 50px;
     right: -10px;
-    background-color: $forest-green;
+    background-color: white;
+    border: 2px solid $forest-green;
+    color: $forest-green;
   }
   .declined-btn {
+    width: 100px;
     position: absolute;
-    top: 115px;
+    top: 85px;
     right: -10px;
-    background-color: $pink-red;
+    background-color: white;
+    border: 2px solid $pink-red;
+    color: $pink-red;
   }
   .completed-btn {
+    width: 100px;
     position: absolute;
-    top: 150px;
+    top: 120px;
     right: -10px;
-    background-color: #C4C4C4;
+    background-color: white;
+    border: 2px solid #C4C4C4;
+    color: #C4C4C4;
   }
   .mission-buttons {
     position: absolute;

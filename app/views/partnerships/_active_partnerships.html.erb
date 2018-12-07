@@ -18,13 +18,11 @@
               <%= link_to "Message History", "#", class: "small-btn white-btn" %>
             </div>
 
-            <% if current_user.organisation_type = "Business" %>
-              <div class="status identifier" style="background-color:<%= partnership.color %> !important;">
-                    Status: <%= partnership.status.capitalize %>
-              </div>
+            <div class="status identifier" style="background-color:<%= partnership.color %> !important;">
+              Status: <%= partnership.status.capitalize %>
+            </div>
 
-            <% elsif current_user.organisation_type == "Charity" %>
-              <p class="link-header">Options:</p>
+            <% if current_user.organisation_type == "Charity" %>
               <%= link_to "Accept", partnership_path(partnership, status: 'accepted'), method: :patch, class: "status accepted-btn" %>
               <%= link_to "Decline", partnership_path(partnership, status: 'declined'), method: :patch, class: "status declined-btn" %>
               <%= link_to "Completed", partnership_path(partnership, status: 'completed'), method: :patch, class: "status completed-btn" %>
