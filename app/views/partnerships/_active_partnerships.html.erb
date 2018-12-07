@@ -5,14 +5,20 @@
 
       <% @active_partnerships.each do |partnership| %>
         <div class="col-xs-12">
-          <div class="full-length-card browse-card">
+          <div class="full-length-card">
             <%= image_tag "mission.jpg", class: "mission-image" %>
             <div class="card-content">
               <h1 class="card-title"><%= partnership.mission.name %></h1>
               <p class="card-text-grey"><%= partnership.mission.charity.name%></p>
               <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= partnership.mission.charity.address %></p>
               <p class="card-description"> <%= partnership.mission.description.first(400) + '...'%></p>
-              <p>Status: <%= partnership.status.capitalize %></p>
+            </div>
+            <div class="mission-buttons">
+              <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
+              <%= link_to "Message History", "#", class: "small-btn white-btn" %>
+            </div>
+            <div class="status-identifier" style="background-color:<%= partnership.color %> !important;">
+                 Status: <%= partnership.status.capitalize %>
             </div>
           </div>
         </div>

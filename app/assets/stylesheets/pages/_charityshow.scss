@@ -13,28 +13,24 @@
   object-fit: cover;
   border: 5px solid $yellow;
 }
-
-.profile-graphics {
-
-}
 .profile-banner {
   position: relative;
   .profile-image {
     position: absolute;
     bottom:-100px;
     left: 150px;
-
   }
   .rounded {
     position: absolute;
     bottom: -25px;
     left: 400px;
-
+  }
+  .follow-button {
+    position: absolute;
+    bottom: 5px;
   }
 }
-
 .profile-content {
-  margin-top: 110px;
   margin-left: 150px;
   width: 200px;
   text-align: center;
@@ -55,7 +51,8 @@
   top: 100px;
 }
 
-.charity-profile {
+.profile {
   display: flex;
   position: relative;
+  padding: 50px;
 }

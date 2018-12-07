@@ -14,17 +14,24 @@
       <% else %>
         <%= image_tag "mission.jpg", class: "profile-image" %>
       <% end %>
+      <div class="follow-button">
+        <%= simple_form_for(@charity, url: follow_path(@charity), html: { method: :post }) do |f| %>
+          <%= f.button :submit, "+ Follow", class: 'purple-btn medium-btn rounded' %>
+        <% end %>
+      </div>
 
-       <%= link_to '+ Follow', "#", class: "button purple-btn medium-btn rounded"%>
     </div>
   </div>
 
-<div class="charity-profile">
+<div class="profile">
   <div class="profile-content">
     <h1 class="medium-text"><%= @charity.name %> </h1>
     <p><i class="fas fa-map-marker-alt"></i> <%= @charity.address %></p>
     <p><a href="<%= @charity.website %>"><%= @charity.website %></a></p>
     <p class="profile-category"><%= @charity.category.capitalize %></p>
+    <div class="followers">
+      Followers: <%= @charity.followers %>
+    </div>
   </div>
   <div class="profile-description">
     <p><%= @charity.description %></p>
@@ -55,5 +62,3 @@
     </div>
   <% end %>
 </div>
-
-

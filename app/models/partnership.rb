@@ -3,10 +3,11 @@ class Partnership < ApplicationRecord
   validates :details, presence: true, allow_blank: false
   belongs_to :mission
   belongs_to :business
+  validates :business_id, uniqueness: { scope: :mission_id }
 
   def color
     if self.status == 'pending'
-      '#FFFFFF'
+      '#FFD300'
     elsif self.status == 'accepted'
       '#5B00FF'
     else

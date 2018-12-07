@@ -1,0 +1,31 @@
+
+  <div class="following-cards">
+    <p class="secondary-txt center">You are following...</p>
+    <% @follows.each do |follow| %>
+      <div class="col-xs-12 col-md-6 col-lg-4 card-box" data-type="charity">
+        <%= link_to charity_path(follow.charity) do %>
+          <div class="browse-card format-card">
+            <%= image_tag "mission.jpg", class: "charity-image" %>
+            <div class="card-content-wrap">
+              <h1 class="card-title">
+                <%= follow.charity.name %>
+              </h1>
+              <p class="card-text-grey">
+                <%= follow.charity.category.capitalize %>
+              </p>
+              <p class="card-location">
+                <i class="fas fa-map-marker-alt"></i> <%= follow.charity.address %>
+              </p>
+              <p class="card-description">
+                <%= follow.charity.description.first(170) + '...'%>
+              </p>
+            </div>
+            <div class="charity-identifier">
+              Charity
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+

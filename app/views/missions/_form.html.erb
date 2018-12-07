@@ -1,0 +1,14 @@
+<%= simple_form_for(@partnership, url: mission_partnerships_path(@mission)) do |f| %>
+  <div class="form-inputs">
+      <p class="secondary-txt">Connect with <%= @charity.name %> to help them with this mission</p>
+      <%= f.input :details,
+                  required: true,
+                  placeholder: "The charity will be set a link to your profile. \n\nInclude a message here to send along with your application...",
+                  label: false,
+                  autofocus: true,
+                  input_html: { class: 'first-input text-input'} %>
+      <div class="form-actions">
+        <%= f.button :submit, "Submit Application", class: 'big-btn purple-btn form-btn' %>
+      </div>
+    </div>
+<% end %>
