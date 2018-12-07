@@ -35,7 +35,7 @@ class CharitiesController < ApplicationController
     authorize @charity
     @charity.update(charity_params)
     if @charity.save
-      redirect_to charity_path(@charity)
+      redirect_to feed_path
     else
       render :new
     end
