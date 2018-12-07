@@ -81,7 +81,8 @@
 .format-card {
   padding: 20px !important;
   &:hover {
-    border: 4px solid $grey;
+    // border: 4px solid $grey;
+    box-shadow: 5px 0px 10px $grey;
   }
 }
 
