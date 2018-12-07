@@ -97,10 +97,11 @@
   margin-left: 0px;
   position: relative;
   .mission-image {
-    width: 130px;
+    width: 145px;
     height: 100%;
     object-fit: cover;
     position: absolute;
+    background-position: center;
     top: 0;
     left: 0;
   }
@@ -149,8 +150,8 @@
 .card-title {
   font-size: 18px;
   font-weight: bold;
-  line-height: 5px;
-
+  line-height: 1.2;
+  margin-top: 5px !important;
   }
 
 .card-location {

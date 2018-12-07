@@ -31,7 +31,7 @@
           <div class="col-md-6 card-box" data-type="charity">
             <%= link_to charity_path(element) do %>
               <div class="browse-card format-card floated">
-                <%= image_tag "mission.jpg", class: "charity-image" %>
+                <%= cl_image_tag element.logo.url, class: "charity-image" %>
                 <div class="card-content-wrap">
                   <h1 class="card-title"><%= element.name %></h1>
                   <p class="card-text-grey"><%= element.category.capitalize %></p>
@@ -49,7 +49,7 @@
         <% else %>
           <div class="col-md-6 card-box" data-type="mission">
             <div class="browse-card format-card">
-              <%= image_tag "mission.jpg", class: "mission-image" %>
+              <%= cl_image_tag element.image.url, class: "mission-image" %>
               <div class="card-content">
                 <h1 class="card-title"><%= element.name %></h1>
                 <p class="card-text-grey"><%= element.charity.name%></p>
