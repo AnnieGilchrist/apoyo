@@ -31,9 +31,7 @@
   }
 }
 .profile-content {
-  margin-left: 150px;
-  width: 200px;
-  text-align: center;
+
   p {
     line-height: 15px;
   }
@@ -44,15 +42,71 @@
   color: $purple;
 }
 
-.profile-description {
-  width: 500px;
-  position:absolute;
-  right: 250px;
-  top: 100px;
-}
+
 
 .profile {
   display: flex;
   position: relative;
   padding: 50px;
 }
+
+.flex-box {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+.profile-title {
+
+}
+
+.charity-container {
+  position: relative;
+  margin-top: 20px;
+  width: 1000px;
+  margin-left: 100px;
+  height: 50%;
+
+  .profile-image {
+    position: absolute;
+    top: 50px;
+    left:50px;
+  }
+  .profile-right {
+    position: absolute;
+    right: 150px;
+    top: 20px;
+    width: 500px;
+
+}
+
+}
+
+.main-title {
+  .follow-button {
+    margin-left: 25px;
+    margin-top: 12px;
+  }
+
+  .medium-btn {
+    padding: 6px 20px;
+  }
+
+}
+
+.count {
+  margin-right: 35px;
+}
+
+
+.profile-description {
+  width: 500px;
+  font-size: 15px;
+  position:absolute;
+  top: 180px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
