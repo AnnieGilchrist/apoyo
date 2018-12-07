@@ -21,6 +21,12 @@ class CharityPolicy < ApplicationPolicy
     true
   end
 
+
+  def unfollow?
+    true
+  end
+
+
   private
 
   def user_is_owner?

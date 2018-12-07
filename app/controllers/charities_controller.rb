@@ -7,6 +7,7 @@ class CharitiesController < ApplicationController
 
   def show
     authorize @charity
+    # raise
   end
 
   def new
@@ -60,6 +61,7 @@ class CharitiesController < ApplicationController
   def unfollow
     authorize @charity
     @follow = Follow.where(charity_id: @charity.id, business_id: current_user.organisation.id).first
+    @follow.destroy
     if @follow.destroy
       redirect_to charity_path(@charity), notice: "You stopped following #{@charity.name}"
     end

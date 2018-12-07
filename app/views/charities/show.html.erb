@@ -11,9 +11,16 @@
       <div class="flex-box main-title">
         <h1 class="medium-text"><%= @charity.name %> </h1>
         <div class="follow-button">
-          <%= simple_form_for(@charity, url: follow_path(@charity), html: { method: :post }) do |f| %>
-            <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded' %>
+          <% follow = Follow.find_by(business_id: current_user.organisation.id, charity_id: @charity.id) %>
+          <% if follow %>
+            <%= link_to 'Following', unfollow_path(@charity), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
+          <% else %>
+            <%= simple_form_for(@charity, url: follow_path(@charity), html: { method: :post }) do |f| %>
+            <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded nohover' %>
+
+            <% end %>
           <% end %>
+
         </div>
       </div>
 

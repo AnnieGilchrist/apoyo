@@ -19,15 +19,6 @@
 }
 
 
-.purple-btn:not(.nohover):hover {
-  box-sizing: border-box;
-  background: white;
-  text-decoration: none;
-  outline: 1px solid $purple;
-  color: $purple;
-
-}
-
 .white-btn {
 
   background-color: white;
@@ -38,14 +29,7 @@
 
 }
 
-.white-btn:not(.nohover):hover {
 
-  background: $purple;
-  color: white;
-  border: 1px solid $purple;
-  text-decoration: none;
-
-}
 
 .big-btn {
   padding-top: 15px;
@@ -75,4 +59,28 @@
 
 .rounded {
   border-radius: 5px;
+}
+
+
+.purple-btn:hover {
+  text-decoration: none;
+  color: white;
+}
+
+
+.purple-btn:not(.nohover):hover {
+  box-sizing: border-box;
+  background: white;
+  outline: 1px solid $purple;
+  color: $purple;
+
+}
+
+.white-btn:not(.nohover):hover {
+
+  background: $purple;
+  color: white;
+  border: 1px solid $purple;
+  text-decoration: none;
+
 }
