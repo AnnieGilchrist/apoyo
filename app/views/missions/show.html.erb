@@ -1,6 +1,6 @@
 <div class="profile-graphics">
   <div class="profile-banner">
-    <% if @mission.image %>
+    <% if @mission.image.url %>
       <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= cl_image_path(@mission.image) %>);">
       </div>
     <% else %>

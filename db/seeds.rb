@@ -13,14 +13,16 @@ Charity.destroy_all
 
 puts "Creating charities..."
 
-oxfam = Charity.create(name: 'Oxfam', category: 'humanitarian', description: 'Oxfam is a confederation of 20 independent charitable organizations focusing on the alleviation of global poverty, founded in 1942 and led by Oxfam International. It is a major nonprofit group with an extensive collection of operations.', address: 'London' , website: 'www.oxfam.com')
+oxfam = Charity.create(name: 'Oxfam', category: 'humanitarian', description: 'Oxfam is a confederation of 20 independent charitable organizations focusing on the alleviation of global poverty, founded in 1942 and led by Oxfam International. It is a major nonprofit group with an extensive collection of operations.', address: 'London' , website: 'www.oxfam.com', logo: 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183308/PYdTCugb_400x400.jpg')
 
 
-cancer_research = Charity.create(name: 'Cancer Research UK', category: 'healthcare', description: 'Cancer Research UK is a cancer research and awareness charity in the United Kingdom and Isle of Man, formed on 4 February 2002 by the merger of The Cancer Research Campaign and the Imperial Cancer Research Fund. Its aim is to reduce the number of deaths from cancer.', address: 'London' , website: 'www.cancerresearch.uk')
+cancer_research = Charity.create(name: 'Cancer Research UK', category: 'healthcare', description: 'Cancer Research UK is a cancer research and awareness charity in the United Kingdom and Isle of Man, formed on 4 February 2002 by the merger of The Cancer Research Campaign and the Imperial Cancer Research Fund. Its aim is to reduce the number of deaths from cancer.', address: 'London' , website: 'www.cancerresearch.uk' logo: 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544179228/ujdbe4avxinb5dzprmns.jpg')
 
-heifer = Charity.create(name: 'Heifer International', category: 'humanitarian', description: 'Oxfam is a confederation of 20 independent charitable organizations focusing on the alleviation of global poverty, founded in 1942 and led by Oxfam International. It is a major nonprofit group with an extensive collection of operations.', address: 'New York' , website: 'www.heifer.com')
+heifer = Charity.create(name: 'Heifer International', category: 'humanitarian', description: 'Heifer International is a global nonprofit working to eradicate poverty and hunger through sustainable, values-based holistic community development. Heifer distributes animals, along with agricultural and values-based training, to families in need around the world as a means of providing self-sufficiency.', address: 'Little Rock, Arkansas' , website: 'www.heifer.com', logo: 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183314/unnamed.jpg')
 
+gates_foundation = Charity.create(name: 'Bill & Melinda Gates Foundation', category: 'humanitarian', description: "Bill & Melinda Gates Foundation, previously branded as the 'William H. Gates Foundation', is a private foundation founded by Bill and Melinda Gates. It was launched in 2000, and is said to be the largest private foundation in the United States, holding $50.7 billion in assets.", address: 'Seattle, Washington' , website: 'https://www.gatesfoundation.org', logo: 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183303/1752x1168.jpg')
 
+wwf = Charity.create(name: 'World Wildlife Fund for Nature', category: 'Environmental', description: 'The World Wide Fund for Nature is an international non-governmental organization founded in 1961, working in the field of the wilderness preservation, and the reduction of human impact on the environment. It was formerly named the World Wildlife Fund, which remains its official name in Canada and the United States.', address: 'Gland, Switzerland' , website: 'https://www.worldwildlife.org', logo: 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183116/1200px-WWF_logo.svg.png')
 
 puts "Creating businesses..."
 
@@ -47,6 +49,8 @@ xun.save!
 
 
 puts "Creating missions..."
+
+  office_volunteers = Mission.new(name: 'Volunteer in our offices', description: 'We’re always looking for people to help in our offices, whether you want to develop office admin skills, or share your expertise. We have different kinds of office roles available, depending on your level of experience and the time-commitment you are able to offer.', image: 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183921/Ck_group.jpg', duration: 'Just two hours a week would make a difference!', charity_id: )
 
 10.times do
   mission = Mission.new(name: Faker::Job.field, description: Faker::BackToTheFuture.quote)
