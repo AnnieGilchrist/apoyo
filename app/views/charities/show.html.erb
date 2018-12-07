@@ -15,7 +15,7 @@
           <% if follow %>
             <%= link_to 'Following', unfollow_path(@charity), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
           <% else %>
-            <%= simple_form_for(@charity, url: follow_path(@charity), html: { method: :post }) do |f| %>
+            <%= simple_form_for(@charity, url: follow_path(@charity), method: :post ) do |f| %>
             <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded nohover' %>
 
             <% end %>
