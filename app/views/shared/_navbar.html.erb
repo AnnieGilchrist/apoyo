@@ -42,7 +42,7 @@
                 <% end %>
               <% elsif current_user.organisation_type == "Charity" %>
                 <%= link_to charity_path(current_user.organisation) do %>
-                  <<%= t(".profile", default: "Charity Profile") %>
+                  <%= t(".profile", default: "Charity Profile") %>
                 <% end %>
               <% else %>
                 <%= link_to business_path(current_user.organisation) do %>
