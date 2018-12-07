@@ -29,8 +29,9 @@
         <p class="count"><strong><%= @charity.follows.count %></strong> followers</p>
       </div>
       <div class="profile-content">
-        <p><i class="fas fa-map-marker-alt"></i> <%= @charity.address %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="blue" href="<%= @charity.website %>"><%= @charity.website %></a></p>
-        <p class="profile-category">Chairty of <%= @charity.category.capitalize %></p>
+        <p><i class="fas fa-map-marker-alt"></i> <%= @charity.address %></p>
+        <p><a class="blue" href="<%= @charity.website %>"><%= @charity.website %></a></p>
+        <p class="profile-category"><%= @charity.category.capitalize %></p>
       </div>
       <div class="profile-description">
         <p><%= @charity.description %></p>
