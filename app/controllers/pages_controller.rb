@@ -6,12 +6,12 @@ class PagesController < ApplicationController
 
   def index
 
-    # if current_user.organisation.class == Business
+    if current_user.organisation.class == Business
 
-    #   @suggestions = Charity.all.where(category: current_user.organisation.charity_preferences)
-    # else
-    #   @suggestions = Business.all.where(charity_preferences: current_user.organisation.category)
-    # end
+      @suggestions = Charity.all.where(category: current_user.organisation.charity_preferences)
+    else
+      @suggestions = Business.all.where(charity_preferences: current_user.organisation.category)
+    end
 
     sql_query_charity = "\
       charities.name @@ :query \
