@@ -9,7 +9,7 @@
             <%= image_tag "mission.jpg", class: "mission-image" %>
             <div class="card-content">
               <h1 class="card-title"><%= partnership.mission.name %></h1>
-              <p class="card-text-grey"><%= partnership.mission.charity.name%></p>
+              <p class="card-text-grey"><%= partnership.business.name %> is partnered with <%= partnership.mission.charity.name%></p>
               <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= partnership.mission.charity.address %></p>
               <p class="card-description"> <%= partnership.mission.description.first(400) + '...'%></p>
             </div>
@@ -17,9 +17,16 @@
               <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
               <%= link_to "Message History", "#", class: "small-btn white-btn" %>
             </div>
-            <div class="status-identifier" style="background-color:<%= partnership.color %> !important;">
-                 Status: <%= partnership.status.capitalize %>
+
+            <div class="status identifier" style="background-color:<%= partnership.color %> !important;">
+              Status: <%= partnership.status.capitalize %>
             </div>
+
+            <% if current_user.organisation_type == "Charity" %>
+              <%= link_to "Accept", partnership_path(partnership, status: 'accepted'), method: :patch, class: "status accepted-btn" %>
+              <%= link_to "Decline", partnership_path(partnership, status: 'declined'), method: :patch, class: "status declined-btn" %>
+              <%= link_to "Completed", partnership_path(partnership, status: 'completed'), method: :patch, class: "status completed-btn" %>
+            <% end %>
           </div>
         </div>
       <% end %>

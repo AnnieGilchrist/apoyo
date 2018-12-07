@@ -129,4 +129,3 @@ puts "Creating missions..."
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544192407/deforestation.jpg'
     deforestation.remote_image_url = url
     deforestation.save
-

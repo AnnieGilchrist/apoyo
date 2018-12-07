@@ -21,9 +21,9 @@
       <div role="tabpanel" class="tab-pane" id="past-partnerships"><%= render 'past_partnerships' %></div>
       <div role="tabpanel" class="tab-pane" id="edit-org">
         <% if current_user.organisation_type == 'Business' %>
-          <%= link_to "Click here to edit your profile...", edit_business_path(current_user.organisation) %>
+          <%= link_to "Click here to edit your business profile...", edit_business_path(current_user.organisation) %>
         <% else %>
-          <%= link_to "Click here to edit your profile...", edit_charity_path(current_user.organisation) %>
+          <%= link_to "Click here to edit your charity profile...", edit_charity_path(current_user.organisation) %>
         <% end %>
         <br><br>
         <%= link_to "Click here to edit your user details...", edit_user_registration_path(current_user) %>

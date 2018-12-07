@@ -45,6 +45,10 @@ class PartnershipsController < ApplicationController
 
   def update
     authorize @partnership
+    @partnership.status = params[:status]
+    if @partnership.save
+      redirect_to partnerships_path, notice: 'status changed'
+    end
   end
 
   def destroy
