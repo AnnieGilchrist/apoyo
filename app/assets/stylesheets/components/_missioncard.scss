@@ -5,6 +5,10 @@
   display: flex;
   position:relative;
   margin-bottom: 30px;
+  &:hover {
+    box-shadow: 0 3px 18px rgba(0,0,0,0.2);
+
+  }
   .mission-image {
     width: 100px;
     height: 128px;
@@ -32,6 +36,8 @@
   margin-top: 20px;
   width: 1000px;
   margin-left: 130px;
+  // position: absolute;
+  // top: 450px;
 a {
     text-decoration: none;
   }

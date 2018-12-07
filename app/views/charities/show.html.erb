@@ -1,41 +1,43 @@
+<div class="charity-container">
 
-  <div class="profile-graphics">
-    <div class="profile-banner">
-      <% if @charity.logo.url %>
-        <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= cl_image_path(@charity.logo) %>);">
-        </div>
-      <% else %>
-        <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= image_path "mission.jpg" %>);">
-        </div>
-      <% end %>
+  <div class="flex-box">
+    <% if @charity.logo.url %>
+      <%= cl_image_tag @charity.logo, height: '100', width: '100', class: "profile-image" %>
+    <% else %>
+      <%= image_tag "mission.jpg", class: "profile-image" %>
+    <% end %>
 
-      <% if @charity.logo.url %>
-        <%= cl_image_tag @charity.logo, height: '100', width: '100', class: "profile-image" %>
-      <% else %>
-        <%= image_tag "mission.jpg", class: "profile-image" %>
-      <% end %>
-      <div class="follow-button">
-        <%= simple_form_for(@charity, url: follow_path(@charity), html: { method: :post }) do |f| %>
-          <%= f.button :submit, "+ Follow", class: 'purple-btn medium-btn rounded' %>
-        <% end %>
+    <div class="profile-right">
+      <div class="flex-box main-title">
+        <h1 class="medium-text"><%= @charity.name %> </h1>
+        <div class="follow-button">
+          <%= simple_form_for(@charity, url: follow_path(@charity), html: { method: :post }) do |f| %>
+            <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded' %>
+          <% end %>
+        </div>
       </div>
 
+      <div class="flex-box">
+        <p class="count"><strong><%= @charity.missions.count %></strong> missions</p>
+        <p class="count"><strong><%= @charity.follows.count %></strong> followers</p>
+      </div>
+      <div class="profile-content">
+        <p><i class="fas fa-map-marker-alt"></i> <%= @charity.address %>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a class="blue" href="<%= @charity.website %>"><%= @charity.website %></a></p>
+
+        <p class="profile-category"><%= @charity.category.capitalize %></p>
+      </div>
+      <div class="profile-description">
+        <p><%= @charity.description %></p>
+      </div>
     </div>
+
+
   </div>
 
-<div class="profile">
-  <div class="profile-content">
-    <h1 class="medium-text"><%= @charity.name %> </h1>
-    <p><i class="fas fa-map-marker-alt"></i> <%= @charity.address %></p>
-    <p><a href="<%= @charity.website %>"><%= @charity.website %></a></p>
-    <p class="profile-category"><%= @charity.category.capitalize %></p>
-    <div class="followers">
-      Followers: <%= @charity.followers %>
-    </div>
-  </div>
-  <div class="profile-description">
-    <p><%= @charity.description %></p>
-  </div>
+
+
+
+
 </div>
 
 <div class="mission-cards-container">
@@ -44,7 +46,7 @@
       <%= link_to mission_path(mission) do%>
         <div class="small-mission-card">
           <% if mission.image %>
-            <%= cl_image_tag @charity.logo, class: "mission-image" %>
+            <%= cl_image_tag mission.image, class: "mission-image" %>
           <% else %>
             <%= image_tag "mission.jpg", class: "mission-image" %>
           <% end %>
@@ -62,3 +64,9 @@
     </div>
   <% end %>
 </div>
+
+
+
+
+
+
