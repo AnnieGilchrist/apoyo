@@ -4,6 +4,7 @@ class Charity < ApplicationRecord
   validates :description, presence: true, allow_blank: false
   has_many :users, as: :organisation, dependent: :destroy
   has_many :missions, dependent: :destroy
+  has_many :follows, dependent: :destroy
 
   mount_uploader :logo, PhotoUploader
 
