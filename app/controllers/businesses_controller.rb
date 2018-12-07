@@ -34,7 +34,7 @@ class BusinessesController < ApplicationController
     authorize @business
     @business.update(business_params)
     if @business.save
-      redirect_to business_path(@business)
+      redirect_to feed_path
     else
       render :new
     end
