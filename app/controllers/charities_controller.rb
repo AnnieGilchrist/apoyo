@@ -32,10 +32,17 @@ class CharitiesController < ApplicationController
 
   def update
     authorize @charity
+    @charity.update(charity_params)
+    if @charity.save
+      redirect_to charity_path(@charity)
+    else
+      render :new
+    end
   end
 
   def destroy
     authorize @charity
+    @charity.destroy
   end
 
   def follow

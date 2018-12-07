@@ -42,6 +42,7 @@ class BusinessesController < ApplicationController
 
   def destroy
     authorize @business
+    @business.destroy
   end
 
   private
