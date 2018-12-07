@@ -23,8 +23,8 @@
 <div class="whole-page-box">
    <div class="profile-graphics">
     <div class="profile-banner">
-      <% if @charity.logo.url %>
-        <div class="show-banner top" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= cl_image_path(@charity.logo) %>);">
+      <% if @mission.image.url %>
+        <div class="show-banner top" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= cl_image_path(@mission.image) %>);">
         </div>
       <% else %>
         <div class="show-banner top" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= image_path "mission.jpg" %>);">
