@@ -76,29 +76,38 @@
 
     <div class="follow-cards">
       <h1 class="medium-text text-center">Suggested for you</h1>
-      <div class="follow-card">
-        <%= image_tag "mission.jpg", class: "charity-image" %>
-        <h1 class="card-title">Name of Company</h1>
-        <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
-      </div>
 
-      <div class="follow-card">
-        <%= image_tag "mission.jpg", class: "charity-image" %>
-        <h1 class="card-title">Name of Company</h1>
-        <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
-      </div>
+      <% @suggestions.each do |suggestion| %>
 
-      <div class="follow-card">
-        <%= image_tag "mission.jpg", class: "charity-image" %>
-        <h1 class="card-title">Name of Company</h1>
-        <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
-      </div>
+        <div class="follow-card">
+          <% if current_user.organisation.class ==  Business %>
+            <% if suggestion.logo.url %>
+              <%= link_to charity_path(suggestion) do %>
+                <%= cl_image_tag suggestion.logo, class: "charity-image" %>
+              <% end %>
+            <% else %>
+              <%= link_to charity_path(suggestion) do %>
+                <%= image_tag "mission.jpg", class: "charity-image" %>
+              <% end %>
+            <% end %>
+            <h1 class="card-title"><%= suggestion.name %></h1>
+            <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
+          <% else %>
+            <% if suggestion.logo.url %>
+              <%= link_to business_path(suggestion) do %>
+                <%= cl_image_tag suggestion.logo, class: "charity-image" %>
+              <% end %>
+            <% else %>
+              <%= link_to business_path(suggestion) do %>
+                <%= image_tag "mission.jpg", class: "charity-image" %>
+              <% end %>
+            <% end %>
+            <h1 class="card-title business-title"><%= suggestion.name %></h1>
+          <% end %>
+        </div>
+      <% end %>
 
-      <div class="follow-card">
-        <%= image_tag "mission.jpg", class: "charity-image" %>
-        <h1 class="card-title">Name of Company</h1>
-        <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
-      </div>
+
     </div>
 
 

@@ -52,14 +52,26 @@
 
 .follow-card {
   margin-left: 30px;
+  align-items: center;
   border: 1px solid rgba(0,0,0,0);
   width: 350px;
   height: 100px;
+
+
+
   .card-title {
-    margin-top: 25px;
+    margin-top: 20px;
+    line-height: 18px;
   }
+
+  .business-title{
+  margin-top: 30px;
+  line-height: 20px;
+
+}
   .small-btn {
     padding: 6px 20px;
+    margin-top: 0px;
   }
   .charity-image {
     margin: 10px 10px;
@@ -153,10 +165,11 @@
 
 
 .charity-image {
-    margin: 20px;
+    margin: 10px;
     margin-bottom: 10px;
-    width:80px;
-    height: 80px;
+
+    width:100px;
+    height: 100px;
     border-radius: 50%;
     object-fit: cover;
     border: 1px solid $yellow;
