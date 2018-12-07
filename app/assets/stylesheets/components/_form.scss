@@ -44,6 +44,7 @@ input[type="radio"]:checked+label.button-label-small {
     border-top: 1px solid $light_gray !important;
 }
 .form-row {
+  height: 100%;
   padding: 20px;
   margin-left: 50px;
   margin-right: 50px;
@@ -133,4 +134,8 @@ input[type="radio"]:checked+label.button-label-small {
     margin-left: 10px;
   }
 }
-
+.org-delete {
+  margin-top: 20px;
+  padding-left: 5px;
+  font-size: 20px !important;
+}

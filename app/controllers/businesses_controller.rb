@@ -43,6 +43,7 @@ class BusinessesController < ApplicationController
   def destroy
     authorize @business
     @business.destroy
+    redirect_to root_path
   end
 
   private

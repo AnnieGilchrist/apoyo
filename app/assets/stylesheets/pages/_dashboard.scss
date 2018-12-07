@@ -55,5 +55,33 @@
   padding-left: 50px;
   padding-right: 50px;
 }
-
+.following-cards {
+  width: 100%;
+  length: auto;
+  padding: 40px 0 20px 25px;
+  .card-box {
+    padding-top: 20px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    .browse-card {
+      border: 2px solid $grey;
+      width: 350px;
+      height: 350px;
+      margin-right: 0 !important;
+      .charity-identifier {
+        padding: 2px;
+        width: 70px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        opacity: 0.9;
+        background-color: $purple;
+        color: white;
+        position: absolute;
+        right: 10px;
+        top: -10px;
+      }
+    }
+  }
+}
 

@@ -13,6 +13,7 @@ class PartnershipsController < ApplicationController
         @active_partnerships << partnership
       end
     end
+    @follows = Follow.where(business_id: current_user.organisation_id)
   end
 
   def show
@@ -26,12 +27,15 @@ class PartnershipsController < ApplicationController
   def create
     @partnership = Partnership.new(partnership_params)
     authorize @partnership
-    @partnership.business = current_user.organisation
+    @business = current_user.organisation
+    @partnership.business = @business
     @partnership.mission = @mission
     if @partnership.save
       redirect_to partnerships_path, notice: 'Partnership request successfully created.'
+    elsif Partnership.where(business_id: @business.id, mission_id: @mission.id).exists?
+      redirect_to mission_path(@mission), notice: 'You already have an active partnership for this mission.'
     else
-      render :new
+      redirect_to mission_path(@mission), notice: 'Failed to create partnership request.'
     end
   end
 
