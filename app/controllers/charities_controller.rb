@@ -43,8 +43,11 @@ class CharitiesController < ApplicationController
     @follow = Follow.new
     @follow.charity = @charity
     @follow.business = current_user.organisation
-    @follow.save
-    redirect_to charity_path(@charity), notice: "Now following #{@charity.name}"
+    if @follow.save
+      redirect_to charity_path(@charity), notice: "Now following #{@charity.name}"
+    else
+      redirect_to charity_path(@charity), notice: "You are already following #{@charity.name}"
+    end
   end
 
   private
