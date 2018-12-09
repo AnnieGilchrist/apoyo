@@ -13,7 +13,12 @@ class PartnershipsController < ApplicationController
         @active_partnerships << partnership
       end
     end
-    @follows = Follow.where(business_id: current_user.organisation_id)
+
+    if current_user.organisation_type == "Business"
+      @follows = Follow.where(business_id: current_user.organisation_id)
+    else
+      @follows = Follow.where(charity_id: current_user.organisation_id)
+    end
   end
 
   def show

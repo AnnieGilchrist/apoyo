@@ -12,11 +12,21 @@ class MissionsController < ApplicationController
   end
 
   def new
+    @mission = Mission.new
+    @charity = Charity.find(params[:charity_id])
     authorize @mission
   end
 
   def create
+    @mission = Mission.new(mission_params)
+    @charity = Charity.find(params[:charity_id])
+    @mission.charity = @charity
     authorize @mission
+    if @mission.save
+      redirect_to charity_path(@charity), notice: 'Mission successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -31,7 +41,13 @@ class MissionsController < ApplicationController
     authorize @mission
   end
 
+  private
+
   def set_mission
     @mission = Mission.find(params[:id])
+  end
+
+  def mission_params
+    params.require(:mission).permit(:name, :description, :image, :duration)
   end
 end

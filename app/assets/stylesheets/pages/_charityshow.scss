@@ -30,19 +30,11 @@
     bottom: 5px;
   }
 }
-.profile-content {
-
-  p {
-    line-height: 15px;
-  }
-}
 
 .profile-category {
   font-weight: 700;
   color: $purple;
 }
-
-
 
 .profile {
   display: flex;
@@ -55,58 +47,69 @@
   align-items: center;
 }
 
-
-
-
-.profile-title {
-
-}
-
-.charity-container {
-  position: relative;
+.show-container {
+  display: flex;
   margin-top: 20px;
-  width: 1000px;
-  margin-left: 100px;
-  height: 50%;
-
-  .profile-image {
-    position: absolute;
-    top: 50px;
-    left:50px;
+  width: 100%;
+  padding: 20px;
+  .logo-box {
+    flex: 0 0 25%;
+    position: relative;
+    .profile-image {
+      position: absolute;
+      width: 60% !important;
+      height: auto !important;
+      top: 50px;
+      left: 20%;
+    }
+  }
+  .profile-middle {
+    flex: 0 0 50%;
+    .main-title {
+      width: 100%;
+      margin-top: 10px;
+      .follow-button {
+        margin-left: 25px;
+        margin-top: 12px;
+      }
+      .medium-btn {
+        padding: 6px 20px;
+      }
+    }
+    .profile-stats {
+      width: 100%;
+      margin-top: 15px;
+      border-bottom: 1px solid $gray;
+    }
+    .profile-content {
+      width: 100%;
+      margin-top: 30px;
+      p {
+        line-height: 15px;
+      }
+    }
+    .profile-description {
+      margin-top: 30px;
+      width: 100%;
+      font-size: 15px;
+      overflow-y: auto;
+    }
   }
   .profile-right {
-    position: absolute;
-    right: 150px;
-    top: 20px;
-    width: 500px;
-
-}
-
-}
-
-.main-title {
-  .follow-button {
-    margin-left: 25px;
-    margin-top: 12px;
+    flex: 0 0 25%;
   }
-
-  .medium-btn {
-    padding: 6px 20px;
-  }
-
 }
-
+.mission-header {
+  text-align: center;
+}
 .count {
   margin-right: 35px;
 }
-
-
-.profile-description {
-  width: 500px;
-  font-size: 15px;
-  position:absolute;
-  top: 230px;
-  max-height: 120px;
-  overflow-y: auto;
+.dot-small {
+  font-family: "Open Sans", "Helvetica", "sans-serif";
+  color: $purple;
+  font-weight: bold;
+  font-size: 75px;
+  line-height: 0px;
 }
 

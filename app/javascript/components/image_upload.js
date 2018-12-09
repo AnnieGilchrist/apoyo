@@ -1,7 +1,13 @@
 function updateImageDisplay() {
   var input = document.querySelector(".profileUploadInput");
   var preview = document.querySelector(".preview");
-  var text = document.querySelector(".circle-text")
+
+  if (document.querySelector(".circle-text")) {
+    var text = document.querySelector(".circle-text");
+  } else if (document.querySelector(".rectangle-text")) {
+    var text = document.querySelector(".rectangle-text");
+  }
+
   while (preview.firstChild) {
     preview.removeChild(preview.firstChild);
   }
