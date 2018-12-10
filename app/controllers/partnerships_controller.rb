@@ -1,6 +1,6 @@
 class PartnershipsController < ApplicationController
   before_action :set_partnership, only: [:show, :edit, :update, :destroy]
-  before_action :set_mission, only: [:show, :new, :create]
+  before_action :set_mission, only: [:new, :create]
 
   def index
     @partnerships = policy_scope(Partnership)
@@ -22,6 +22,8 @@ class PartnershipsController < ApplicationController
   end
 
   def show
+    authorize @partnership
+    @conversation = Message.where(partnership_id: @partnership.id)
   end
 
   def new
