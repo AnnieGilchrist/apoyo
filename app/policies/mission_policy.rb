@@ -6,7 +6,7 @@ class MissionPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    user.organisation == record.charity
   end
 
   def update?

@@ -87,7 +87,7 @@
             <div class="mission-details">
               <h1 class="card-title"><%= mission.name %></h1>
               <p class="card-location card-text-grey"><i class="fas fa-map-marker-alt"></i> <%= @charity.address %></p>
-              <% if mission.duration %>
+              <% if mission.duration && mission.duration != 0 %>
                 <p class="card-location"><strong>Duration:</strong> <%= mission.duration %> months</p>
               <% else %>
                 <p class="card-location"><strong>Duration:</strong> not specified</p>
