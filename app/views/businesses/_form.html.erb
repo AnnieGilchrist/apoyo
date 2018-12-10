@@ -9,7 +9,11 @@
                   input_html: { class: 'first-input'} %>
       <%= f.input :address,
                   required: true,
-                  placeholder: 'Head office location',
+                  placeholder: 'Head office address',
+                  label: false %>
+      <%= f.input :location,
+                  required: true,
+                  placeholder: "Location as seen in search results (e.g 'London, UK')",
                   label: false %>
       <%= f.input :website,
                   required: true,

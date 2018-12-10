@@ -9,6 +9,13 @@ class MissionsController < ApplicationController
     authorize @mission
     @charity = Charity.find(@mission.charity_id)
     @partnership = Partnership.new
+    if !@mission.longitude.nil? && !@mission.latitude.nil?
+      @marker = {
+        lng: @mission.longitude,
+        lat: @mission.latitude,
+        infoWindow: { content: render_to_string(partial: "/missions/map_window", locals: { mission: @mission }) }
+      }
+    end
   end
 
   def new

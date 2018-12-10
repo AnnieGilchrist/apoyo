@@ -7,7 +7,14 @@ class CharitiesController < ApplicationController
 
   def show
     authorize @charity
-    # raise
+
+    if !@charity.longitude.nil? && !@charity.latitude.nil?
+      @marker = {
+        lng: @charity.longitude,
+        lat: @charity.latitude,
+        infoWindow: { content: render_to_string(partial: "/charities/map_window", locals: { charity: @charity }) }
+      }
+    end
   end
 
   def new

@@ -7,6 +7,14 @@ class BusinessesController < ApplicationController
 
   def show
     authorize @business
+
+    if !@business.longitude.nil? && !@business.latitude.nil?
+      @marker = {
+        lng: @business.longitude,
+        lat: @business.latitude,
+        infoWindow: { content: render_to_string(partial: "/businesses/map_window", locals: { business: @business }) }
+      }
+    end
   end
 
   def new

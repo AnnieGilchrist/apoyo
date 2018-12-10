@@ -20,6 +20,10 @@
                   placeholder: 'Head office location',
                   label: false,
                   input_html: { class: 'first-input' } %>
+      <%= f.input :location,
+                  required: true,
+                  placeholder: "Location as seen in search results (e.g 'London, UK')",
+                  label: false %>
       <%= f.input :website,
                   required: true,
                   label: false,
