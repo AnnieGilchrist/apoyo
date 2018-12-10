@@ -41,7 +41,7 @@
 
   <div class="container fafa">
     <% if @charity == current_user.organisation %>
-      <%= link_to edit_charity_path(@charity) do %>
+      <%= link_to edit_mission_path(@mission) do %>
         <i class="far fa-edit"></i>
       <% end %>
       <%= link_to mission_path(@mission),
@@ -52,3 +52,4 @@
     <% end %>
   </div>
 </div>
+
