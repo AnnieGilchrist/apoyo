@@ -18,11 +18,18 @@
               <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= partnership.mission.charity.address %></p>
               <p class="card-description"> <%= partnership.mission.description.first(400) + '...'%></p>
             </div>
-            <div class="mission-buttons">
-              <%= link_to "Message History", "#", class: "small-btn white-btn" %>
-              <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
-              <%= social_share_button_tag(partnership.details) %>
-            </div>
+              <div class="mission-buttons">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <%= link_to "Message History", "#", class: "small-btn white-btn" %>
+                    <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
+                  </div>
+                  <div class="col-xs-6">
+                    <%= social_share_button_tag(Partnership.find(6).details) %>
+                  </div>
+                </div>
+              </div>
+
 
             <div class="status identifier" style="background-color:<%= partnership.color %> !important;">
               Status: <%= partnership.status.capitalize %>

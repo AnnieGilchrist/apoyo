@@ -21,6 +21,7 @@ gem 'faker'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
 gem 'social-share-button'
+gem "jquery-rails"
 
 group :development do
   gem 'web-console', '>= 3.3.0'
