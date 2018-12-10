@@ -23,7 +23,11 @@ Rails.application.routes.draw do
 
   get 'feed', to: 'pages#index', as: :feed
 
-  post 'charities/:id/follow', to: 'charities#follow', as: :follow
+  post 'charities/:id/follow', to: 'charities#follow', as: :follow_charity
 
-  delete 'charities/:id/follow', to: 'charities#unfollow', as: :unfollow
+  delete 'charities/:id/follow', to: 'charities#unfollow', as: :unfollow_charity
+
+  post 'businesses/:id/follow', to: 'businesses#follow', as: :follow_business
+
+  delete 'businesses/:id/follow', to: 'businesses#unfollow', as: :unfollow_business
 end

@@ -19,13 +19,13 @@
           <%= @charity.name %>
         </h1>
 
-        <% if current_user.organisation_type == "Business" %>
+        <% unless current_user.organisation == @charity %>
           <div class="follow-button">
-            <% follow = Follow.find_by(business_id: current_user.organisation.id, charity_id: @charity.id) %>
-            <% if follow %>
-              <%= link_to 'Following', unfollow_path(@charity), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
+            <% following = Follow.where(followed_id: @charity.id, followed_type: "Charity", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first %>
+            <% if following %>
+              <%= link_to 'Following', unfollow_charity_path(@charity), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
             <% else %>
-              <%= simple_form_for(@charity, url: follow_path(@charity), method: :post ) do |f| %>
+              <%= simple_form_for(@charity, url: follow_charity_path(@charity), method: :post ) do |f| %>
               <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded nohover' %>
               <% end %>
             <% end %>
