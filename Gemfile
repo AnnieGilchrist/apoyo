@@ -20,6 +20,7 @@ gem 'webpacker'
 gem 'faker'
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'
+gem 'social-share-button'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
@@ -34,4 +35,3 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-gem 'dotenv-rails', groups: [:development, :test]

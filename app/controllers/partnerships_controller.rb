@@ -14,11 +14,8 @@ class PartnershipsController < ApplicationController
       end
     end
 
-    if current_user.organisation_type == "Business"
-      @follows = Follow.where(business_id: current_user.organisation_id)
-    else
-      @follows = Follow.where(charity_id: current_user.organisation_id)
-    end
+    @following = Follow.where(follower_id: current_user.organisation_id, follower_type: current_user.organisation_type)
+    @followers = Follow.where(followed_id: current_user.organisation_id, followed_type: current_user.organisation_type)
   end
 
   def show

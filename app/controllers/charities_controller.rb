@@ -49,8 +49,8 @@ class CharitiesController < ApplicationController
   def follow
     authorize @charity
     @follow = Follow.new
-    @follow.charity = @charity
-    @follow.business = current_user.organisation
+    @follow.followed = @charity
+    @follow.follower = current_user.organisation
     if @follow.save
       redirect_to charity_path(@charity), notice: "Now following #{@charity.name}"
     else
@@ -60,7 +60,7 @@ class CharitiesController < ApplicationController
 
   def unfollow
     authorize @charity
-    @follow = Follow.where(charity_id: @charity.id, business_id: current_user.organisation.id).first
+    @follow = Follow.where(followed_id: @charity.id, followed_type: "Charity", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first
     @follow.destroy
     if @follow.destroy
       redirect_to charity_path(@charity), notice: "You stopped following #{@charity.name}"
