@@ -5,9 +5,7 @@ class PagesController < ApplicationController
   end
 
   def index
-
     if current_user.organisation.class == Business
-
       @suggestions = Charity.all.where(category: current_user.organisation.charity_preferences)
     else
       @suggestions = Business.all.where(charity_preferences: current_user.organisation.category)
@@ -36,6 +34,5 @@ class PagesController < ApplicationController
       results = @missions + @charities
       @results = results.shuffle
     end
-
   end
 end

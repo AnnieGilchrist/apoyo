@@ -8,30 +8,31 @@
 User.destroy_all
 Business.destroy_all
 Charity.destroy_all
+Follow.destroy_all
 
 puts "Creating charities..."
 
-oxfam = Charity.create(name: 'Oxfam', category: 'humanitarian', description: 'Oxfam is a confederation of 20 independent charitable organizations focusing on the alleviation of global poverty, founded in 1942 and led by Oxfam International. It is a major nonprofit group with an extensive collection of operations.', address: 'London' , website: 'https://www.oxfam.org/en')
+oxfam = Charity.create(name: 'Oxfam', category: 'humanitarian', description: 'Oxfam is a confederation of 20 independent charitable organizations focusing on the alleviation of global poverty, founded in 1942 and led by Oxfam International. It is a major nonprofit group with an extensive collection of operations.', address: 'John Smith Drive, Oxford, OX4 2JY, UK', location: 'Oxford, UK' , website: 'https://www.oxfam.org/en')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183308/PYdTCugb_400x400.jpg'
   oxfam.remote_logo_url = url
   oxfam.save!
 
-cancer_research = Charity.create(name: 'Cancer Research UK', category: 'healthcare', description: 'Cancer Research UK is a cancer research and awareness charity in the United Kingdom and Isle of Man, formed on 4 February 2002 by the merger of The Cancer Research Campaign and the Imperial Cancer Research Fund. Its aim is to reduce the number of deaths from cancer.', address: 'London' , website: 'https://www.cancerresearchuk.org')
+cancer_research = Charity.create(name: 'Cancer Research UK', category: 'healthcare', description: 'Cancer Research UK is a cancer research and awareness charity in the United Kingdom and Isle of Man, formed on 4 February 2002 by the merger of The Cancer Research Campaign and the Imperial Cancer Research Fund. Its aim is to reduce the number of deaths from cancer.', address: '407 St John Street, London EC1V 4AD, UK', location: 'London, UK', website: 'https://www.cancerresearchuk.org')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544179228/ujdbe4avxinb5dzprmns.jpg'
   cancer_research.remote_logo_url = url
   cancer_research.save!
 
-heifer = Charity.create(name: 'Heifer International', category: 'humanitarian', description: 'Heifer International is a global nonprofit working to eradicate poverty and hunger through sustainable, values-based holistic community development. Heifer distributes animals, along with agricultural and values-based training, to families in need around the world as a means of providing self-sufficiency.', address: 'Little Rock, Arkansas' , website: 'https://www.heifer.org/')
+heifer = Charity.create(name: 'Heifer International', category: 'humanitarian', description: 'Heifer International is a global nonprofit working to eradicate poverty and hunger through sustainable, values-based holistic community development. Heifer distributes animals, along with agricultural and values-based training, to families in need around the world as a means of providing self-sufficiency.', address: '1 World Avenue, Little Rock, AR 72202, USA', location: 'Little Rock, USA', website: 'https://www.heifer.org/')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183314/unnamed.jpg'
   heifer.remote_logo_url = url
   heifer.save!
 
-gates_foundation = Charity.create(name: 'Bill & Melinda Gates Foundation', category: 'humanitarian', description: "Bill & Melinda Gates Foundation, previously branded as the 'William H. Gates Foundation', is a private foundation founded by Bill and Melinda Gates. It was launched in 2000, and is said to be the largest private foundation in the United States, holding $50.7 billion in assets.", address: 'Seattle, Washington' , website: 'https://www.gatesfoundation.org')
+gates_foundation = Charity.create(name: 'Bill & Melinda Gates Foundation', category: 'humanitarian', description: "Bill & Melinda Gates Foundation, previously branded as the 'William H. Gates Foundation', is a private foundation founded by Bill and Melinda Gates. It was launched in 2000, and is said to be the largest private foundation in the United States, holding $50.7 billion in assets.", address: 'Bill & Melinda Gates Foundation, 5th Avenue North, Washington, 98109, USA', location: 'Seattle, USA', website: 'https://www.gatesfoundation.org')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183303/1752x1168.jpg'
   gates_foundation.remote_logo_url = url
   gates_foundation.save!
 
-wwf = Charity.create(name: 'World Wildlife Fund for Nature', category: 'environment', description: 'The World Wide Fund for Nature is an international non-governmental organization founded in 1961, working in the field of the wilderness preservation, and the reduction of human impact on the environment. It was formerly named the World Wildlife Fund, which remains its official name in Canada and the United States.', address: 'Gland, Switzerland' , website: 'https://www.worldwildlife.org')
+wwf = Charity.create(name: 'World Wildlife Fund for Nature', category: 'environment', description: 'The World Wide Fund for Nature is an international non-governmental organization founded in 1961, working in the field of the wilderness preservation, and the reduction of human impact on the environment. It was formerly named the World Wildlife Fund, which remains its official name in Canada and the United States.', address: 'Av. du Mont-Blanc 1196, Gland, Switzerland', location: 'Gland, Switzerland', website: 'https://www.worldwildlife.org')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183116/1200px-WWF_logo.svg.png'
   wwf.remote_logo_url = url
   wwf.save!
@@ -39,19 +40,19 @@ wwf = Charity.create(name: 'World Wildlife Fund for Nature', category: 'environm
 
 puts "Creating businesses..."
 
-freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: 'London', website: 'www.freshfields.org', charity_preferences: 'healthcare', services_offered: 'web design')
+freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: '65 Fleet St, London EC4Y 1HT, UK', location: 'London, UK', website: 'www.freshfields.org', charity_preferences: 'healthcare', services_offered: 'web design')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544102858/tfpxjmf7zctn7qu3dhly.png'
   freshfields.remote_logo_url = url
   freshfields.save!
 
-disney = Business.new(name: 'The Walt Disney Company', description: 'The Walt Disney Company, commonly known as Walt Disney or simply Disney, is an American diversified multinational mass media and entertainment conglomerate headquartered at the Walt Disney Studios in Burbank, California.', address: 'Burbank', website: 'www.disney.com', charity_preferences: 'humanitarian', services_offered: 'donation'
+disney = Business.new(name: 'The Walt Disney Company', description: 'The Walt Disney Company, commonly known as Walt Disney or simply Disney, is an American diversified multinational mass media and entertainment conglomerate headquartered at the Walt Disney Studios in Burbank, California.', address: 'Walt Disney Studios, Burbank, California, 91506, USA', location: 'California, USA', website: 'www.disney.com', charity_preferences: 'humanitarian', services_offered: 'donation'
   )
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544193460/Disney-Logo.png'
   disney.remote_logo_url = url
   disney.save!
 
 
-lewagon = Business.new(name: 'Le Wagon', description: "Le Wagon is Europe's best coding bootcamp for creative people & entrepreneurs. Learn to code in 9 weeks with our fullstack coding bootcamp.", address: 'Paris', website: 'www.lewagon.com', charity_preferences: 'education', services_offered: 'education'
+lewagon = Business.new(name: 'Le Wagon', description: "Le Wagon is Europe's best coding bootcamp for creative people & entrepreneurs. Learn to code in 9 weeks with our fullstack coding bootcamp.", address: "Carrer d'en Grassot, 101, 08025 Barcelona", location: 'Barcelona, Spain', website: 'www.lewagon.com', charity_preferences: 'education', services_offered: 'education'
   )
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544193521/lewagon.png'
   lewagon.remote_logo_url = url

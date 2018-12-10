@@ -1,6 +1,7 @@
 class Business < ApplicationRecord
   validates :name, presence: true, allow_blank: false
   validates :address, presence: true, allow_blank: false
+  validates :location, presence: true, allow_blank: false
   validates :website, presence: true, allow_blank: false
   validates :description, presence: true, allow_blank: false
   validates :logo, presence: true
@@ -11,4 +12,6 @@ class Business < ApplicationRecord
 
   mount_uploader :logo, PhotoUploader
 
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end

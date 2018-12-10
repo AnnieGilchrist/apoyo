@@ -35,7 +35,7 @@
                 <div class="card-content-wrap">
                   <h1 class="card-title"><%= element.name %></h1>
                   <p class="card-text-grey"><%= element.category.capitalize %></p>
-                  <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.address %></p>
+                  <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.location %></p>
 
                   <p class="card-description"><%= element.description.first(170) + '...'%></p>
                 </div>
@@ -48,13 +48,13 @@
 
         <% else %>
           <div class="col-md-6 card-box" data-type="mission">
-              <div type="button" class="browse-card format-card" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.address %>' data-description='<%= element.description %>' data-charity-path='<%= charity_path(element.charity) %>' data-apply-path='<%= mission_path(element) %>'>
+              <div type="button" class="browse-card format-card" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.location %>' data-description='<%= element.description %>' data-charity-path='<%= charity_path(element.charity) %>' data-apply-path='<%= mission_path(element) %>'>
                 <%= cl_image_tag element.image.url, class: "mission-image" %>
 
                 <div class="card-content">
                   <h1 class="card-title"><%= element.name %></h1>
                   <p class="card-text-grey"><%= element.charity.name%></p>
-                  <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.address %></p>
+                  <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.location %></p>
                   <p class="card-description"> <%= element.description.first(80) + '...'%></p>
                 </div>
 
