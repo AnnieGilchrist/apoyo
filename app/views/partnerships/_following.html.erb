@@ -4,58 +4,54 @@
       "You are following..."
     </p>
 
-    <% @following.each do |following| %>
-      <div class="col-xs-12 col-md-6 col-lg-4 card-box" data-type="charity">
-        <%= link_to following.followed_type == "Charity" ? charity_path(following.followed) : business_path(following.followed) do %>
+    <div class="row">
+      <% @following.each do |following| %>
+        <div class="col-xs-12 col-md-6 col-lg-4 card-box" data-type="charity">
+          <%= link_to following.followed_type == "Charity" ? charity_path(following.followed) : business_path(following.followed) do %>
 
-          <div class="browse-card format-card">
-            <%= image_tag "mission.jpg", class: "charity-image" %>
-            <div class="card-content-wrap">
-              <h1 class="card-title">
-                <%= following.followed.name %>
-              </h1>
-              <p class="card-location">
-                <i class="fas fa-map-marker-alt"></i> <%= following.followed.address %>
-              </p>
-              <p class="card-description">
-                <%= following.followed.description.first(170) + '...'%>
-              </p>
+            <div class="card small-dashboard-card">
+              <%= cl_image_tag following.followed.logo.url, class: "charity-image" %>
+              <div class="card-content-wrap">
+                <h1 class="card-title">
+                  <%= following.followed.name %>
+                </h1>
+              </div>
+              <div class="charity-identifier" style=<%= following.followed_type == "Charity" ? "background-color:#5B00FF" : "background-color:#FFD300;" %>>
+                <%= following.followed_type %>
+              </div>
             </div>
-            <div class="charity-identifier" style="background-color:<%= following.followed_type == "Charity" ? $purple : $yellow %> !important;">
-              <%= following.followed_type %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <br>
 
     <p class="secondary-txt center">
       "These organisations are following you..."
     </p>
 
-    <% @followers.each do |follow| %>
-      <div class="col-xs-12 col-md-6 col-lg-4 card-box" data-type="charity">
-        <%= link_to follow.follower_type == "Charity" ? charity_path(follow.follower) : business_path(follow.follower) do %>
+    <div class="row">
+      <% @followers.each do |follow| %>
+        <div class="col-xs-12 col-md-6 col-lg-4 card-box" data-type="charity">
+          <%= link_to follow.follower_type == "Charity" ? charity_path(follow.follower) : business_path(follow.follower) do %>
 
-          <div class="browse-card format-card">
-            <%= image_tag "mission.jpg", class: "charity-image" %>
-            <div class="card-content-wrap">
-              <h1 class="card-title">
-                <%= follow.follower.name %>
-              </h1>
-              <p class="card-location">
-                <i class="fas fa-map-marker-alt"></i> <%= follow.follower.address %>
-              </p>
-              <p class="card-description">
-                <%= follow.follower.description.first(170) + '...'%>
-              </p>
+            <div class="card small-dashboard-card">
+              <%= cl_image_tag follow.follower.logo.url, class: "charity-image" %>
+              <div class="card-content-wrap">
+                <h1 class="card-title">
+                  <%= follow.follower.name %>
+                </h1>
+              </div>
+              <div class="charity-identifier" style=<%= follow.follower_type == "Charity" ? "background-color:#5B00FF" : "background-color:#FFD300;" %> >
+                <%= follow.follower_type %>
+              </div>
             </div>
-            <div class="charity-identifier" style="background-color:<%= following.followed_type == "Charity" ? $purple : $yellow %> !important;" >
-              <%= follow.follower_type %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+
   </div>
 
