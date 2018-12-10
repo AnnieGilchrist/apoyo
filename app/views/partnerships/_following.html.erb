@@ -21,7 +21,7 @@
                 <%= following.followed.description.first(170) + '...'%>
               </p>
             </div>
-            <div class="charity-identifier" style="background-color:<%= following.followed_type == "Charity" ? '$purple' : '$yellow' %>;">
+            <div class="charity-identifier" style="background-color:<%= following.followed_type == "Charity" ? $purple : $yellow %> !important;">
               <%= following.followed_type %>
             </div>
           </div>
@@ -50,7 +50,7 @@
                 <%= follow.follower.description.first(170) + '...'%>
               </p>
             </div>
-            <div class="charity-identifier" style="background-color:<%= following.followed_type == "Charity" ? '$purple' : '$yellow' %>;" >
+            <div class="charity-identifier" style="background-color:<%= following.followed_type == "Charity" ? $purple : $yellow %> !important;" >
               <%= follow.follower_type %>
             </div>
           </div>
