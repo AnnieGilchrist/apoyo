@@ -21,6 +21,9 @@ class MissionsController < ApplicationController
   def new
     @mission = Mission.new
     @charity = Charity.find(params[:charity_id])
+    # We link the object here so that we can authorize the mission using pundit
+    # So that we can check if the chairty coming from the URL is the same as the charity of the logged in user.
+    @mission.charity = @charity
     authorize @mission
   end
 
@@ -38,6 +41,7 @@ class MissionsController < ApplicationController
 
   def edit
     authorize @mission
+    @charity = @mission.charity
   end
 
   def update

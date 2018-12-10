@@ -6076,6 +6076,10 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
+social-sharing@cferdinandi/social-sharing:
+  version "1.7.2"
+  resolved "https://codeload.github.com/cferdinandi/social-sharing/tar.gz/f8b3ac4dfb1d85fd6b83c27f4f5d9f4ef7d3b62d"
+
 sockjs-client@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/sockjs-client/-/sockjs-client-1.1.4.tgz#5babe386b775e4cf14e7520911452654016c8b12"

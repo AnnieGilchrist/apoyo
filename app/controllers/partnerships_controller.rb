@@ -1,24 +1,29 @@
 class PartnershipsController < ApplicationController
   before_action :set_partnership, only: [:show, :edit, :update, :destroy]
-  before_action :set_mission, only: [:show, :new, :create]
+  before_action :set_mission, only: [:new, :create]
 
   def index
     @partnerships = policy_scope(Partnership)
     @active_partnerships = []
     @finished_partnerships = []
+    @conversations = []
     @partnerships.each do |partnership|
       if partnership.status == 'completed'
         @finished_partnerships << partnership
       else
         @active_partnerships << partnership
       end
+      @conversations << Message.where(partnership_id: partnership.id)
     end
 
     @following = Follow.where(follower_id: current_user.organisation_id, follower_type: current_user.organisation_type)
     @followers = Follow.where(followed_id: current_user.organisation_id, followed_type: current_user.organisation_type)
+
   end
 
   def show
+    authorize @partnership
+    @conversation = Message.where(partnership_id: @partnership.id)
   end
 
   def new

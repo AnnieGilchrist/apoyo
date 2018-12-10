@@ -1,2 +1,60 @@
-<h1>Partnerships#show</h1>
-<p>Find me in app/views/partnerships/show.html.erb</p>
+<div class="container">
+  <div class="partnership-container-long">
+    <div class="col-xs-12 col-md-4">
+      <% if @partnership.mission.image.url %>
+        <%= cl_image_tag @partnership.mission.image, width: 400 %>
+      <% else %>
+        <%= image_tag "mission.jpg", width: 400 %>
+      <% end %>
+
+      <div class="card-content">
+        <h1 class="card-title"><%= @partnership.mission.name %></h1>
+        <p class="card-text-grey"><%= @partnership.business.name %> is partnered with <%= @partnership.mission.charity.name%></p>
+         <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= @partnership.mission.charity.address %></p>
+        <p class="card-description"> <%= @partnership.mission.description.first(400) + '...'%></p>
+      </div>
+      <div class="mission-buttons">
+        <%= link_to "Mission Info", mission_path(@partnership.mission), class: "small-btn white-btn" %>
+        <%= social_share_button_tag(@partnership.details) %>
+      </div>
+
+      <div class="status identifier" style="background-color:<%= @partnership.color %> !important;">
+        Status: <%= @partnership.status.capitalize %>
+      </div>
+
+      <% if current_user.organisation_type == "Charity" %>
+        <%= link_to "Accept", partnership_path(@partnership, status: 'accepted'), method: :patch, class: "status accepted-btn" %>
+        <%= link_to "Decline", partnership_path(@partnership, status: 'declined'), method: :patch, class: "status declined-btn" %>
+        <%= link_to "Completed", partnership_path(@partnership, status: 'completed'), method: :patch, class: "status completed-btn" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="messages-container">
+    <div class="col-md-8 col-xs-12">
+      <% @conversation.each do |message| %>
+
+        <% if message.sender == current_user.organisation %>
+
+          <div class="my-message-container">
+            <div class="chat-bubble-purple">
+              <%= message.content %>
+            </div>
+            <p class="conversation-time"><%= message.message_time %></p>
+          </div>
+
+        <% else %>
+
+          <div class="your-message-container">
+              <%#= cl_image_tag message.sender.logo, class: "charity-image" %>
+            <div class="chat-bubble-grey">
+                <%= message.content %>
+            </div>
+            <p class="conversation-time"><%= message.message_time %></p>
+          </div>
+
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
