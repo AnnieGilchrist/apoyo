@@ -48,24 +48,21 @@
 
         <% else %>
           <div class="col-md-6 card-box" data-type="mission">
-            <div class="browse-card format-card">
-              <%= cl_image_tag element.image.url, class: "mission-image" %>
-              <div class="card-content">
-                <h1 class="card-title"><%= element.name %></h1>
-                <p class="card-text-grey"><%= element.charity.name%></p>
-                <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.address %></p>
-                <p class="card-description"> <%= element.description.first(80) + '...'%></p>
-              </div>
-              <div>
-                <button type="button" class=" small-btn white-btn modal-button" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.address %>' data-description='<%= element.description %>' data-charity-path='<%= charity_path(element.charity) %>' data-apply-path='<%= mission_path(element) %>'>
-                  More info
-                </button>
-              </div>
+              <div type="button" class="browse-card format-card" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.address %>' data-description='<%= element.description %>' data-charity-path='<%= charity_path(element.charity) %>' data-apply-path='<%= mission_path(element) %>'>
+                <%= cl_image_tag element.image.url, class: "mission-image" %>
 
-              <div class="identifier mission">
-                Mission
+                <div class="card-content">
+                  <h1 class="card-title"><%= element.name %></h1>
+                  <p class="card-text-grey"><%= element.charity.name%></p>
+                  <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.address %></p>
+                  <p class="card-description"> <%= element.description.first(80) + '...'%></p>
+                </div>
+
+                <div class="identifier mission">
+                  Mission
+                </div>
+
               </div>
-            </div>
           </div>
 
         <% end %>

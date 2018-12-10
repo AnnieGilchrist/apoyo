@@ -6,7 +6,11 @@
       <% @finished_partnerships.each do |partnership| %>
         <div class="col-xs-12">
           <div class="full-length-card">
-            <%= image_tag "mission.jpg", class: "mission-image" %>
+            <% if partnership.mission.image.url %>
+              <%= cl_image_tag partnership.mission.image, class: "mission-image" %>
+            <% else %>
+              <%= image_tag "mission.jpg", class: "mission-image" %>
+            <% end %>
             <div class="card-content">
               <h1 class="card-title"><%= partnership.mission.name %></h1>
               <p class="card-text-grey"><%= partnership.mission.charity.name%></p>
