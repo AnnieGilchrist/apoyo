@@ -14,8 +14,9 @@
               <p class="card-description"> <%= partnership.mission.description.first(400) + '...'%></p>
             </div>
             <div class="mission-buttons">
-              <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
               <%= link_to "Message History", "#", class: "small-btn white-btn" %>
+              <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
+              <%= social_share_button_tag(partnership.details) %>
             </div>
             <div class="status-identifier" style="background-color:<%= partnership.color %> !important;">
                  Status: <%= partnership.status.capitalize %>
