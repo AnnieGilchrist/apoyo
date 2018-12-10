@@ -49,6 +49,21 @@ ActiveRecord::Schema.define(version: 2018_12_10_102932) do
     t.index ["follower_id"], name: "index_follows_on_follower_id"
   end
 
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.string "sender_type"
+    t.bigint "sender_id"
+    t.string "recipient_type"
+    t.bigint "recipient_id"
+    t.bigint "partnership_id"
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["partnership_id"], name: "index_messages_on_partnership_id"
+    t.index ["recipient_type", "recipient_id"], name: "index_messages_on_recipient_type_and_recipient_id"
+    t.index ["sender_type", "sender_id"], name: "index_messages_on_sender_type_and_sender_id"
+  end
+
   create_table "missions", force: :cascade do |t|
     t.string "name"
     t.text "description"
