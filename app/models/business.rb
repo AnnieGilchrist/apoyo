@@ -3,6 +3,7 @@ class Business < ApplicationRecord
   validates :address, presence: true, allow_blank: false
   validates :website, presence: true, allow_blank: false
   validates :description, presence: true, allow_blank: false
+  validates :logo, presence: true
   has_many :users, as: :organisation, dependent: :destroy
   has_many :messages, as: :sender
   has_many :messages, as: :recipient

@@ -2,6 +2,7 @@ class Charity < ApplicationRecord
   validates :name, presence: true, allow_blank: false
   validates :category, presence: true, allow_blank: false, inclusion: { in: ['environment', 'healthcare', 'disaster relief', 'education', 'humanitarian', 'children'] }
   validates :description, presence: true, allow_blank: false
+  validates :logo, presence: true
   has_many :users, as: :organisation, dependent: :destroy
 
   has_many :messages, as: :sender
@@ -17,4 +18,5 @@ class Charity < ApplicationRecord
   def followers
     Follow.where(charity_id: self.id).length
   end
+
 end
