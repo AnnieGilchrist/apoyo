@@ -6,18 +6,19 @@ class PartnershipsController < ApplicationController
     @partnerships = policy_scope(Partnership)
     @active_partnerships = []
     @finished_partnerships = []
-    @messages = []
+    @conversations = []
     @partnerships.each do |partnership|
       if partnership.status == 'completed'
         @finished_partnerships << partnership
       else
         @active_partnerships << partnership
       end
-      @messages << Message.where(partnership_id: partnership.id)
+      @conversations << Message.where(partnership_id: partnership.id)
     end
 
     @following = Follow.where(follower_id: current_user.organisation_id, follower_type: current_user.organisation_type)
     @followers = Follow.where(followed_id: current_user.organisation_id, followed_type: current_user.organisation_type)
+
   end
 
   def show

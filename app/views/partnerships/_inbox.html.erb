@@ -1,1 +1,16 @@
-<%= @messages %>
+<% @conversations.each do |conversation|%>
+  <div class="conversation-box">
+    <% partner = conversation.last.sender == current_user ? conversation.last.recipient : conversation.last.sender %>
+    <%= cl_image_tag partner.logo, class: "charity-image" %>
+    <div class="conversation-info flex-box">
+      <p class="conversation-partner"><%= partner.name %></p><br>
+      <p class="conversation-time"><%= conversation.last.message_time %></p>
+    </div>
+    <div class="conversation-content">
+     <%= conversation.last.content%>
+    </div>
+  </div>
+<% end %>
+
+
+
