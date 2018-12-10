@@ -104,6 +104,11 @@
     position: absolute;
     bottom: 20px;
     left: 265px;
+    margin-left: 10px;
+  }
+  .row {
+    display: flex;
+    justify-content: space-around !important;
   }
 }
 .format-card {
