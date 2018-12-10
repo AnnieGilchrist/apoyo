@@ -3,13 +3,14 @@
   <div>
     <div class="dashboard-title">
       <h1>Welcome to your <u>Dashboard</u><strong class="dot">.</strong></h1>
+
       <p class="secondary-txt">From this page, you can manage your charity connections and profile with ease!</p>
-  <%= social_share_button_tag(Partnership.find(6).details) %>
+      <%= social_share_button_tag(Partnership.find(6).details) %>
     </div>
     <!-- Nav tabs -->
     <ul class="nav nav-tabs dashboard-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#active-partnerships" aria-controls="active-partnerships" role="tab" data-toggle="tab">Active Partnerships</a></li>
-      <li role="presentation"><a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following</a></li>
+      <li role="presentation"><a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following <%= "you" if current_user.organisation_type == "Charity" %></a></li>
       <li role="presentation"><a href="#inbox" aria-controls="inbox" role="tab" data-toggle="tab">Inbox</a></li>
       <li role="presentation"><a href="#past-partnerships" aria-controls="past-partnerships" role="tab" data-toggle="tab">Past Partnerships</a></li>
       <li role="presentation"><a href="#edit-org" aria-controls="edit-org" role="tab" data-toggle="tab">Edit Organisation Profile</a></li>
@@ -23,12 +24,12 @@
       <div role="tabpanel" class="tab-pane" id="past-partnerships"><%= render 'past_partnerships' %></div>
       <div role="tabpanel" class="tab-pane" id="edit-org">
         <% if current_user.organisation_type == 'Business' %>
-          <%= link_to "Click here to edit your profile...", edit_business_path(current_user.organisation) %>
+          <%= link_to "Click here to edit your business profile...", edit_business_path(current_user.organisation), class: 'dash-link' %>
         <% else %>
-          <%= link_to "Click here to edit your profile...", edit_charity_path(current_user.organisation) %>
+          <%= link_to "Click here to edit your charity profile...", edit_charity_path(current_user.organisation), class: 'dash-link' %>
         <% end %>
         <br><br>
-        <%= link_to "Click here to edit your user details...", edit_user_registration_path(current_user) %>
+        <%= link_to "Click here to edit your user details...", edit_user_registration_path(current_user), class: 'dash-link' %>
       </div>
     </div>
 

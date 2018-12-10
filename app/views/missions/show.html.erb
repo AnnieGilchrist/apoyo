@@ -14,7 +14,7 @@
       <%= image_tag "mission.jpg", class: "profile-image" %>
     <% end %>
     <div class="form-div">
-      <%= render 'form', class: "profile-form" %>
+      <%= render 'partner_form', class: "profile-form" %>
     </div>
   </div>
 </div>
@@ -31,7 +31,7 @@
         <% if @mission.duration.nil? %>
           <p><strong>Duration: </strong>No duration specified</p>
         <% else %>
-          <p><strong>Duration: </strong><%= @mission.duration %></p>
+          <p><strong>Duration: </strong><%= @mission.duration %> months</p>
         <% end %>
       </div>
       <div class="col-xs-6 top">
@@ -40,7 +40,7 @@
   </div>
 
   <div class="container fafa">
-    <% if @charity.id == current_user.organisation_id %>
+    <% if @charity == current_user.organisation %>
       <%= link_to edit_charity_path(@charity) do %>
         <i class="far fa-edit"></i>
       <% end %>

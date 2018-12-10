@@ -15,11 +15,20 @@
                   required: true,
                   label: false,
                   placeholder: 'Company website' %>
+      <p></p>
+      <p class="form-header">What kind of missions are you interested in?</p>
+      <%= f.collection_radio_buttons :charity_preferences,
+                  [['environment', 'Environment'], ['healthcare', 'Healthcare'], ['disaster relief', 'Disaster relief'], ['education', 'Education'], ['humanitarian', 'Humanitarian'], ['children', 'Children']],
+                  :first,
+                  :last do |b|
+                    b.radio_button(class: 'hidden-input') + b.label(class: 'button-label small')
+                  end %>
+      <p></p>
       <%= f.input :description,
                   required: true,
                   label: false,
                   placeholder: 'Description',
-                  input_html: { class: 'description-input' } %>
+                  input_html: { class: 'description-input first-input' } %>
       <% if @business.id != nil %>
         <p class="secondary-txt org-delete">
           If you would like to delete your account with us, please click <%= link_to "here", business_path(@business), data: { confirm: "Are you sure you want to delete your account with us?" }, method: :delete, class: 'underline' %>

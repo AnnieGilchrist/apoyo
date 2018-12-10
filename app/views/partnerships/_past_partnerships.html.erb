@@ -6,7 +6,11 @@
       <% @finished_partnerships.each do |partnership| %>
         <div class="col-xs-12">
           <div class="full-length-card">
-            <%= image_tag "mission.jpg", class: "mission-image" %>
+            <% if partnership.mission.image.url %>
+              <%= cl_image_tag partnership.mission.image, class: "mission-image" %>
+            <% else %>
+              <%= image_tag "mission.jpg", class: "mission-image" %>
+            <% end %>
             <div class="card-content">
               <h1 class="card-title"><%= partnership.mission.name %></h1>
               <p class="card-text-grey"><%= partnership.mission.charity.name%></p>
@@ -17,7 +21,7 @@
               <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
               <%= link_to "Message History", "#", class: "small-btn white-btn" %>
             </div>
-            <div class="status-identifier" style="background-color:<%= partnership.color %> !important;">
+            <div class="status identifier" style="background-color:<%= partnership.color %> !important;">
                  Status: <%= partnership.status.capitalize %>
             </div>
           </div>

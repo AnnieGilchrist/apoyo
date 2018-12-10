@@ -139,3 +139,33 @@ input[type="radio"]:checked+label.button-label-small {
   padding-left: 5px;
   font-size: 20px !important;
 }
+.form-header {
+  padding-top: 10px;
+  font-size: 18px;
+}
+.right-input-mission {
+  height: 100% !important;
+}
+.rectangle-div {
+  border: 4px solid $yellow;
+  height: 275px;
+  width: 100%;
+  position: relative;
+  align-text: center;
+  .img-created {
+    border-radius: 0px !important;
+  }
+  .rectangle-text {
+    position: absolute;
+    top: 38%;
+    left: 35px;
+    font-weight: bold;
+  }
+  .profileUploadInput {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+}

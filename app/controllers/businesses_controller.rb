@@ -34,7 +34,7 @@ class BusinessesController < ApplicationController
     authorize @business
     @business.update(business_params)
     if @business.save
-      redirect_to business_path(@business)
+      redirect_to feed_path
     else
       render :new
     end
@@ -53,6 +53,6 @@ class BusinessesController < ApplicationController
   end
 
   def business_params
-    params.require(:business).permit(:name, :address, :website, :description, :logo)
+    params.require(:business).permit(:name, :address, :website, :description, :logo, :charity_preferences)
   end
 end

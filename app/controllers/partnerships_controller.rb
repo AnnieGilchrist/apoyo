@@ -13,7 +13,12 @@ class PartnershipsController < ApplicationController
         @active_partnerships << partnership
       end
     end
-    @follows = Follow.where(business_id: current_user.organisation_id)
+
+    if current_user.organisation_type == "Business"
+      @follows = Follow.where(business_id: current_user.organisation_id)
+    else
+      @follows = Follow.where(charity_id: current_user.organisation_id)
+    end
   end
 
   def show
@@ -45,6 +50,10 @@ class PartnershipsController < ApplicationController
 
   def update
     authorize @partnership
+    @partnership.status = params[:status]
+    if @partnership.save
+      redirect_to partnerships_path, notice: 'status changed'
+    end
   end
 
   def destroy

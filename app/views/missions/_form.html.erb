@@ -1,14 +1,34 @@
-<%= simple_form_for(@partnership, url: mission_partnerships_path(@mission)) do |f| %>
+<%= simple_form_for(@mission, url: charity_missions_path(@charity)) do |f| %>
   <div class="form-inputs">
-      <p class="secondary-txt">Connect with <%= @charity.name %> to help them with this mission</p>
-      <%= f.input :details,
+    <div class="left-input col-xs-7">
+      <%= f.input :name,
                   required: true,
-                  placeholder: "The charity will be set a link to your profile. \n\nInclude a message here to send along with your application...",
+                  placeholder: 'Mission name',
                   label: false,
                   autofocus: true,
-                  input_html: { class: 'first-input text-input'} %>
+                  input_html: { class: 'first-input'} %>
+      <%= f.input :duration,
+                  required: true,
+                  label: false,
+                  placeholder: 'How many months will this mission run for?' %>
+      <%= f.input :description,
+                  required: true,
+                  placeholder: 'Description',
+                  label: false,
+                  input_html: { class: 'description-input'} %>
       <div class="form-actions">
-        <%= f.button :submit, "Submit Application", class: 'big-btn purple-btn form-btn' %>
+        <%= link_to "Back to Profile", charity_path(@charity), class: 'form-return-link' %>
+        <%= f.button :submit, "Next", class: 'big-btn purple-btn form-btn' %>
       </div>
     </div>
+    <div class="right-input-mission col-xs-5">
+      <div class="rectangle-div">
+        <div class="preview">
+        </div>
+        <p class="rectangle-text">click to upload an image for this mission...</p>
+        <%= f.file_field :image, class: 'profileUploadInput' %>
+      </div>
+    </div>
+
+  </div>
 <% end %>

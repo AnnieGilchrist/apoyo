@@ -1,31 +1,62 @@
 
   <div class="following-cards">
-    <p class="secondary-txt center">You are following...</p>
-    <% @follows.each do |follow| %>
-      <div class="col-xs-12 col-md-6 col-lg-4 card-box" data-type="charity">
-        <%= link_to charity_path(follow.charity) do %>
-          <div class="browse-card format-card">
-            <%= image_tag "mission.jpg", class: "charity-image" %>
-            <div class="card-content-wrap">
-              <h1 class="card-title">
-                <%= follow.charity.name %>
-              </h1>
-              <p class="card-text-grey">
-                <%= follow.charity.category.capitalize %>
-              </p>
-              <p class="card-location">
-                <i class="fas fa-map-marker-alt"></i> <%= follow.charity.address %>
-              </p>
-              <p class="card-description">
-                <%= follow.charity.description.first(170) + '...'%>
-              </p>
+    <p class="secondary-txt center">
+      <%= current_user.organisation_type == "Charity" ? "These businesses are following you..." : "You are following..." %>
+    </p>
+    <% if current_user.organisation_type == "Business" %>
+      <% @follows.each do |follow| %>
+        <div class="col-xs-12 col-md-6 col-lg-4 card-box" data-type="charity">
+          <%= link_to charity_path(follow.charity) do %>
+            <div class="browse-card format-card">
+              <%= image_tag "mission.jpg", class: "charity-image" %>
+              <div class="card-content-wrap">
+                <h1 class="card-title">
+                  <%= follow.charity.name %>
+                </h1>
+                <p class="card-text-grey">
+                  <%= follow.charity.category.capitalize %>
+                </p>
+                <p class="card-location">
+                  <i class="fas fa-map-marker-alt"></i> <%= follow.charity.address %>
+                </p>
+                <p class="card-description">
+                  <%= follow.charity.description.first(170) + '...'%>
+                </p>
+              </div>
+              <div class="charity-identifier">
+                Charity
+              </div>
             </div>
-            <div class="charity-identifier">
-              Charity
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <% @follows.each do |follow| %>
+        <div class="col-xs-12 col-md-6 col-lg-4 card-box" data-type="charity">
+          <%= link_to business_path(follow.business) do %>
+            <div class="browse-card format-card">
+              <%= image_tag "mission.jpg", class: "charity-image" %>
+              <div class="card-content-wrap">
+                <h1 class="card-title">
+                  <%= follow.business.name %>
+                </h1>
+                <p class="card-text-grey">
+                  Interested in: <%= follow.business.charity_preferences.capitalize %>
+                </p>
+                <p class="card-location">
+                  <i class="fas fa-map-marker-alt"></i> <%= follow.business.address %>
+                </p>
+                <p class="card-description">
+                  <%= follow.business.description.first(170) + '...'%>
+                </p>
+              </div>
+              <div class="charity-identifier">
+                Business
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 

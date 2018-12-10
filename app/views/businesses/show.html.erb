@@ -1,9 +1,82 @@
 <div class="container">
-  <% if @business == current_user.organisation %>
-    <h1>My Profile Page</h1>
-  <% else %>
-    <h1>Businesses#show</h1>
-    <p>Find me in app/views/businesses/show.html.erb</p>
-  <% end %>
-</div>
+  <div class="show-container">
 
+    <div class="profile-left">
+    </div>
+
+    <div class="profile-middle">
+
+      <div class="logo-box">
+        <% if @business.logo.url %>
+          <%= cl_image_tag @business.logo, height: '100', width: '100', class: "profile-image" %>
+        <% else %>
+          <%= image_tag "mission.jpg", class: "profile-image" %>
+        <% end %>
+      </div>
+
+      <div class="flex-box main-title">
+        <h1 class="medium-text">
+          <%= @business.name %>
+        </h1>
+      </div>
+
+      <div class="profile-stats flex-box">
+        <p class="count">
+          <strong><%= @business.partnerships.count %></strong> charity partnerships
+        </p>
+      </div>
+
+      <div class="profile-content">
+        <p>
+          <i class="fas fa-map-marker-alt"></i> <%= @business.address %>
+        </p>
+        <p>
+          <a class="blue" href="<%= @business.website %>" target="_blank"><%= @business.website %></a>
+        </p>
+        <p class="profile-category">
+          CSR focus: <%= @business.charity_preferences.capitalize %>
+        </p>
+      </div>
+
+      <div class="profile-description">
+        <p><%= @business.description %></p>
+      </div>
+    </div>
+
+    <div class="profile-right">
+
+    </div>
+  </div>
+
+  <hr>
+    <div class="mission-header">
+      <h3><u>Missions</u><strong class="dot-small">.</strong>
+      </h3>
+    </div>
+  <hr>
+
+  <div class="mission-cards-container">
+    <% @business.partnerships.each do |partnership| %>
+      <div class="col-md-4 col-sm-12">
+        <%= link_to mission_path(partnership.mission) do%>
+          <div class="small-mission-card">
+            <% if partnership.mission.image.url %>
+              <%= cl_image_tag partnership.mission.image, class: "mission-image" %>
+            <% else %>
+              <%= image_tag "mission.jpg", class: "mission-image" %>
+            <% end %>
+            <div class="mission-details">
+              <h1 class="card-title"><%= partnership.mission.name %></h1>
+              <p class="card-location card-text-grey"><i class="fas fa-map-marker-alt"></i> <%= partnership.mission.charity.address %></p>
+              <% if partnership.mission.duration %>
+                <p class="card-location"><strong>Duration:</strong> <%= partnership.mission.duration %> months</p>
+              <% else %>
+                <p class="card-location"><strong>Duration:</strong> not specified</p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
