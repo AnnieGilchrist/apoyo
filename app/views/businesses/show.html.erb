@@ -18,6 +18,19 @@
         <h1 class="medium-text">
           <%= @business.name %>
         </h1>
+
+        <% unless current_user.organisation == @business %>
+          <div class="follow-button">
+            <% following = Follow.where(followed_id: @business.id, followed_type: "Business", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first %>
+            <% if following %>
+              <%= link_to 'Following', unfollow_business_path(@business), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
+            <% else %>
+              <%= simple_form_for(@business, url: follow_business_path(@business), method: :post ) do |f| %>
+              <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded nohover' %>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
 
       <div class="profile-stats flex-box">

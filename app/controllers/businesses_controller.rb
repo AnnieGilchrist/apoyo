@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  before_action :set_business, only: [:show, :edit, :update, :destroy]
+  before_action :set_business, only: [:show, :edit, :update, :destroy, :follow, :unfollow]
 
   def index
     @businesses = policy_scope(Business)
@@ -44,6 +44,27 @@ class BusinessesController < ApplicationController
     authorize @business
     @business.destroy
     redirect_to root_path
+  end
+
+  def follow
+    authorize @business
+    @follow = Follow.new
+    @follow.followed = @business
+    @follow.follower = current_user.organisation
+    if @follow.save
+      redirect_to business_path(@business), notice: "Now following #{@business.name}"
+    else
+      redirect_to business_path(@business), notice: "You are already following #{@business.name}"
+    end
+  end
+
+  def unfollow
+    authorize @business
+    @follow = Follow.where(followed_id: @business.id, followed_type: "Business", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first
+    @follow.destroy
+    if @follow.destroy
+      redirect_to business_path(@business), notice: "You stopped following #{@business.name}"
+    end
   end
 
   private
