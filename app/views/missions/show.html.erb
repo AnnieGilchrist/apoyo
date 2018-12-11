@@ -1,58 +1,62 @@
 <div class="profile-graphics">
   <div class="profile-banner">
     <% if @mission.image.url %>
-      <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= cl_image_path(@mission.image) %>);">
-      </div>
+    <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= cl_image_path(@mission.image) %>);">
+    </div>
     <% else %>
-      <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= image_path "mission.jpg" %>);">
-      </div>
+    <div class="show-banner" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.1)), url(<%= image_path "mission.jpg" %>);">
+    </div>
     <% end %>
 
-    <% if @charity.logo.url %>
-      <%= cl_image_tag @charity.logo, height: '100', width: '100', class: "profile-image" %>
-    <% else %>
-      <%= image_tag "mission.jpg", class: "profile-image" %>
-    <% end %>
     <div class="form-div">
       <%= render 'partner_form', class: "profile-form" %>
     </div>
   </div>
 </div>
 
-<div class="container mission-show">
+<div class="mission-show col-xs-6">
   <div class="title-box">
-    <h1><%= @mission.name %> </h1>
+    <h1><%= @mission.name %></h1>
+    <p class="secondary-txt"><%= link_to "#{@mission.charity.name}", charity_path(@mission.charity) %> is looking for help with this <u>mission</u><strong class="dot-small">.</strong></p>
   </div>
 
   <div class="content">
-    <div class="row">
-      <div class="col-xs-6 top">
-        <p><%= @mission.description %></p>
-        <% if @mission.duration.nil? || @mission.duration = 0 %>
-          <p><strong>Duration: </strong>Not specified</p>
-        <% else %>
-          <p><strong>Duration: </strong><%= @mission.duration %> months</p>
+    
+    <div class="top">
+      <p><%= @mission.description %></p>
+      <% if @mission.duration.nil? || @mission.duration == 0 %>
+        <p><strong>Duration: </strong>not specified</p>
+      <% else %>
+        <p><strong>Duration: </strong><%= @mission.duration %> months</p>
+      <% end %>
+    </div>
+
+    <div>
+      <% if @charity == current_user.organisation %>
+        <%= link_to edit_charity_mission_path(charity_id: @charity.id, id: @mission.id) do %>
+          <i class="far fa-edit"></i>
         <% end %>
-      </div>
-      <div class="col-xs-6 top">
-      </div>
+        <%= link_to mission_path(@mission),
+          method: :delete,
+          data: { confirm: "Are you sure you want to delete this mission?" } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
+</div>
 
-  <div class="container fafa">
-    <% if @charity == current_user.organisation %>
-      <%= link_to edit_mission_path(@mission) do %>
-        <i class="far fa-edit"></i>
-      <% end %>
-      <%= link_to mission_path(@mission),
-        method: :delete,
-        data: { confirm: "Are you sure you want to delete this mission?" } do %>
-        <i class="fas fa-trash-alt"></i>
-      <% end %>
-    <% end %>
+<div class="map-container">
+  <div
+    id="map"
+    style="width: 100%;
+    height: 100%;"
+    data-marker="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  >
   </div>
 </div>
 
 <% content_for :after_js do %>
-  <%= javascript_pack_tag "map" %>
+<%= javascript_pack_tag "map" %>
 <% end %>

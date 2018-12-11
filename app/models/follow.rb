@@ -15,4 +15,8 @@ class Follow < ApplicationRecord
       errors.add(:base, "cannot follow self")
     end
   end
+
+  def self.following?(organisation1, organisation2)
+    self.where(followed_id: organisation2.id, followed_type: "#{organisation2.class}", follower_id: organisation1.id, follower_type: "#{organisation1.class}").any?
+  end
 end

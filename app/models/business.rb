@@ -16,4 +16,16 @@ class Business < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
+  def charity?
+    self.class == Charity
+  end
+
+  def followers
+    Follow.where(followed_id: self.id, followed_type: "Business")
+  end
+
+  def following
+    Follow.where(follower_id: self.id, follower_type: "Business")
+  end
 end

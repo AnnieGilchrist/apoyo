@@ -24,27 +24,66 @@
         <%= simple_form_for(@charity, url: follow_charity_path(@charity), method: :post ) do |f| %>
         <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded nohover' %>
         <% end %>
+      </div>
+
+      <div class="flex-box main-title">
+        <h1 class="medium-text">
+          <%= @charity.name %>
+        </h1>
+
+        <% unless current_user.organisation == @charity %>
+          <div class="follow-button">
+
+            <% following = Follow.following?(current_user.organisation, @charity) %>
+
+            <% if following %>
+              <%= link_to 'Following', unfollow_charity_path(@charity), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
+            <% else %>
+              <%= link_to '+ Follow', follow_charity_path(@charity), method: :post, class: 'white-btn medium-btn rounded nohover' %>
+            <% end %>
+
+          </div>
+
         <% end %>
       </div>
       <% end %>
     </div>
 
-    <div class="profile-stats flex-box">
-      <p class="count">
-        <strong><%= @charity.missions.count %></strong> missions
-      </p>
-      <p class="count">
-        <strong><%= @charity.follows.count %></strong> followers
-      </p>
-    </div>
+      <div class="profile-stats flex-box">
+        <p class="count">
+          <strong><%= @charity.missions.count %></strong> missions
+        </p>
+        <p class="count">
+          <strong><%= @charity.followers.length %></strong> <%= "follower".pluralize(@charity.followers.length) %>
+        </p>
+      </div>
 
-    <div class="profile-content">
-      <p>
-        <a class="blue" href="<%= @charity.website %>" target="_blank"><%= @charity.website %></a>
-      </p>
-      <p class="profile-category">
-        <%= @charity.category.capitalize %>
-      </p>
+      <div class="profile-content">
+        <p>
+          <a class="blue" href="<%= @charity.website %>" target="_blank"><%= @charity.website %></a>
+        </p>
+        <p class="profile-category">
+          <%= @charity.category.capitalize %>
+        </p>
+      </div>
+
+      <div class="profile-description">
+        <p><%= @charity.description %></p>
+      </div>
+
+      <div>
+        <% if @charity == current_user.organisation %>
+          <%= link_to edit_charity_path(@charity) do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to charity_path(@charity),
+            method: :delete,
+            data: { confirm: "Are you sure you want to delete your charity profile?" } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
 
     <div class="profile-description">

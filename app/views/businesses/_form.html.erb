@@ -10,7 +10,8 @@
       <%= f.input :address,
                   required: true,
                   placeholder: 'Head office address',
-                  label: false %>
+                  label: false,
+                  input_html: { id: 'address' } %>
       <%= f.input :location,
                   required: true,
                   placeholder: "Location as seen in search results (e.g 'London, UK')",
@@ -55,4 +56,6 @@
   </div>
 <% end %>
 
-
+<% content_for :after_js do %>
+  <%= javascript_pack_tag "map" %>
+<% end %>
