@@ -3,7 +3,7 @@
     <%= link_to partnership_path(conversation.last.partnership)do %>
 
       <div class="conversation-container flex-box">
-        <% partner = conversation.last.sender == current_user ? conversation.last.recipient : conversation.last.sender %>
+        <% partner = conversation.last.sender == current_user ? conversation.last.sender : conversation.last.recipient %>
         <%= cl_image_tag partner.logo, class: "charity-image" %>
         <div class="conversation-detail  flex-box">
           <div class="conversation-info">
@@ -14,11 +14,10 @@
            <%= conversation.last.content%>
           </div>
           <% unless conversation.last.read %>
-            <div class="read">
+            <div class="read-status">
               <p class="green-dot">.</p>
             </div>
           <% end %>
-
         </div>
       </div>
     <% end %>
