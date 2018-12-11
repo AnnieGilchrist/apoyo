@@ -1,6 +1,7 @@
 <% if @conversations.first.exists? %>
   <% @conversations.each do |conversation|%>
-    <%= link_to partnership_path(Partnership.find(conversation.last.partnership_id)) do %>
+    <%= link_to partnership_path(conversation.last.partnership)do %>
+
       <div class="conversation-container flex-box">
         <% partner = conversation.last.sender == current_user ? conversation.last.recipient : conversation.last.sender %>
         <%= cl_image_tag partner.logo, class: "charity-image" %>
@@ -12,6 +13,12 @@
           <div class="conversation-body">
            <%= conversation.last.content%>
           </div>
+          <% unless conversation.last.read %>
+            <div class="read">
+              <p class="green-dot">.</p>
+            </div>
+          <% end %>
+
         </div>
       </div>
     <% end %>

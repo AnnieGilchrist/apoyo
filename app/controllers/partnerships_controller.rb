@@ -14,6 +14,7 @@ class PartnershipsController < ApplicationController
         @active_partnerships << partnership
       end
       @conversations << Message.where(partnership_id: partnership.id)
+      @conversations.reject! { |conversation| conversation.empty? }
     end
 
     @following = Follow.where(follower_id: current_user.organisation_id, follower_type: current_user.organisation_type)
@@ -24,6 +25,7 @@ class PartnershipsController < ApplicationController
   def show
     authorize @partnership
     @conversation = Message.where(partnership_id: @partnership.id)
+    @message = Message.new
   end
 
   def new
