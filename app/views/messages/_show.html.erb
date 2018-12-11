@@ -1,0 +1,16 @@
+<% if @message.sender == current_user.organisation %>
+    <div class="my-message-container">
+      <div class="chat-bubble-purple">
+        <%= message.content %>
+      </div>
+      <p class="conversation-time"><%= message.message_time %></p>
+    </div>
+
+  <% else %>
+    <div class="your-message-container">
+      <div class="chat-bubble-grey">
+        <%= message.content %>
+      </div>
+        <p class="conversation-time"><%= message.message_time %></p>
+    </div>
+<% end %>

@@ -1,25 +1,21 @@
+
+<% partner = current_user.organisation.class == Charity ? @partnership.business : @partnership.mission.charity %>
+
+
 <div class="container">
-  <div class="partnership-container-long">
-    <div class="col-xs-12 col-md-4">
-      <% if @partnership.mission.image.url %>
-        <%= cl_image_tag @partnership.mission.image, width: 400 %>
+<div class="flex-box-chat">
+  <%= link_to mission_path(@partnership.mission) do %>
+    <div class="partnership-container-small">
+      <% if @partnership.mission.charity.logo.url %>
+        <%= cl_image_tag @partnership.mission.charity.logo, class: "charity-image-small" %>
       <% else %>
         <%= image_tag "mission.jpg", width: 400 %>
       <% end %>
 
       <div class="card-content">
-        <h1 class="card-title"><%= @partnership.mission.name %></h1>
-        <p class="card-text-grey"><%= @partnership.business.name %> is partnered with <%= @partnership.mission.charity.name%></p>
+        <h1 class="card-title"><%= partner.name %></h1>
+        <p class="card-text-grey">Mission: <p class="card-text-grey">  <%= @partnership.mission.name%></p></p>
          <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= @partnership.mission.charity.address %></p>
-        <p class="card-description"> <%= @partnership.mission.description.first(400) + '...'%></p>
-      </div>
-      <div class="mission-buttons">
-        <%= link_to "Mission Info", mission_path(@partnership.mission), class: "small-btn white-btn" %>
-        <%= social_share_button_tag(@partnership.details) %>
-      </div>
-
-      <div class="status identifier" style="background-color:<%= @partnership.color %> !important;">
-        Status: <%= @partnership.status.capitalize %>
       </div>
 
       <% if current_user.organisation_type == "Charity" %>
@@ -28,12 +24,17 @@
         <%= link_to "Completed", partnership_path(@partnership, status: 'completed'), method: :patch, class: "status completed-btn" %>
       <% end %>
     </div>
-  </div>
-  <div class="messages-container">
-    <div class="col-md-8 col-xs-12">
+  <% end %>
+
+
+
+    <div class="messages-container">
+      <div id="messages">
+      <% partner_name = "" %>
       <% @conversation.each do |message| %>
 
         <% if message.sender == current_user.organisation %>
+          <% partner_name = message.recipient.name %>
 
           <div class="my-message-container">
             <div class="chat-bubble-purple">
@@ -43,6 +44,7 @@
           </div>
 
         <% else %>
+          <% partner_name = message.sender.name %>
 
           <div class="your-message-container">
               <%#= cl_image_tag message.sender.logo, class: "charity-image" %>
@@ -54,7 +56,11 @@
 
         <% end %>
       <% end %>
-    </div>
+      </div>
+    <%= render 'message_form', partnership: @partnership, message: @message, partner: partner_name %>
   </div>
-</div>
 
+
+
+</div>
+</div>

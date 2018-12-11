@@ -1,0 +1,6 @@
+<%= simple_form_for([partnership, message], remote: true) do |form| %>
+  <%= form.input :content, label: false, input_html: { class: "first-input chat-input"}, placeholder: "Write your message to #{partner} here..." %>
+  <div class="button-container">
+    <%= form.button :submit, value: "Send", class: "button small-btn white-btn" %>
+  </div>
+<% end %>

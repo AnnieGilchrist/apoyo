@@ -19,7 +19,7 @@
             </div>
             <div class="mission-buttons">
               <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
-              <%= link_to "Message History", "#", class: "small-btn white-btn" %>
+              <%= link_to "Message History", partnership_path(partnership), class: "small-btn white-btn" %>
             </div>
             <div class="status identifier" style="background-color:<%= partnership.color %> !important;">
                  Status: <%= partnership.status.capitalize %>

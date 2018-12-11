@@ -23,4 +23,15 @@
 .conversation-body {
   position: absolute;
   right: 100px;
+  width: 500px;
+}
+
+.green-dot {
+  font-size: 100px;
+  color: $forest-green;
+
+}
+
+.read {
+  width: 50px;
 }
