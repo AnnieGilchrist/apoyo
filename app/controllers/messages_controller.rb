@@ -16,6 +16,7 @@ class MessagesController < ApplicationController
     partner = (chatters - me).first
     @message.sender = current_user.organisation
     @message.recipient = partner
+    authorize @message
 
     if @message.save
       respond_to do |format|
