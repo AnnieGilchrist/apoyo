@@ -1,4 +1,4 @@
-<% if @conversations.first.exists? %>
+<% unless @conversations.empty? %>
   <% @conversations.reverse.each do |conversation|%>
 
     <%= link_to partnership_path(conversation.last.partnership)do %>
