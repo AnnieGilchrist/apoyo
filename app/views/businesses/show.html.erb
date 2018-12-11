@@ -85,28 +85,27 @@
   <hr>
 
   <div class="mission-cards-container">
+
     <% @business.partnerships.each do |partnership| %>
       <div class="col-md-4 col-sm-12">
         <%= link_to mission_path(partnership.mission) do%>
+        <div class="whole-card">
           <div class="small-mission-card">
             <% if partnership.mission.image.url %>
               <%= cl_image_tag partnership.mission.image, class: "mission-image" %>
             <% else %>
               <%= image_tag "mission.jpg", class: "mission-image" %>
             <% end %>
-            <div class="mission-details">
-              <h1 class="card-title"><%= partnership.mission.name %></h1>
-              <p class="card-location card-text-grey"><i class="fas fa-map-marker-alt"></i> <%= partnership.mission.charity.location %></p>
-              <% if partnership.mission.duration %>
-                <p class="card-location"><strong>Duration:</strong> <%= partnership.mission.duration %> months</p>
-              <% else %>
-                <p class="card-location"><strong>Duration:</strong> not specified</p>
-              <% end %>
-            </div>
           </div>
+
+          <div class="mission-content">
+            <h5 class="card-title"><%= partnership.mission.name %></h5>
+          </div>
+        </div>
         <% end %>
       </div>
     <% end %>
+
   </div>
 
 <% content_for :after_js do %>
