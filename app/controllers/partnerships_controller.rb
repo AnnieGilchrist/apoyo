@@ -25,7 +25,9 @@ class PartnershipsController < ApplicationController
   def show
     authorize @partnership
     @conversation = Message.where(partnership_id: @partnership.id)
+    @conversation.map {|message| message.update(read: true)}
     @message = Message.new
+    @message.sender = current_user.organisation
   end
 
   def new
