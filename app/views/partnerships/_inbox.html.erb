@@ -1,23 +1,31 @@
 <% if @conversations.first.exists? %>
-  <% @conversations.each do |conversation|%>
+  <% @conversations.reverse.each do |conversation|%>
     <%= link_to partnership_path(conversation.last.partnership)do %>
 
       <div class="conversation-container-flex">
-        <% partner = conversation.last.sender == current_user ? conversation.last.sender : conversation.last.recipient %>
+        <% partner = current_user.organisation.class == Charity ? conversation.last.partnership.business : conversation.last.partnership.mission.charity %>
         <%= cl_image_tag partner.logo, class: "charity-image" %>
+
         <div class="conversation-detail-flex">
           <div class="conversation-info">
-            <p class="conversation-partner"><%= partner.name %></p>
-            <p class="conversation-time"><%= conversation.last.message_time %></p>
+            <p class="conversation-partner"><%= conversation.last.partnership.mission.name %></p>
+            <p class="conversation-time"><%= partner.name %></p>
           </div>
           <div class="conversation-body">
            <%= conversation.last.content%>
           </div>
-          <% unless conversation.last.read %>
-            <div class="read-status">
-              <p class="green-dot">.</p>
-            </div>
+          <% if conversation.last.sender != current_user.organisation %>
+            <% unless conversation.last.read %>
+              <div class="read-status">
+               <p class="green-dot">.</p>
+              </div>
+            <% end %>
           <% end %>
+
+        </div>
+
+        <div class="time">
+          <p class="conversation-time"><%= conversation.last.message_time %></p>
         </div>
       </div>
     <% end %>
