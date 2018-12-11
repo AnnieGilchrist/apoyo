@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :charities do
-    resources :missions, only: [:new, :create]
+    resources :missions, only: [:new, :create, :edit, :update]
   end
 
-  resources :missions, only: [:index, :show, :edit, :update, :destroy] do
+  resources :missions, only: [:index, :show, :destroy] do
     member do
       get 'partnerships', to: 'missions#partnerships'
     end

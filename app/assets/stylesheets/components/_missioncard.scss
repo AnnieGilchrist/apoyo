@@ -1,40 +1,51 @@
-.small-mission-card {
-  height: 160px;
-  width: 320px;
-  border: 1px solid $grey;
+.whole-card {
   display: flex;
-  position:relative;
-  margin-bottom: 30px;
+  position: relative;
+  flex-direction: column;
+  height: 280px;
+  width: 400px;
+  border: 1px solid $grey;
   &:hover {
     box-shadow: 0 3px 18px rgba(0,0,0,0.2);
 
   }
-  .mission-image {
-    width: 130px;
-    height: 100%;
-    object-fit: cover;
-
-  }
-  .mission-details {
-    position: absolute;
-    left: 140px;
-    bottom: 5px;
-    top: 5px;
-    color: $black;
-    .card-title {
+  .small-mission-card {
+    height: 60%;
+    .mission-image {
+      height: 100%;
+      overflow: hidden;
+      width: 100%;
+      object-fit: cover;
+      border-bottom: 3px solid $yellow;
 
     }
   }
+}
 
+  .mission-content {
+    padding-bottom: 10px;
+    padding-left: 5px;
+    color: $black;
+  }
+  .card-placement {
+    position: absolute;
+    bottom: -11px;
+    padding-left: 5px;
+  }
 
   .card-text-grey {
-    margin-bottom: 15px;
+    margin-bottom: 1px;
   }
-}
+
+  // .card-title {
+  //   margin-top: 300px !important;
+  // }
+
+
 
 .mission-cards-container {
   margin-top: 20px;
-  width: 1000px;
+  width: 1500px;
   margin-left: 130px;
   // position: absolute;
   // top: 450px;

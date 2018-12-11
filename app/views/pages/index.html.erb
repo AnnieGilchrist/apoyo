@@ -5,69 +5,75 @@
     <hr>
   </div>
 
-  <div class="search-bar flex-container">
 
-    <%= form_tag feed_path, class: "form-inline", method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "search-field",
-        placeholder: "   Search by charity, mission, location, category etc."
-      %><%= submit_tag 'Search', class: "button purple-btn small-btn" %>
-
-    <% end %>
-    <div class="filter">
-      <button class="nohover button white-btn small-btn" id="charity">Charities</button>
-      <button class ="nohover button white-btn small-btn" id="mission">Missions</button>
-    </div>
-
-  </div>
 
 
   <div class="flex-container">
+
     <div class="browse">
-      <% counter = 0 %>
-      <% @results.each do |element| %>
-        <% if element.class == Charity %>
-          <div class="col-md-6 card-box" data-type="charity">
-            <%= link_to charity_path(element) do %>
-              <div class="browse-card format-card floated">
-                <%= cl_image_tag element.logo.url, class: "charity-image" %>
-                <div class="card-content-wrap">
-                  <h1 class="card-title"><%= element.name %></h1>
-                  <p class="card-text-grey"><%= element.category.capitalize %></p>
-                  <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.location %></p>
 
-                  <p class="card-description"><%= element.description.first(170) + '...'%></p>
-                </div>
-                <div class="identifier charity">
-                  Charity
-                </div>
-              </div>
-            <% end %>
-          </div>
+      <div class="search-bar flex-container">
 
-        <% else %>
-          <div class="col-md-6 card-box" data-type="mission">
-              <div type="button" class="browse-card format-card" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.location %>' data-description='<%= element.description %>' data-charity-path='<%= charity_path(element.charity) %>' data-apply-path='<%= mission_path(element) %>'>
-                <%= cl_image_tag element.image.url, class: "mission-image" %>
-
-                <div class="card-content">
-                  <h1 class="card-title"><%= element.name %></h1>
-                  <p class="card-text-grey"><%= element.charity.name%></p>
-                  <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.location %></p>
-                  <p class="card-description"> <%= element.description.first(80) + '...'%></p>
-                </div>
-
-                <div class="identifier mission">
-                  Mission
-                </div>
-
-              </div>
-          </div>
+        <%= form_tag feed_path, class: "form-inline", method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "search-field",
+            placeholder: "   Search by charity, mission, location, category etc."
+          %><%= submit_tag 'Search', class: "button purple-btn small-btn" %>
 
         <% end %>
-        <% counter += 1 %>
-      <% end %>
+        <div class="filter">
+          <button class="nohover button white-btn small-btn" id="charity">Charities</button>
+          <button class ="nohover button white-btn small-btn" id="mission">Missions</button>
+        </div>
+
+      </div>
+
+      <div>
+        <% counter = 0 %>
+        <% @results.each do |element| %>
+          <% if element.class == Charity %>
+            <div class="col-md-6 card-box" data-type="charity">
+              <%= link_to charity_path(element) do %>
+                <div class="browse-card format-card floated">
+                  <%= cl_image_tag element.logo.url, class: "charity-image" %>
+                  <div class="card-content-wrap">
+                    <h1 class="card-title"><%= element.name %></h1>
+                    <p class="card-text-grey"><%= element.category.capitalize %></p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.location %></p>
+
+                    <p class="card-description"><%= element.description.first(170) + '...'%></p>
+                  </div>
+                  <div class="identifier charity">
+                    Charity
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+          <% else %>
+            <div class="col-md-6 card-box" data-type="mission">
+                <div type="button" class="browse-card format-card" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.location %>' data-description='<%= element.description %>' data-charity-path='<%= charity_path(element.charity) %>' data-apply-path='<%= mission_path(element) %>'>
+                  <%= cl_image_tag element.image.url, class: "mission-image" %>
+
+                  <div class="card-content">
+                    <h1 class="card-title"><%= element.name %></h1>
+                    <p class="card-text-grey"><%= element.charity.name%></p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.location %></p>
+                    <p class="card-description"> <%= element.description.first(80) + '...'%></p>
+                  </div>
+
+                  <div class="identifier mission">
+                    Mission
+                  </div>
+
+                </div>
+            </div>
+
+          <% end %>
+          <% counter += 1 %>
+        <% end %>
+      </div>
     </div>
 
 
@@ -77,36 +83,40 @@
       <% @suggestions.each do |suggestion| %>
 
         <div class="follow-card">
-          <% if current_user.organisation.class ==  Business %>
-            <% if suggestion.logo.url %>
-              <%= link_to charity_path(suggestion) do %>
-                <%= cl_image_tag suggestion.logo, class: "charity-image" %>
-              <% end %>
-            <% else %>
-              <%= link_to charity_path(suggestion) do %>
-                <%= image_tag "mission.jpg", class: "charity-image" %>
-              <% end %>
+          <% if suggestion.logo.url %>
+            <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
+              <%= cl_image_tag suggestion.logo, class: "charity-image" %>
             <% end %>
-            <h1 class="card-title"><%= suggestion.name %></h1>
-            <%= link_to '+ Follow', "#", class: "button white-btn small-btn rounded"%>
           <% else %>
-            <% if suggestion.logo.url %>
-              <%= link_to business_path(suggestion) do %>
-                <%= cl_image_tag suggestion.logo, class: "charity-image" %>
-              <% end %>
-            <% else %>
-              <%= link_to business_path(suggestion) do %>
-                <%= image_tag "mission.jpg", class: "charity-image" %>
-              <% end %>
+            <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
+              <%= image_tag "mission.jpg", class: "charity-image" %>
             <% end %>
-            <h1 class="card-title business-title"><%= suggestion.name %></h1>
           <% end %>
+
+          <div class="card-content-wrap">
+            <div class="card-title">
+              <%= suggestion.name %>
+            </div>
+
+            <% following = Follow.following?(current_user.organisation, suggestion) %>
+
+            <% if suggestion.charity? && following %>
+              <%= link_to 'Following', unfollow_charity_path(suggestion), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
+            <% elsif suggestion.charity? %>
+              <%= link_to '+ Follow', follow_charity_path(suggestion), method: :post, class: 'white-btn medium-btn rounded nohover' %>
+            <% elsif following %>
+              <%= link_to 'Following', unfollow_business_path(suggestion), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
+            <% else %>
+              <%= link_to '+ Follow', follow_business_path(suggestion), method: :post, class: 'white-btn medium-btn rounded nohover'  %>
+            <% end %>
+
+          </div>
+
         </div>
       <% end %>
 
 
     </div>
-
 
   </div>
 </div>

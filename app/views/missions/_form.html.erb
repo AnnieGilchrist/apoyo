@@ -1,4 +1,4 @@
-<%= simple_form_for(@mission) do |f| %>
+<%= simple_form_for([@charity, @mission]) do |f| %>
   <div class="form-inputs">
     <div class="left-input col-xs-7">
       <%= f.input :name,
@@ -14,7 +14,8 @@
       <%= f.input :address,
                   required: false,
                   label: false,
-                  placeholder: 'Where will this mission take place (if relevant)?' %>
+                  placeholder: 'Where will this mission take place (if relevant)?',
+                  input_html: { id: 'address' } %>
       <%= f.input :description,
                   required: true,
                   placeholder: 'Description',
@@ -35,4 +36,8 @@
     </div>
 
   </div>
+<% end %>
+
+<% content_for :after_js do %>
+  <%= javascript_pack_tag "map" %>
 <% end %>

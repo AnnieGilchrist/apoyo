@@ -17,14 +17,15 @@
 
         <% unless current_user.organisation == @business %>
           <div class="follow-button">
-            <% following = Follow.where(followed_id: @business.id, followed_type: "Business", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first %>
+
+            <% following = Follow.following?(current_user.organisation, @business) %>
+
             <% if following %>
               <%= link_to 'Following', unfollow_business_path(@business), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
             <% else %>
-              <%= simple_form_for(@business, url: follow_business_path(@business), method: :post ) do |f| %>
-              <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded nohover' %>
-              <% end %>
+              <%= link_to '+ Follow', follow_business_path(@business), method: :post, class: 'white-btn medium-btn rounded nohover' %>
             <% end %>
+
           </div>
         <% end %>
       </div>
@@ -32,6 +33,9 @@
       <div class="profile-stats flex-box">
         <p class="count">
           <strong><%= @business.partnerships.count %></strong> charity partnerships
+        </p>
+        <p class="count">
+          <strong><%= @business.followers.length %></strong> <%= "follower".pluralize(@business.followers.length) %>
         </p>
       </div>
 
@@ -46,6 +50,19 @@
 
       <div class="profile-description">
         <p><%= @business.description %></p>
+      </div>
+
+      <div>
+        <% if @business == current_user.organisation %>
+          <%= link_to edit_business_path(@business) do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to business_path(@business),
+            method: :delete,
+            data: { confirm: "Are you sure you want to delete your business profile?" } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
       </div>
     </div>
 

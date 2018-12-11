@@ -15,6 +15,12 @@ class MissionsController < ApplicationController
         lat: @mission.latitude,
         infoWindow: { content: render_to_string(partial: "/missions/map_window", locals: { mission: @mission }) }
       }
+    elsif !@charity.longitude.nil? && !@charity.latitude.nil?
+      @marker = {
+        lng: @charity.longitude,
+        lat: @charity.latitude,
+        infoWindow: { content: render_to_string(partial: "/charities/map_window", locals: { charity: @charity }) }
+      }
     end
   end
 
@@ -46,10 +52,19 @@ class MissionsController < ApplicationController
 
   def update
     authorize @mission
+    @mission.update(mission_params)
+    if @mission.save
+      redirect_to mission_path(@mission)
+    else
+      render :new
+    end
   end
 
   def destroy
     authorize @mission
+    @charity = @mission.charity
+    @mission.destroy
+    redirect_to charity_path(@charity)
   end
 
   private
@@ -59,6 +74,6 @@ class MissionsController < ApplicationController
   end
 
   def mission_params
-    params.require(:mission).permit(:name, :description, :image, :duration)
+    params.require(:mission).permit(:name, :description, :image, :duration, :address)
   end
 end

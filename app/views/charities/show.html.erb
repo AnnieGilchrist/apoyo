@@ -1,12 +1,28 @@
 
-  <div class="show-container">
+<div class="show-container">
 
-    <div class="profile-left">
-      <div class="logo-box">
-        <% if @charity.logo.url %>
-          <%= cl_image_tag @charity.logo, height: '100', width: '100', class: "profile-image" %>
+  <div class="profile-left">
+    <div class="logo-box">
+      <% if @charity.logo.url %>
+      <%= cl_image_tag @charity.logo, height: '100', width: '100', class: "profile-image" %>
+      <% else %>
+      <%= image_tag "mission.jpg", class: "profile-image" %>
+      <% end %>
+    </div>
+
+    <div class="flex-box main-title">
+      <h1 class="medium-text">
+        <%= @charity.name %>
+      </h1>
+
+      <% unless current_user.organisation == @charity %>
+      <div class="follow-button">
+        <% following = Follow.where(followed_id: @charity.id, followed_type: "Charity", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first %>
+        <% if following %>
+        <%= link_to 'Following', unfollow_charity_path(@charity), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
         <% else %>
-          <%= image_tag "mission.jpg", class: "profile-image" %>
+        <%= simple_form_for(@charity, url: follow_charity_path(@charity), method: :post ) do |f| %>
+        <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded nohover' %>
         <% end %>
       </div>
 
@@ -17,24 +33,28 @@
 
         <% unless current_user.organisation == @charity %>
           <div class="follow-button">
-            <% following = Follow.where(followed_id: @charity.id, followed_type: "Charity", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first %>
+
+            <% following = Follow.following?(current_user.organisation, @charity) %>
+
             <% if following %>
               <%= link_to 'Following', unfollow_charity_path(@charity), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
             <% else %>
-              <%= simple_form_for(@charity, url: follow_charity_path(@charity), method: :post ) do |f| %>
-              <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded nohover' %>
-              <% end %>
+              <%= link_to '+ Follow', follow_charity_path(@charity), method: :post, class: 'white-btn medium-btn rounded nohover' %>
             <% end %>
+
           </div>
+
         <% end %>
       </div>
+      <% end %>
+    </div>
 
       <div class="profile-stats flex-box">
         <p class="count">
           <strong><%= @charity.missions.count %></strong> missions
         </p>
         <p class="count">
-          <strong><%= @charity.follows.count %></strong> followers
+          <strong><%= @charity.followers.length %></strong> <%= "follower".pluralize(@charity.followers.length) %>
         </p>
       </div>
 
@@ -50,58 +70,81 @@
       <div class="profile-description">
         <p><%= @charity.description %></p>
       </div>
-    </div>
 
-    <div class="profile-right">
-      <div
-        id="map"
-        style="width: 100%;
-        height: 100%;"
-        data-marker="<%= @marker.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-      >
-      </div>
-    </div>
-  </div>
-
-
-    <div class="mission-header">
-      <h3><u>Missions</u><strong class="dot-small">.</strong>
-      </h3>
-      <% if current_user.organisation == @charity %>
-        <br><%= link_to '+ New', new_charity_mission_path(@charity), class: 'white-btn medium-btn rounded'%>
-      <% end %>
-    </div>
-  <hr>
-
-  <div class="mission-cards-container">
-    <% @charity.missions.each do |mission| %>
-      <div class="col-md-4 col-sm-12">
-        <%= link_to mission_path(mission) do%>
-          <div class="small-mission-card">
-            <% if mission.image.url %>
-              <%= cl_image_tag mission.image, class: "mission-image" %>
-            <% else %>
-              <%= image_tag "mission.jpg", class: "mission-image" %>
-            <% end %>
-            <div class="mission-details">
-              <h1 class="card-title"><%= mission.name %></h1>
-
-              <p class="card-location card-text-grey"><i class="fas fa-map-marker-alt"></i> <%= @charity.location %></p>
-              <% if mission.duration && mission.duration != 0 %>
-                <p class="card-location"><strong>Duration:</strong> <%= mission.duration %> months</p>
-              <% else %>
-                <p class="card-location"><strong>Duration:</strong> not specified</p>
-              <% end %>
-            </div>
-          </div>
+      <div>
+        <% if @charity == current_user.organisation %>
+          <%= link_to edit_charity_path(@charity) do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to charity_path(@charity),
+            method: :delete,
+            data: { confirm: "Are you sure you want to delete your charity profile?" } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
       </div>
-    <% end %>
+
+    </div>
+
+    <div class="profile-description">
+      <p><%= @charity.description %></p>
+    </div>
   </div>
 
+  <div class="profile-right">
+    <div
+    id="map"
+    style="width: 100%;
+    height: 100%;"
+    data-marker="<%= @marker.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+    >
+  </div>
+</div>
+</div>
+
+
+<div class="mission-header">
+  <h3><u>Missions</u><strong class="dot-small">.</strong>
+  </h3>
+  <% if current_user.organisation == @charity %>
+  <br><%= link_to '+ New', new_charity_mission_path(@charity), class: 'white-btn medium-btn rounded'%>
+  <% end %>
+</div>
+<hr>
+
+<div class="mission-cards-container">
+  <% @charity.missions.each do |mission| %>
+    <div class="col-md-4 col-sm-12">
+      <%= link_to mission_path(mission) do%>
+      <div class="whole-card">
+        <div class="small-mission-card">
+          <% if mission.image.url %>
+          <%= cl_image_tag mission.image, class: "mission-image" %>
+          <% else %>
+          <%= image_tag "mission.jpg", class: "mission-image" %>
+          <% end %>
+        </div>
+        <div class="mission-content">
+          <h5 class="card-title"><%= mission.name %></h5>
+        </div>
+        <div class="card-placement">
+          <p class="card-text-grey"><i class="fas fa-map-marker-alt"></i> <%= @charity.location %></p>
+          <% if mission.duration && mission.duration != 0 %>
+          <p><strong>Duration:</strong> <%= mission.duration %> months</p>
+          <% else %>
+          <p><strong>Duration:</strong> not specified</p>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+
 <% content_for :after_js do %>
-  <%= javascript_pack_tag "map" %>
+<%= javascript_pack_tag "map" %>
 <% end %>
 
 

@@ -40,11 +40,10 @@ class CharitiesController < ApplicationController
 
   def update
     authorize @charity
-    @charity.update(charity_params)
-    if @charity.save
-      redirect_to feed_path
+    if @charity.update(charity_params)
+      redirect_to charity_path(@charity)
     else
-      render :new
+      render :edit
     end
   end
 
@@ -59,9 +58,9 @@ class CharitiesController < ApplicationController
     @follow.followed = @charity
     @follow.follower = current_user.organisation
     if @follow.save
-      redirect_to charity_path(@charity), notice: "Now following #{@charity.name}"
+      redirect_back(fallback_location: feed_path, notice: "Now following #{@charity.name}")
     else
-      redirect_to charity_path(@charity), notice: "You are already following #{@charity.name}"
+      redirect_back(fallback_location: feed_path, notice: "You are already following #{@charity.name}")
     end
   end
 
@@ -70,7 +69,7 @@ class CharitiesController < ApplicationController
     @follow = Follow.where(followed_id: @charity.id, followed_type: "Charity", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first
     @follow.destroy
     if @follow.destroy
-      redirect_to charity_path(@charity), notice: "You stopped following #{@charity.name}"
+      redirect_back(fallback_location: feed_path, notice: "You stopped following #{@charity.name}")
     end
   end
 
@@ -81,6 +80,6 @@ class CharitiesController < ApplicationController
   end
 
   def charity_params
-    params.require(:charity).permit(:name, :address, :website, :category, :description, :logo)
+    params.require(:charity).permit(:name, :address, :location, :website, :category, :description, :logo)
   end
 end

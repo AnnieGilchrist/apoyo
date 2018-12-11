@@ -9,12 +9,8 @@ p {
   max-width: 690px;
 }
 
-.container.mission-show {
-  margin-bottom: 10px;
-}
-
-.container.fafa {
-  margin-top: -110px;
+.mission-show {
+  margin: 20px 50px 50px 50px;
 }
 
 .show-banner.top {
@@ -23,7 +19,6 @@ p {
 
 .profile-banner {
   position: relative;
-  margin-bottom: 120px;
   .profile-image.top {
     position: absolute;
     bottom: 315px;
@@ -36,7 +31,7 @@ p {
   }
   .form-div {
     position: absolute;
-    top: 325px;
+    top: 425px;
     right: 10vw;
     width: 400px;
     background-color: white;
@@ -65,7 +60,12 @@ p {
   text-decoration: none;
   color: $black;
 }
-
 .title-box {
-  max-width: 700px;
+  a {
+    color: $purple;
+    font-weight: normal;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
