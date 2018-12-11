@@ -26,8 +26,8 @@
 
 .chat-bubble-purple  {
   border-radius: 10px;
-  width: 450px;
-  height: auto;
+  max-width: 450px;
+
   padding: 10px 10px;
   background-color: $purple;
   color: white;
@@ -36,8 +36,8 @@
 
 .chat-bubble-grey {
   border-radius: 10px;
-  width: 450px;
-  height: auto;
+  max-width: 450px;
+
   padding: 10px 10px;
   background-color: rgba(204, 204, 204, 0.3);
   margin-left:0px;
@@ -55,12 +55,14 @@
 .my-message-container {
   float: right;
 
-
 }
+
 .your-message-container {
   float: left;
 
   }
+
+
 
 .button-container {
   display: flex;
@@ -68,9 +70,6 @@
   margin-bottom: 50px;
 
 }
-
-
-
 
 .text-between {
   text-align: right;

@@ -1,13 +1,11 @@
-
 <% partner = current_user.organisation.class == Charity ? @partnership.business : @partnership.mission.charity %>
-
 
 <div class="container">
 <div class="flex-box-chat">
   <%= link_to mission_path(@partnership.mission) do %>
     <div class="partnership-container-small">
-      <% if @partnership.mission.charity.logo.url %>
-        <%= cl_image_tag @partnership.mission.charity.logo, class: "charity-image-small" %>
+      <% if partner.logo.url %>
+        <%= cl_image_tag partner.logo, class: "charity-image-small" %>
       <% else %>
         <%= image_tag "mission.jpg", width: 400 %>
       <% end %>
@@ -25,7 +23,6 @@
       <% end %>
     </div>
   <% end %>
-
 
 
     <div class="messages-container">
@@ -47,9 +44,9 @@
           <% partner_name = message.sender.name %>
 
           <div class="your-message-container">
-              <%#= cl_image_tag message.sender.logo, class: "charity-image" %>
+
             <div class="chat-bubble-grey">
-                <%= message.content %>
+             <%= message.content %>
             </div>
             <p class="conversation-time"><%= message.message_time %></p>
           </div>
