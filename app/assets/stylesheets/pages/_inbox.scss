@@ -1,9 +1,18 @@
-.conversation-container {
+.conversation-container-flex{
   position: relative;
   height: 130px;
   padding: 10px 30px;
   margin-top: 10px;
   border-bottom: 1px solid $grey;
+  display: flex;
+  position: relative;
+
+}
+
+
+.conversation-detail-flex {
+  display: flex;
+  align-items: center;
 
 }
 .conversation-partner {
@@ -11,7 +20,7 @@
 }
 
 .conversation-info {
-  width: 350px;
+  width: 250px;
   text-align: center;
 }
 
@@ -23,7 +32,7 @@
 .conversation-body {
   position: absolute;
   right: 100px;
-  width: 500px;
+  width: 550px;
 }
 
 .green-dot {
@@ -32,9 +41,9 @@
 
 
 }
-
-
 .read-status {
   align-self: flex-end;
+  position: absolute;
+  right:100px;
 
 }
