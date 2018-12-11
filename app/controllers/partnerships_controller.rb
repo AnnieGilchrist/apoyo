@@ -14,6 +14,7 @@ class PartnershipsController < ApplicationController
         @active_partnerships << partnership
       end
       @conversations << Message.where(partnership_id: partnership.id)
+      @conversations.reject! { |conversation| conversation.empty? }
     end
 
     @following = current_user.organisation.following
@@ -24,6 +25,9 @@ class PartnershipsController < ApplicationController
   def show
     authorize @partnership
     @conversation = Message.where(partnership_id: @partnership.id)
+    @conversation.map {|message| message.update(read: true)}
+    @message = Message.new
+    @message.sender = current_user.organisation
   end
 
   def new
