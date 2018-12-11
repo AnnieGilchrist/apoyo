@@ -1,4 +1,4 @@
-<% if @conversations.first.exists? %>
+<% if @conversations.first != nil && @conversations.first.exists? %>
   <% @conversations.each do |conversation|%>
     <%= link_to partnership_path(Partnership.find(conversation.last.partnership_id)) do %>
       <div class="conversation-container flex-box">

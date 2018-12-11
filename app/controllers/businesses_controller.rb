@@ -40,11 +40,10 @@ class BusinessesController < ApplicationController
 
   def update
     authorize @business
-    @business.update(business_params)
-    if @business.save
-      redirect_to feed_path
+    if @business.update(business_params)
+      redirect_to business_path(@business)
     else
-      render :new
+      render :edit
     end
   end
 
@@ -60,9 +59,9 @@ class BusinessesController < ApplicationController
     @follow.followed = @business
     @follow.follower = current_user.organisation
     if @follow.save
-      redirect_to business_path(@business), notice: "Now following #{@business.name}"
+      redirect_back(fallback_location: feed_path, notice: "Now following #{@business.name}")
     else
-      redirect_to business_path(@business), notice: "You are already following #{@business.name}"
+      redirect_back(fallback_location: feed_path, notice: "You are already following #{@business.name}")
     end
   end
 
@@ -71,7 +70,7 @@ class BusinessesController < ApplicationController
     @follow = Follow.where(followed_id: @business.id, followed_type: "Business", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first
     @follow.destroy
     if @follow.destroy
-      redirect_to business_path(@business), notice: "You stopped following #{@business.name}"
+      redirect_back(fallback_location: feed_path, notice: "You stopped following #{@business.name}")
     end
   end
 
@@ -82,6 +81,6 @@ class BusinessesController < ApplicationController
   end
 
   def business_params
-    params.require(:business).permit(:name, :address, :website, :description, :logo, :charity_preferences)
+    params.require(:business).permit(:name, :address, :location, :website, :description, :logo, :charity_preferences)
   end
 end

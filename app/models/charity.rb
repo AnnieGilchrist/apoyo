@@ -21,6 +21,14 @@ class Charity < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   def followers
-    Follow.where(charity_id: self.id).length
+    Follow.where(followed_id: self.id, followed_type: "Charity")
+  end
+
+  def following
+    Follow.where(follower_id: self.id, follower_type: "Charity")
+  end
+
+  def charity?
+    self.class == Charity
   end
 end

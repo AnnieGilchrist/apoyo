@@ -16,8 +16,8 @@ class PartnershipsController < ApplicationController
       @conversations << Message.where(partnership_id: partnership.id)
     end
 
-    @following = Follow.where(follower_id: current_user.organisation_id, follower_type: current_user.organisation_type)
-    @followers = Follow.where(followed_id: current_user.organisation_id, followed_type: current_user.organisation_type)
+    @following = current_user.organisation.following
+    @followers = current_user.organisation.followers
 
   end
 

@@ -10,9 +10,13 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  # def after_update_path_for(resource)
-  #   profile_path(current_user)
-  #
+  def after_update_path_for(resource)
+    if current_user.organisation_type == 'Business'
+      "/businesses/#{current_user.organisation_id}"
+    elsif current_user.organisation_type == 'Charity'
+      "/charities/#{current_user.organisation_id}"
+    end
+  end
 
   private
 

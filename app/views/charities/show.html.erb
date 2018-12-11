@@ -17,14 +17,15 @@
 
         <% unless current_user.organisation == @charity %>
           <div class="follow-button">
-            <% following = Follow.where(followed_id: @charity.id, followed_type: "Charity", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first %>
+
+            <% following = Follow.following?(current_user.organisation, @charity) %>
+
             <% if following %>
               <%= link_to 'Following', unfollow_charity_path(@charity), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
             <% else %>
-              <%= simple_form_for(@charity, url: follow_charity_path(@charity), method: :post ) do |f| %>
-              <%= f.button :submit, "+ Follow", class: 'white-btn medium-btn rounded nohover' %>
-              <% end %>
+              <%= link_to '+ Follow', follow_charity_path(@charity), method: :post, class: 'white-btn medium-btn rounded nohover' %>
             <% end %>
+
           </div>
         <% end %>
       </div>
@@ -34,7 +35,7 @@
           <strong><%= @charity.missions.count %></strong> missions
         </p>
         <p class="count">
-          <strong><%= @charity.follows.count %></strong> followers
+          <strong><%= @charity.followers.length %></strong> <%= "follower".pluralize(@charity.followers.length) %>
         </p>
       </div>
 
@@ -49,6 +50,19 @@
 
       <div class="profile-description">
         <p><%= @charity.description %></p>
+      </div>
+
+      <div>
+        <% if @charity == current_user.organisation %>
+          <%= link_to edit_charity_path(@charity) do %>
+            <i class="far fa-edit"></i>
+          <% end %>
+          <%= link_to charity_path(@charity),
+            method: :delete,
+            data: { confirm: "Are you sure you want to delete your charity profile?" } do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
+        <% end %>
       </div>
     </div>
 

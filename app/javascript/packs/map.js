@@ -22,3 +22,12 @@ if (mapElement) {
   map.setZoom(14);
   map.setCenter([marker.lng, marker.lat]);
 }
+
+const addressInput = document.getElementById('address');
+
+if (addressInput) {
+  const places = require('places.js');
+  const placesAutocomplete = places({
+    container: addressInput
+  });
+}
