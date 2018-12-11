@@ -86,10 +86,10 @@
           <%= image_tag "mission.jpg", class: "mission-image" %>
           <% end %>
         </div>
-        <div class="mission-details">
+        <div class="mission-content">
           <h5 class="card-title"><%= mission.name %></h5>
         </div>
-        <div class="card-location">
+        <div class="card-placement">
           <p class="card-text-grey"><i class="fas fa-map-marker-alt"></i> <%= @charity.location %></p>
           <% if mission.duration && mission.duration != 0 %>
           <p><strong>Duration:</strong> <%= mission.duration %> months</p>
