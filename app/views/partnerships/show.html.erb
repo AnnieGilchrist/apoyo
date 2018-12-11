@@ -26,6 +26,7 @@
 
 
     <div class="messages-container">
+      <div class="messages">
       <div id="messages" class="messages-flex-box">
       <% partner_name = "" %>
       <% @conversation.each do |message| %>
@@ -53,6 +54,7 @@
 
         <% end %>
       <% end %>
+      </div>
       </div>
     <%= render 'message_form', partnership: @partnership, message: @message, partner: partner_name %>
   </div>

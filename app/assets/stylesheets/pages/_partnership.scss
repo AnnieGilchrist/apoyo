@@ -98,6 +98,14 @@
 .messages-flex-box {
   display:flex;
   flex-direction: column;
+
+
+}
+
+.messages {
+  max-height: 450px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .charity-image-small {
@@ -115,7 +123,7 @@
   height: 100px;
   font-size: 18px;
   display: inline-block;
-  margin-top: 50px;
+  margin-top: 10px;
   &:focus {
   outline-color: transparent;
   outline-style:none;
