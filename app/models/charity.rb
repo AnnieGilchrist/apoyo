@@ -7,8 +7,8 @@ class Charity < ApplicationRecord
   validates :logo, presence: true
   has_many :users, as: :organisation, dependent: :destroy
 
-  has_many :messages, as: :sender
-  has_many :messages, as: :recipient
+  has_many :conversations, as: :participant_a
+  has_many :conversations, as: :participant_b
 
   has_many :follows, as: :followed, dependent: :destroy
   has_many :follows, as: :follower, dependent: :destroy

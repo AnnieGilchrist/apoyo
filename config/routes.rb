@@ -19,8 +19,12 @@ Rails.application.routes.draw do
 
   resources :businesses
 
-  resources :partnerships, only: [:index, :show, :edit, :update, :destroy] do
-     resources :messages, only: :create
+  resources :partnerships, only: [:index, :show, :edit, :update, :destroy]
+
+
+
+  resources :conversations, only: [:index, :show, :create] do
+    resources :messages, only: [:create]
   end
 
   get 'feed', to: 'pages#index', as: :feed

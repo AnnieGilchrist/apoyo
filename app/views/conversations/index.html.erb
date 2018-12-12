@@ -1,0 +1,44 @@
+<div class="container dashboard">
+
+  <div class="dashboard-title">
+    <h1>Welcome to your <u>Inbox</u><strong class="dot">.</strong></h1>
+    <hr>
+<!--       <p class="secondary-txt"></p> -->
+  </div>
+
+  <% unless @conversations.empty? %>
+    <% @conversations.each do |conversation|%>
+
+      <%= link_to conversation_path(conversation) do %>
+
+        <div class="conversation-container-flex">
+          <% partner = conversation.chatting_with(current_user.organisation) %>
+
+          <%= cl_image_tag partner.logo, class: "charity-image" %>
+
+          <div class="conversation-detail-flex">
+            <div class="conversation-info">
+              <p class="conversation-partner"><%= conversation.partnership.mission.name if !conversation.partnership.nil? %></p>
+              <p class="conversation-time">Your conversation with <%= partner.name %></p>
+            </div>
+            <div class="conversation-body">
+             <%= conversation.most_recent_message.content%>
+            </div>
+            <% if conversation.recipient?(current_user.organisation) %>
+              <% if conversation.any_message_unread? %>
+                <div class="read-status">
+                 <p class="green-dot">.</p>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+
+          <div class="time">
+
+            <p class="conversation-time">Most recent message sent by <strong><%= conversation.recipient?(current_user.organisation) ? partner.name : "you" %></strong><br><%= conversation.most_recent_message.message_time %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

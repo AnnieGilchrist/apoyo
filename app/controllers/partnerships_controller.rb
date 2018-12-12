@@ -13,7 +13,7 @@ class PartnershipsController < ApplicationController
       else
         @active_partnerships << partnership
       end
-      @conversations << Message.where(partnership_id: partnership.id)
+      @conversations << Conversation.where(partnership_id: partnership.id)
       @conversations.reject! { |conversation| conversation.empty? }
     end
 

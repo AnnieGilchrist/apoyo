@@ -1,7 +1,7 @@
 <% unless @conversations.empty? %>
   <% @conversations.reverse.each do |conversation|%>
 
-    <%= link_to partnership_path(conversation.last.partnership)do %>
+    <%= link_to partnership_path(conversation.last.partnership) do %>
 
       <div class="conversation-container-flex">
         <% partner = current_user.organisation.class == Charity ? conversation.last.partnership.business : conversation.last.partnership.mission.charity %>

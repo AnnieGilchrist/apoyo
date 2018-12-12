@@ -6,6 +6,6 @@ class MessagePolicy < ApplicationPolicy
   end
 
   def create?
-    user.organisation == record.sender
+    user.organisation == record.conversation.participant_a || user.organisation == record.conversation.participant_b
   end
 end
