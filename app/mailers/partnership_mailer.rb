@@ -9,7 +9,7 @@ class PartnershipMailer < ApplicationMailer
     @partnership = partnership
     @business = @partnership.business
     @business_user = User.find(@business.user_ids.first)
-    @greeting = "Hi, #{@business.name}!"
+    @greeting = "Dear #{@business.name},"
 
     mail(to: @business_user.email, subject: "Your Partnership Request is sent to #{@partnership.mission.charity.name}!")
   end
@@ -18,7 +18,7 @@ class PartnershipMailer < ApplicationMailer
     @partnership = partnership
     @charity = @partnership.mission.charity
     @charity_user = User.find(@charity.user_ids.first)
-    @greeting = "Hi, #{@charity.name}!"
+    @greeting = "Dear #{@charity.name},"
 
     mail(to: @charity_user.email, subject: "You received a Partnership Request from #{@partnership.business.name}!")
   end

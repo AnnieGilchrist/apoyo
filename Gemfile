@@ -24,6 +24,7 @@ gem 'social-share-button'
 gem 'geocoder'
 gem "jquery-rails"
 gem "letter_opener", group: :development
+gem 'postmark-rails'
 
 
 group :development do

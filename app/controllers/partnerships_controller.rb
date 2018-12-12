@@ -19,7 +19,6 @@ class PartnershipsController < ApplicationController
 
     @following = current_user.organisation.following
     @followers = current_user.organisation.followers
-
   end
 
   def show
@@ -60,7 +59,7 @@ class PartnershipsController < ApplicationController
     authorize @partnership
     @partnership.status = params[:status]
     if @partnership.save
-      redirect_to partnerships_path, notice: 'status changed'
+      redirect_to partnerships_path, notice: 'Status changed'
     end
   end
 
