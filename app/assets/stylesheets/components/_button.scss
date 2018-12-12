@@ -33,6 +33,7 @@
   text-align: center;
   color: $purple;
   transition: background 0.3s ease;
+  white-space: nowrap;
   &:active {
     color: $purple;
   }
