@@ -42,6 +42,8 @@ class PartnershipsController < ApplicationController
     @partnership.business = @business
     @partnership.mission = @mission
     if @partnership.save
+      PartnershipMailer.creation_notification_charity(@partnership).deliver_now
+      PartnershipMailer.creation_notification_business(@partnership).deliver_now
       redirect_to partnerships_path, notice: 'Partnership request successfully created.'
     elsif Partnership.where(business_id: @business.id, mission_id: @mission.id).exists?
       redirect_to mission_path(@mission), notice: 'You already have an active partnership for this mission.'
