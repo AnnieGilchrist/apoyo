@@ -8,8 +8,8 @@ class UserMailer < ApplicationMailer
   def welcome(user)
     @user = user
     @organisation = @user.organisation.name
-    @greeting = "Hi, #{organisation}!"
+    @greeting = "Hi, #{@organisation}!"
 
-    mail(to: @user.email, subject: "Welcome to Apoyo Community!"
+    mail(to: @user.email, subject: "Welcome to Apoyo Community!")
   end
 end

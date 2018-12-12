@@ -22,6 +22,10 @@
         <% end %>
       </div>
 
+      <p class="secondary-txt profile-services">
+        Offering: <%= @business.services_offered %>
+      </p>
+
       <div class="profile-stats flex-box">
         <p class="count" data-toggle="modal" data-target="#partnerModal">
           <strong><%= @business.partners.count %></strong> charity partnerships

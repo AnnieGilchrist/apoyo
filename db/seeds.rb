@@ -38,7 +38,7 @@ wildlife = Charity.create(name: 'Defenders of Wildlife', category: 'environment'
 
 puts "Creating businesses..."
 
-freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: '65 Fleet St, London EC4Y 1HT, UK', location: 'London, UK', website: 'www.freshfields.org', charity_preferences: 'healthcare', services_offered: 'web design')
+freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: '65 Fleet St, London EC4Y 1HT, UK', location: 'London, UK', website: 'www.freshfields.org', charity_preferences: 'healthcare', services_offered: 'lawyers')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544102858/tfpxjmf7zctn7qu3dhly.png'
   freshfields.remote_logo_url = url
   freshfields.save!
@@ -50,7 +50,7 @@ disney = Business.new(name: 'The Walt Disney Company', description: 'The Walt Di
   disney.save!
 
 
-lewagon = Business.new(name: 'Le Wagon', description: "Le Wagon is Europe's best coding bootcamp for creative people & entrepreneurs. Learn to code in 9 weeks with our fullstack coding bootcamp.", address: "Carrer d'en Grassot, 101, 08025 Barcelona", location: 'Barcelona, Spain', website: 'www.lewagon.com', charity_preferences: 'education', services_offered: 'education'
+lewagon = Business.new(name: 'Le Wagon', description: "Le Wagon is Europe's best coding bootcamp for creative people & entrepreneurs. Learn to code in 9 weeks with our fullstack coding bootcamp.", address: "Carrer d'en Grassot, 101, 08025 Barcelona", location: 'Barcelona, Spain', website: 'www.lewagon.com', charity_preferences: 'education', services_offered: 'web-design'
   )
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544193521/lewagon.png'
   lewagon.remote_logo_url = url
