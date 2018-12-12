@@ -12,6 +12,4 @@ class PartnershipMailerPreview < ActionMailer::Preview
     PartnershipMailer.creation_notification_charity(partnership)
   end
 
-
-
 end
