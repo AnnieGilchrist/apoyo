@@ -24,6 +24,9 @@
   &:focus {
     color: white;
   }
+  &:hover {
+    color: white;
+  }
 }
 
 
@@ -40,6 +43,9 @@
     color: $purple;
   }
   &:focus {
+    color: $purple;
+  }
+  &:hover {
     color: $purple;
   }
 }
