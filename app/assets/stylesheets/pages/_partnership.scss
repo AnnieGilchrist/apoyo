@@ -49,7 +49,8 @@
   margin-left: 100px;
   margin-right: 50px;
   margin-top: 30px;
-  width: 700px;
+  flex-grow: 1;
+  // width: 700px;
 
 }
 
@@ -92,18 +93,27 @@
 
 .flex-box-chat {
   display: flex;
-  justify-content: flex-start;
+}
+
+@media screen and (max-width: 500px) {
+  .flex-box-chat {
+      display: block;
+  }
+  .messages-container {
+    width: 100%;
+    margin: 0px;
+  }
 }
 
 .messages-flex-box {
   display:flex;
   flex-direction: column;
-
-
 }
 
+
+
 .messages {
-  max-height: 450px;
+  max-height: 60vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -124,6 +134,7 @@
   font-size: 18px;
   display: inline-block;
   margin-top: 10px;
+
   &:focus {
   outline-color: transparent;
   outline-style:none;
@@ -131,3 +142,7 @@
   border-color:transparent;
 }
 }
+
+
+
+
