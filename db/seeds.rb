@@ -15,7 +15,7 @@ cancer_research = Charity.create(name: 'Cancer Research UK', category: 'healthca
   cancer_research.remote_logo_url = url
   cancer_research.save!
 
-heifer = Charity.create(name: 'Heifer International', category: 'humanitarian', description: 'Heifer International is a global nonprofit working to eradicate poverty and hunger through sustainable, values-based holistic community development. Heifer distributes animals, along with agricultural and values-based training, to families in need around the world as a means of providing self-sufficiency.', address: '1 World Avenue, Little Rock, AR 72202, USA', location: 'Little Rock, USA', website: 'https://www.heifer.org/')
+heifer = Charity.create(name: 'Heifer International', category: 'environment', description: 'Heifer International is a global nonprofit working to eradicate poverty and hunger through sustainable, values-based holistic community development. Heifer distributes animals, along with agricultural and values-based training, to families in need around the world as a means of providing self-sufficiency.', address: '1 World Avenue, Little Rock, AR 72202, USA', location: 'Little Rock, USA', website: 'https://www.heifer.org/')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544183314/unnamed.jpg'
   heifer.remote_logo_url = url
   heifer.save!
@@ -35,10 +35,20 @@ wildlife = Charity.create(name: 'Defenders of Wildlife', category: 'environment'
   wildlife.remote_logo_url = url
   wildlife.save!
 
+sierra = Charity.create(name: 'Sierra Club', category: 'environment', description: 'The Sierra Club is the most enduring and influential grassroots environmental organization in the United States. We amplify the power of our 3.5+ million members and supporters to defend everyone’s right to a healthy world.', address: '1300 Oakland, CA 94612 USA', location: 'Oakland, California, United States', website: 'https://www.sierraclub.org/home')
+  url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544616812/sierra-club.jpg'
+  sierra.remote_logo_url = url
+  sierra.save!
+
+earthwatch = Charity.create(name: 'Earthwatch Institute', category: 'environment', description: 'Our vision is a world in which we live within our means and in balance with nature. We bring individuals from all walks of life together with world-class scientists to work for the good of the planet. The Earthwatch community continues to grow rapidly, with participation from members of the general public we call "citizen scientists," to corporate employees, to educators and students. All bring their knowledge, passion, and experience to support our work, improve scientific understanding, and inspire change across all touch-points in their lives.', address: '1380, Soldiers Field Road, North Brighton, Allston, Boston, Suffolk County, Massachusetts, 02135, USA', location: 'Boston, Massachusetts, United States', website: 'https://earthwatch.org/')
+  url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544626730/earthwatch-banner.jpg'
+  earthwatch.remote_logo_url = url
+  earthwatch.save!
+
 
 puts "Creating businesses..."
 
-freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: '65 Fleet St, London EC4Y 1HT, UK', location: 'London, UK', website: 'www.freshfields.org', charity_preferences: 'healthcare', services_offered: 'web design')
+freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: '65 Fleet St, London EC4Y 1HT, UK', location: 'London, UK', website: 'www.freshfields.org', charity_preferences: 'healthcare', services_offered: 'legal')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544102858/tfpxjmf7zctn7qu3dhly.png'
   freshfields.remote_logo_url = url
   freshfields.save!
@@ -50,7 +60,7 @@ disney = Business.new(name: 'The Walt Disney Company', description: 'The Walt Di
   disney.save!
 
 
-lewagon = Business.new(name: 'Le Wagon', description: "Le Wagon is Europe's best coding bootcamp for creative people & entrepreneurs. Learn to code in 9 weeks with our fullstack coding bootcamp.", address: "Carrer d'en Grassot, 101, 08025 Barcelona", location: 'Barcelona, Spain', website: 'www.lewagon.com', charity_preferences: 'education', services_offered: 'education'
+lewagon = Business.new(name: 'Le Wagon', description: "Le Wagon is Europe's best coding bootcamp for creative people & entrepreneurs. Learn to code in 9 weeks with our fullstack coding bootcamp.", address: "Carrer d'en Grassot, 101, 08025 Barcelona", location: 'Barcelona, Spain', website: 'www.lewagon.com', charity_preferences: 'education', services_offered: 'web design'
   )
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544193521/lewagon.png'
   lewagon.remote_logo_url = url
@@ -108,27 +118,27 @@ puts "Creating missions..."
     grow.save
 
 
-  crisis = Mission.new(name: 'Rights in Crisis', description: 'Globally we are witnessing a rise in the scale and frequency of humanitarian crises and their impacts on vulnerable people. The gap is widening between humanitarian needs and the ability or willingness of governments and international humanitarian actors, including NGOs like Oxfam, to meet them.', duration: "Irregular time depending on the world's crises", charity_id: oxfam.id)
+  crisis = Mission.new(name: 'Rights in Crisis', description: "Globally we are witnessing a rise in the scale and frequency of humanitarian crises and their impacts on vulnerable people. The gap is widening between humanitarian needs and the ability or willingness of governments and international humanitarian actors, including NGOs like Oxfam, to meet them. We need your organization's strength to influence governments to behave moraly", duration: "Irregular time depending on the world's crises", charity_id: oxfam.id)
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544543611/crisis.jpg'
     crisis.remote_image_url = url
     crisis.save
 
-  even = Mission.new(name: 'Even it up', description: 'Did you know that 1% now own more than the rest of us combined?  Inequality is growing around the world. Every year, the gap between rich and poor gets even wider. Far from trickling down, income and wealth are being sucked upwards at an alarming rate. The very design of our economies have taken us to this extreme and unjust point, with rules  that benefit wealthy corporations and elites at the expense of everyone else.', charity_id: oxfam.id)
+  even = Mission.new(name: 'Even it up', description: "Did you know that 1% now own more than the rest of us combined?  Inequality is growing around the world. Every year, the gap between rich and poor gets even wider. Far from trickling down, income and wealth are being sucked upwards at an alarming rate. The very design of our economies have taken us to this extreme and unjust point, with rules  that benefit wealthy corporations and elites at the expense of everyone else. We call on you to be a change in business's perspecive and realize that individual growth is helpful to all, while corporate growth is not.", charity_id: oxfam.id)
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544543754/unequal.jpg'
     even.remote_image_url = url
     even.save
 
-  women = Mission.new(name: 'Violence against women and girls: enough is enough', description: 'Did you know that at least one in three women (35 per cent) will experience some form of violence during their lifetime - more than one billion women worldwide? Violence against women and girls is a hidden global crisis which knows no boundaries of geography or culture. But, marginalized women, such as poor women and girls, are most likely to experience it, most often at the hands of their husbands or partners.', duration: 'An ongoing battle', charity_id: oxfam.id)
+  women = Mission.new(name: 'Violence against women and girls: enough is enough', description: 'Did you know that at least one in three women (35 per cent) will experience some form of violence during their lifetime - more than one billion women worldwide? Violence against women and girls is a hidden global crisis which knows no boundaries of geography or culture. But, marginalized women, such as poor women and girls, are most likely to experience it, most often at the hands of their husbands or partners. Help defend those that need it most!', duration: 'An ongoing battle', charity_id: oxfam.id)
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544544049/girl.jpg'
     women.remote_image_url = url
     women.save
 
-  ivory = Mission.new(name: "Closing Asia's Ivory Markets", description: 'Illegal killing of elephants for ivory decimates global populations. Estimates indicate that each year poachers slaughter close to 20,000 elephants, mostly for their tusks. Fueling this rampant poaching is a steady consumer demand for ivory. Overall, we see demand increasing in East Asian and Southeast Asian markets, with the greatest demand in China, Hong Kong, Singapore, and Thailand. WWF is working to shut down the illegal markets in Thailand, and helped end the legal ivory trade in China. By tackling these markets now as part of a pan-Asian approach, WWF aims to leverage China’s recent actions to ban the ivory trade to prevent further displacement of the current China ivory trade to nearby countries.', duration: 'All the business hours you can give', charity_id: wwf.id)
+  ivory = Mission.new(name: "Closing Asia's Ivory Markets", description: "We need companies like you to work against industries that participate or benefit in the needless slaughter of the world's elephants. Illegal killing of elephants for ivory decimates global populations. Estimates indicate that each year poachers slaughter close to 20,000 elephants, mostly for their tusks. Fueling this rampant poaching is a steady consumer demand for ivory. Overall, we see demand increasing in East Asian and Southeast Asian markets, with the greatest demand in China, Hong Kong, Singapore, and Thailand. WWF is working to shut down the illegal markets in Thailand, and helped end the legal ivory trade in China. By tackling these markets now as part of a pan-Asian approach, WWF aims to leverage China’s recent actions to ban the ivory trade to prevent further displacement of the current China ivory trade to nearby countries.", duration: 'All the business hours you can give', charity_id: wwf.id)
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544191751/elephants-in-africa-humane-society-announcement-on-ivory-trade.jpg'
     ivory.remote_image_url = url
     ivory.save
 
-  deforestation = Mission.new(name: "Reducing Emissions from Deforestation", description: "Forests are nature’s greatest technology for combating climate change: they naturally absorb carbon dioxide (CO2), reducing the amount of this heat-trapping gas in our atmosphere. When forests are not managed responsibly, they release large quantities of C02 into the atmosphere. Deforestation and degradation are the largest sources of C02 emissions after the burning of fossil fuels. Scientists estimate up to 0.13 of global carbon emissions come from deforestation.", duration: "We hope you'll pledge to use sustainable paper practices and ask your business contacts to do the same", charity_id: wwf.id)
+  deforestation = Mission.new(name: "Reducing Emissions from Deforestation", description: "We need a pledge from forward thinking comapanies, like yours, to cut down on their paper usage. Forests are nature’s greatest technology for combating climate change: they naturally absorb carbon dioxide (CO2), reducing the amount of this heat-trapping gas in our atmosphere. When forests are not managed responsibly, they release large quantities of C02 into the atmosphere. Deforestation and degradation are the largest sources of C02 emissions after the burning of fossil fuels. Scientists estimate up to 0.13 of global carbon emissions come from deforestation.", duration: "We hope you'll pledge to use sustainable paper practices and ask your business contacts to do the same", charity_id: wwf.id)
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544192407/deforestation.jpg'
     deforestation.remote_image_url = url
     deforestation.save
@@ -138,12 +148,12 @@ puts "Creating missions..."
     agriculture.remote_image_url = url
     agriculture.save
 
-  financial_services = Mission.new(name: "Financial Services for the Poor", description: "The Bill & Melinda Gates Foundation’s Financial Services for the Poor program works to broaden the reach of low-cost digital financial services for the poor. Our strategy is aimed at supporting what we and our partners believe are the most catalytic approaches to financial inclusion: helping to drive the development of digital payment systems that can help spread use of digital financial services quickly, advancing gender equality to ensure women share in the benefits of financial inclusion, and supporting the development of national and regional strategies that accelerate progress for the poor and provide exemplar models. To achieve these objectives, we work with partners around the world to align on common principles for digital financial inclusion and support policymakers as they work to develop policies and regulations that facilitate growth in digital financial services and provide oversight and accountability. We also invest in national financial inclusion initiatives where the largest number of people living in poverty stand to benefit from digital financial services, including: Bangladesh, India, Nigeria, Pakistan, Indonesia, and East Africa.", duration: "36 months", charity_id: gates_foundation.id)
+  financial_services = Mission.new(name: "Financial Services for the Poor", description: "Share your knowledge! The Bill & Melinda Gates Foundation’s Financial Services for the Poor program works to broaden the reach of low-cost digital financial services for the poor. Our strategy is aimed at supporting what we and our partners believe are the most catalytic approaches to financial inclusion: helping to drive the development of digital payment systems that can help spread use of digital financial services quickly, advancing gender equality to ensure women share in the benefits of financial inclusion, and supporting the development of national and regional strategies that accelerate progress for the poor and provide exemplar models. To achieve these objectives, we work with partners around the world to align on common principles for digital financial inclusion and support policymakers as they work to develop policies and regulations that facilitate growth in digital financial services and provide oversight and accountability. We also invest in national financial inclusion initiatives where the largest number of people living in poverty stand to benefit from digital financial services, including: Bangladesh, India, Nigeria, Pakistan, Indonesia, and East Africa.", duration: "36 months", charity_id: gates_foundation.id)
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544545120/education.jpg'
     financial_services.remote_image_url = url
     financial_services.save
 
-  graduation = Mission.new(name: "Postsecondary Success", description: "The Bill & Melinda Gates Foundation is committed to ensuring that all students have the opportunity to receive a high-quality education. We have two programs that work in concert toward this goal: College-Ready Education, which aims to ensure that all students graduate from high school prepared to succeed in college and in a career; and Postsecondary Success, whose goal is to dramatically increase the number of young people who obtain a postsecondary degree or certificate with labor-market value. Areas of intersection include practical approaches and policy strategies to better align K-12 standards—including the Common Core State Standards—with higher-education standards. Our Postsecondary Success strategy seeks to increase low-income students’ college completion rates through innovations that can improve the productivity and performance of U.S. universities and colleges and ensure that all students have access to a high-quality, highly personalized education.", duration: "12 months", charity_id: gates_foundation.id)
+  graduation = Mission.new(name: "Postsecondary Success", description: "The Bill & Melinda Gates Foundation is committed to ensuring that all students have the opportunity to receive a high-quality education. We have two programs that work in concert toward this goal: College-Ready Education, which aims to ensure that all students graduate from high school prepared to succeed in college and in a career; and Postsecondary Success, whose goal is to dramatically increase the number of young people who obtain a postsecondary degree or certificate with labor-market value. Areas of intersection include practical approaches and policy strategies to better align K-12 standards—including the Common Core State Standards—with higher-education standards. Our Postsecondary Success strategy seeks to increase low-income students’ college completion rates through innovations that can improve the productivity and performance of U.S. universities and colleges and ensure that all students have access to a high-quality, highly personalized education. Invest in these bright students.", duration: "12 months", charity_id: gates_foundation.id)
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544545126/graduation.jpg'
     graduation.remote_image_url = url
     graduation.save
@@ -162,5 +172,22 @@ puts "Creating missions..."
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544551246/icecaps.jpg'
     preparing.remote_image_url = url
     preparing.save
+
+  conservation = Mission.new(name: "Defending Conservation Laws", description: "Petition your government! Work jointly withour offices! Despite success and overwhelming bipartisan support from the American people, the ESA has come under repeated attacks. Unrelenting pressure from some commercial and political interests continue to threaten this vital Act, concocting legal and legislative attacks to weaken or override it, or slash its funding to a point where it can no longer function. In today's world, where more species than ever need the protections of the ESA, this tool for wildlife conservation must be kept strong enough to continue preventing extinctions and putting imperiled species back on the road to recovery.", duration: "12 months", charity_id: wildlife.id)
+    url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544611055/flamingo.jpg'
+    conservation.remote_image_url = url
+    conservation.save
+
+  ready = Mission.new(name: "Ready For 100", description: "Cities and communities across the country are ready for a just transition to '100%' clean, renewable energy! So far 100 cities have declared themselves ready. Help your home by contacting the local government of your headquarter's city!", duration: "24 months", charity_id: sierra.id)
+    url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544612571/wind_turbine.jpg'
+    ready.remote_image_url = url
+    ready.save
+
+  partnership = Mission.new(name: "The Benefits of Partnering with Earthwatch
+  ", description: "Earthwatch seeks to develop strategic partnerships that contribute to global conservation agendas and enable businesses to operate environmental sustainability. Our partnerships are designed to add value to your company as well as support important environmental initiatives. Our offer to business falls into three key areas: Employee Engagement and Professional Development, Community Engagement, Supporting Environmental Research and Conservation. Many of our partnerships combine all three elements.
+  There are a number of benefits to partnering with Earthwatch, including: better-informed business strategies and practices, new tools for managing environmental risks and seizing opportunities, demonstrating leadership in addressing challenges to environmental sustainability, increased employee awareness and commitment, and networking with other companies, non-governmental organizations, scientists, and environmental stakeholders.", duration: "The future", charity_id: earthwatch.id)
+      url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544625840/cleanup.jpg'
+      partnership.remote_image_url = url
+      partnership.save
 
 
