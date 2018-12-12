@@ -1,44 +1,39 @@
 class MessagesController < ApplicationController
-  before_action :set_partnership, only: [:create]
-
-  # def inbox
-  #   @conversations = Message.where()
-  # end
+  before_action :set_conversation
 
   def create
     @message = Message.new(message_params)
-    @message.partnership = @partnership
-    chatters = []
-    me =[]
-    me << current_user.organisation
-    chatters << @partnership.business
-    chatters << @partnership.mission.charity
-    partner = (chatters - me).first
-    @message.sender = current_user.organisation
-    @message.recipient = partner
+    @message.conversation = @conversation
+
+    if current_user.organisation == @conversation.participant_a
+      @direction = "a to b"
+      @recipient = @conversation.participant_b
+    else
+      @direction = "b to a"
+      @recipient = @conversation.participant_a
+    end
+
+    @message.direction = @direction
     authorize @message
 
     if @message.save
-      respond_to do |format|
-        format.html { redirect_to partnership_path(@partnership) }
-        format.js  # <-- will render `app/views/reviews/create.js.erb`
-      end
+      redirect_back(fallback_location: conversations_path, notice: "message sent to #{@recipient.name}")
     else
-      respond_to do |format|
-        format.html { render 'partnerships/show' }
-        format.js  # <-- idem
-      end
+      redirect_back(fallback_location: conversations_path, notice: "message could not be sent to #{@recipient.name}")
+      # respond_to do |format|
+      #   format.html { render 'partnerships/show' }
+      #   format.js  # <-- idem
+      # end
     end
   end
 
   private
 
-  def set_partnership
-    @partnership = Partnership.find(params[:partnership_id])
-  end
-
   def message_params
     params.require(:message).permit(:content)
   end
 
+  def set_conversation
+    @conversation = Conversation.find(params[:conversation_id])
+  end
 end

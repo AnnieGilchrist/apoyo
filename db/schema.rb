@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_11_105410) do
+ActiveRecord::Schema.define(version: 2018_12_12_144815) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(version: 2018_12_11_105410) do
     t.string "location"
   end
 
+  create_table "conversations", force: :cascade do |t|
+    t.string "participant_a_type"
+    t.bigint "participant_a_id"
+    t.string "participant_b_type"
+    t.bigint "participant_b_id"
+    t.bigint "partnership_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["participant_a_type", "participant_a_id"], name: "index_conversations_on_participant_a_type_and_participant_a_id"
+    t.index ["participant_b_type", "participant_b_id"], name: "index_conversations_on_participant_b_type_and_participant_b_id"
+    t.index ["partnership_id"], name: "index_conversations_on_partnership_id"
+  end
+
   create_table "follows", force: :cascade do |t|
     t.bigint "followed_id"
     t.bigint "follower_id"
@@ -57,17 +70,12 @@ ActiveRecord::Schema.define(version: 2018_12_11_105410) do
 
   create_table "messages", force: :cascade do |t|
     t.text "content"
-    t.string "sender_type"
-    t.bigint "sender_id"
-    t.string "recipient_type"
-    t.bigint "recipient_id"
-    t.bigint "partnership_id"
     t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["partnership_id"], name: "index_messages_on_partnership_id"
-    t.index ["recipient_type", "recipient_id"], name: "index_messages_on_recipient_type_and_recipient_id"
-    t.index ["sender_type", "sender_id"], name: "index_messages_on_sender_type_and_sender_id"
+    t.bigint "conversation_id"
+    t.string "direction"
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
   create_table "missions", force: :cascade do |t|
@@ -111,6 +119,8 @@ ActiveRecord::Schema.define(version: 2018_12_11_105410) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "conversations", "partnerships"
+  add_foreign_key "messages", "conversations"
   add_foreign_key "missions", "charities"
   add_foreign_key "partnerships", "businesses"
   add_foreign_key "partnerships", "missions"

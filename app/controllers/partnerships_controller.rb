@@ -6,15 +6,12 @@ class PartnershipsController < ApplicationController
     @partnerships = policy_scope(Partnership)
     @active_partnerships = []
     @finished_partnerships = []
-    @conversations = []
     @partnerships.each do |partnership|
       if partnership.status == 'completed'
         @finished_partnerships << partnership
       else
         @active_partnerships << partnership
       end
-      @conversations << Message.where(partnership_id: partnership.id)
-      @conversations.reject! { |conversation| conversation.empty? }
     end
 
     @following = current_user.organisation.following
@@ -40,7 +37,12 @@ class PartnershipsController < ApplicationController
     @business = current_user.organisation
     @partnership.business = @business
     @partnership.mission = @mission
+    @conversation = Conversation.new
+    @conversation.participant_a = @mission.charity
+    @conversation.participant_b = @business
     if @partnership.save
+      @conversation.partnership = @partnership
+      @conversation.save
       PartnershipMailer.creation_notification_charity(@partnership).deliver_now
       PartnershipMailer.creation_notification_business(@partnership).deliver_now
       redirect_to partnerships_path, notice: 'Partnership request successfully created.'

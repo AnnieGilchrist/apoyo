@@ -21,6 +21,8 @@ class PagesController < ApplicationController
     sql_query_mission = "\
       missions.name @@ :query \
       OR missions.description @@ :query \
+      OR missions.address @@ :query \
+      OR charities.name @@ :query \
       "
 
     sql_query_business = "\
@@ -33,7 +35,7 @@ class PagesController < ApplicationController
 
     if params[:query].present?
       @charities = Charity.where(sql_query_charity, query: "%#{params[:query]}%")
-      @missions = Mission.where(sql_query_mission, query: "%#{params[:query]}%")
+      @missions = Mission.joins(:charity).where(sql_query_mission, query: "%#{params[:query]}%")
       @businesses = Business.where(sql_query_business, query: "%#{params[:query]}%")
       results = @missions + @charities + @businesses
       @results = results.shuffle
