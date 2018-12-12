@@ -1,16 +1,16 @@
-function refreshForm(innerHTML) {
-  const newMessageForm = document.getElementById('new_message');
-  newMessageForm.innerHTML = innerHTML;
-}
+// function refreshForm(innerHTML) {
+//   const newMessageForm = document.getElementById('new_message');
+//   newMessageForm.innerHTML = innerHTML;
+// }
 
-function sendMessage(messageHTML) {
-  const messages = document.getElementById('messages');
-  messages.insertAdjacentHTML('beforeend', messageHTML);
-}
+// function sendMessage(messageHTML) {
+//   const messages = document.getElementById('messages');
+//   messages.insertAdjacentHTML('beforeend', messageHTML);
+// }
 
-<% if @message.errors.any? %>
-  refreshForm('<%= j render "partnerships/message_form", partnership: @partnership, message: @message, partner: partner_name %>');
-<% else %>
-  sendMessage('<%= j render "messages/show", message: @message %>');
-  refreshForm('<%= j render "partnerships/message_form", partnership: @partnership, message: Message.new, partner: @message.sender.name %>');
-<% end %>
+// <% if @message.errors.any? %>
+//   refreshForm('<%= j render "partnerships/message_form", partnership: @partnership, message: @message, partner: partner_name %>');
+// <% else %>
+//   sendMessage('<%= j render "messages/show", message: @message %>');
+//   refreshForm('<%= j render "partnerships/message_form", partnership: @partnership, message: Message.new, partner: @message.sender.name %>');
+// <% end %>

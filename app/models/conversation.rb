@@ -37,4 +37,8 @@ class Conversation < ApplicationRecord
     @unread_messages = self.messages.where(read: false)
     return @unread_messages.count > 0
   end
+
+  def empty?
+    self.messages.empty?
+  end
 end

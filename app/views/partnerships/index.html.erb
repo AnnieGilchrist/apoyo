@@ -10,7 +10,6 @@
     <ul class="nav nav-tabs dashboard-tabs" role="tablist">
       <li role="presentation" class="active"><a href="#active-partnerships" aria-controls="active-partnerships" role="tab" data-toggle="tab">Active Partnerships</a></li>
       <li role="presentation"><a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following</a></li>
-      <li role="presentation"><a href="#inbox" aria-controls="inbox" role="tab" data-toggle="tab">Inbox</a></li>
       <li role="presentation"><a href="#past-partnerships" aria-controls="past-partnerships" role="tab" data-toggle="tab">Past Partnerships</a></li>
       <li role="presentation"><a href="#edit-org" aria-controls="edit-org" role="tab" data-toggle="tab">Edit Organisation Profile</a></li>
     </ul>
@@ -19,7 +18,6 @@
     <div class="tab-content">
       <div role="tabpanel" class="tab-pane active" id="active-partnerships"><%= render 'active_partnerships' %></div>
       <div role="tabpanel" class="tab-pane" id="following"><%= render 'following' %></div>
-      <div role="tabpanel" class="tab-pane" id="inbox"><%= render 'inbox' %></div>
       <div role="tabpanel" class="tab-pane" id="past-partnerships"><%= render 'past_partnerships' %></div>
       <div role="tabpanel" class="tab-pane" id="edit-org">
         <% if current_user.organisation_type == 'Business' %>
