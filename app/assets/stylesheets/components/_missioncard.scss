@@ -2,10 +2,11 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  height: 220px;
+  height: 280px;
   width: 100%;
   border: 1px solid $grey;
   margin-bottom: 20px;
+  padding-bottom: 10px;
   &:hover {
     box-shadow: 0 3px 18px rgba(0,0,0,0.2);
 
@@ -22,8 +23,10 @@
     }
   }
   .mission-content {
-    padding-top: 10px;
-    padding-left: 15px;
+    padding: 15px;
+    height: 35%;
+    overflow: scroll;
+    word-wrap: break-word;
   }
 }
 

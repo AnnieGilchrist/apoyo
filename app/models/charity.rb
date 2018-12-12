@@ -19,6 +19,7 @@ class Charity < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+  after_create :send_welcome_email
 
   def followers
     Follow.where(followed_id: self.id, followed_type: "Charity")
@@ -30,5 +31,19 @@ class Charity < ApplicationRecord
 
   def charity?
     self.class == Charity
+  end
+
+  def partners
+    partners = []
+    Partnership.all.each do |partnership|
+      partners << partnership.business if partnership.mission.charity == self
+    end
+    partners.uniq
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_now
   end
 end

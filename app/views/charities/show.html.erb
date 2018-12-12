@@ -16,25 +16,18 @@
       </h1>
 
       <% unless current_user.organisation == @charity %>
-        <div class="follow-button">
-
-          <% following = Follow.following?(current_user.organisation, @charity) %>
-
-          <% if following %>
-            <%= link_to 'Following', unfollow_charity_path(@charity), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
-          <% else %>
-              <%= link_to '+ Follow', follow_charity_path(@charity), method: :post, class: 'white-btn medium-btn rounded nohover' %>
-          <% end %>
-
+        <div class="follow-button", id="<%= "#{@charity.id}-charity" %>">
+          <%= render "shared/charity_button", charity: @charity %>
         </div>
       <% end %>
     </div>
 
     <div class="profile-stats flex-box">
-      <p class="count">
-        <strong><%= @charity.missions.count %></strong> missions
+
+      <p class="count" data-toggle="modal" data-target="#partnerModal">
+        <strong><%= @charity.partners.count %></strong> business <%= "partnership".pluralize(@charity.partners.count) %>
       </p>
-      <p class="count">
+      <p class="count" id="count" data-toggle="modal" data-target="#followModal">
         <strong><%= @charity.followers.length %></strong> <%= "follower".pluralize(@charity.followers.length) %>
       </p>
     </div>
@@ -116,3 +109,6 @@
 <% content_for :after_js do %>
 <%= javascript_pack_tag "map" %>
 <% end %>
+
+<%= render 'partner_modal' %>
+<%= render 'follow_modal' %>
