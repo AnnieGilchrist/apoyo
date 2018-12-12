@@ -54,23 +54,35 @@ class CharitiesController < ApplicationController
 
   def follow
     authorize @charity
+    @organisation = @charity
     @follow = Follow.new
     @follow.followed = @charity
     @follow.follower = current_user.organisation
     if @follow.save
-      redirect_back(fallback_location: feed_path, notice: "Now following #{@charity.name}")
-    else
-      redirect_back(fallback_location: feed_path, notice: "You are already following #{@charity.name}")
+      respond_to do |format|
+        format.js { render 'follows/follow.js.erb' }
+      end
     end
+    # if @follow.save
+    #   redirect_back(fallback_location: feed_path, notice: "Now following #{@charity.name}")
+    # else
+    #   redirect_back(fallback_location: feed_path, notice: "You are already following #{@charity.name}")
+    # end
   end
 
   def unfollow
     authorize @charity
+    @organisation = @charity
     @follow = Follow.where(followed_id: @charity.id, followed_type: "Charity", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first
-    @follow.destroy
     if @follow.destroy
-      redirect_back(fallback_location: feed_path, notice: "You stopped following #{@charity.name}")
+      respond_to do |format|
+        format.js { render 'follows/unfollow.js.erb' }
+      end
     end
+
+    # if @follow.destroy
+    #   redirect_back(fallback_location: feed_path, notice: "You stopped following #{@charity.name}")
+    # end
   end
 
   private

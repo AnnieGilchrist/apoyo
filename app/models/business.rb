@@ -28,4 +28,12 @@ class Business < ApplicationRecord
   def following
     Follow.where(follower_id: self.id, follower_type: "Business")
   end
+
+  def partners
+    partners = []
+    Partnership.all.each do |partnership|
+      partners << partnership.mission.charity if partnership.business == self
+    end
+    partners.uniq
+  end
 end

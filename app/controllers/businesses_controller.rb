@@ -55,22 +55,25 @@ class BusinessesController < ApplicationController
 
   def follow
     authorize @business
+    @organisation = @business
     @follow = Follow.new
     @follow.followed = @business
     @follow.follower = current_user.organisation
     if @follow.save
-      redirect_back(fallback_location: feed_path, notice: "Now following #{@business.name}")
-    else
-      redirect_back(fallback_location: feed_path, notice: "You are already following #{@business.name}")
+      respond_to do |format|
+        format.js { render 'follows/follow.js.erb', followed: @business }
+      end
     end
   end
 
   def unfollow
     authorize @business
+    @organisation = @business
     @follow = Follow.where(followed_id: @business.id, followed_type: "Business", follower_id: current_user.organisation_id, follower_type: current_user.organisation_type).first
-    @follow.destroy
     if @follow.destroy
-      redirect_back(fallback_location: feed_path, notice: "You stopped following #{@business.name}")
+      respond_to do |format|
+        format.js { render 'follows/unfollow.js.erb' }
+      end
     end
   end
 
