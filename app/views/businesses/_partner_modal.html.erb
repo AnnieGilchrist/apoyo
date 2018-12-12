@@ -1,0 +1,36 @@
+<div class="modal fade" id="partnerModal" tabindex="-1" role="dialog" aria-labelledby="partnerModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4><strong><%= @business.name %> is partnered with...</strong></h4>
+      </div>
+      <div class="modal-body">
+
+        <% @business.partners.each do |partner| %>
+
+          <%= link_to charity_path(partner) do %>
+            <div class="follow-card">
+              <div class="img">
+                <% if partner.logo.url %>
+                  <%= cl_image_tag partner.logo, class: "charity-img" %>
+                <% else %>
+                  <%= image_tag "mission.jpg", class: "charity-img" %>
+                <% end %>
+              </div>
+
+              <div class="card-content-wrap">
+                <div class="card-title">
+                  <%= partner.name %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button white-btn small-btn" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -31,4 +31,12 @@ class Charity < ApplicationRecord
   def charity?
     self.class == Charity
   end
+
+  def partners
+    partners = []
+    Partnership.all.each do |partnership|
+      partners << partnership.business if partnership.mission.charity == self
+    end
+    partners.uniq
+  end
 end

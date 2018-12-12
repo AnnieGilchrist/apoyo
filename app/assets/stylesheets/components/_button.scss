@@ -15,18 +15,33 @@
   border: none;
   color: white;
   transition: background 0.3s ease;
-
+  &:active {
+    color: white;
+  }
+  &:visited {
+    color: white;
+  }
+  &:focus {
+    color: white;
+  }
 }
 
 
 .white-btn {
-
   background-color: white;
   border: 1px solid $purple;
   text-align: center;
   color: $purple;
   transition: background 0.3s ease;
-
+  &:active {
+    color: $purple;
+  }
+  &:visited {
+    color: $purple;
+  }
+  &:focus {
+    color: $purple;
+  }
 }
 
 

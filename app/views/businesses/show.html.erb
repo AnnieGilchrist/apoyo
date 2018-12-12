@@ -16,25 +16,17 @@
         </h1>
 
         <% unless current_user.organisation == @business %>
-          <div class="follow-button">
-
-            <% following = Follow.following?(current_user.organisation, @business) %>
-
-            <% if following %>
-              <%= link_to 'Following', unfollow_business_path(@business), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
-            <% else %>
-              <%= link_to '+ Follow', follow_business_path(@business), method: :post, class: 'white-btn medium-btn rounded nohover' %>
-            <% end %>
-
+          <div class="follow-button", id="<%= "#{@business.id}-business" %>">
+            <%= render "shared/business_button", business: @business %>
           </div>
         <% end %>
       </div>
 
       <div class="profile-stats flex-box">
-        <p class="count">
-          <strong><%= @business.partnerships.count %></strong> charity partnerships
+        <p class="count" data-toggle="modal" data-target="#partnerModal">
+          <strong><%= @business.partners.count %></strong> charity partnerships
         </p>
-        <p class="count">
+        <p class="count" id="count" data-toggle="modal" data-target="#followModal">
           <strong><%= @business.followers.length %></strong> <%= "follower".pluralize(@business.followers.length) %>
         </p>
       </div>
@@ -100,6 +92,7 @@
 
           <div class="mission-content">
             <h5 class="card-title"><%= partnership.mission.name %></h5>
+            <h6>Partnered with <%= partnership.mission.charity.name %></h6>
           </div>
         </div>
         <% end %>
@@ -111,3 +104,6 @@
 <% content_for :after_js do %>
   <%= javascript_pack_tag "map" %>
 <% end %>
+
+<%= render 'partner_modal' %>
+<%= render 'follow_modal' %>

@@ -1,0 +1,7 @@
+<% following = Follow.following?(current_user.organisation, charity) %>
+
+<% if following %>
+  <%= link_to 'Following', unfollow_charity_path(charity), method: :delete, class: 'purple-btn medium-btn rounded nohover', remote: true%>
+<% else %>
+  <%= link_to '+ Follow', follow_charity_path(charity), method: :post, class: 'white-btn medium-btn rounded nohover', remote: true %>
+<% end %>

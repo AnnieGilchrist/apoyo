@@ -5,9 +5,6 @@
     <hr>
   </div>
 
-
-
-
   <div class="flex-container">
 
     <div class="browse">
@@ -30,7 +27,6 @@
       </div>
 
       <div>
-        <% counter = 0 %>
         <% @results.each do |element| %>
           <% if element.class == Charity %>
             <div class="col-md-6 card-box" data-type="charity">
@@ -71,7 +67,6 @@
             </div>
 
           <% end %>
-          <% counter += 1 %>
         <% end %>
       </div>
     </div>
@@ -79,37 +74,34 @@
 
     <div class="follow-cards">
       <h1 class="medium-text text-center">Suggested for you</h1>
-
       <% @suggestions.each do |suggestion| %>
 
         <div class="follow-card">
-          <% if suggestion.logo.url %>
-            <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
-              <%= cl_image_tag suggestion.logo, class: "charity-image" %>
+          <div class="img">
+            <% if suggestion.logo.url %>
+              <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
+                <%= cl_image_tag suggestion.logo, class: "charity-img" %>
+              <% end %>
+            <% else %>
+              <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
+                <%= image_tag "mission.jpg", class: "charity-img" %>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
-              <%= image_tag "mission.jpg", class: "charity-image" %>
-            <% end %>
-          <% end %>
+          </div>
+
 
           <div class="card-content-wrap">
             <div class="card-title">
               <%= suggestion.name %>
             </div>
 
-            <% following = Follow.following?(current_user.organisation, suggestion) %>
-
-            <% if suggestion.charity? && following %>
-              <%= link_to 'Following', unfollow_charity_path(suggestion), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
-            <% elsif suggestion.charity? %>
-              <%= link_to '+ Follow', follow_charity_path(suggestion), method: :post, class: 'white-btn medium-btn rounded nohover' %>
-            <% elsif following %>
-              <%= link_to 'Following', unfollow_business_path(suggestion), method: :delete, class: 'purple-btn medium-btn rounded nohover'%>
-            <% else %>
-              <%= link_to '+ Follow', follow_business_path(suggestion), method: :post, class: 'white-btn medium-btn rounded nohover'  %>
-            <% end %>
-
+            <div id="<%= "#{suggestion.id}-#{suggestion.class.to_s.downcase}" %>">
+              <% if suggestion.charity? %>
+                <%= render "shared/charity_button", charity: suggestion %>
+              <% else %>
+                <%= render "shared/business_button", business: suggestion %>
+              <% end %>
+            </div>
           </div>
 
         </div>
