@@ -2,7 +2,7 @@ class Message < ApplicationRecord
   validates :content, presence: true, allow_blank: false
   belongs_to :sender, polymorphic: true
   belongs_to :recipient, polymorphic: true
-  belongs_to :partnership
+  belongs_to :partnership, optional: true
 
   def message_time
     created_at.strftime("%m/%d/%y at %l:%M %p")
