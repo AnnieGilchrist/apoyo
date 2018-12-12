@@ -110,6 +110,13 @@
   flex-direction: column;
 }
 
+}
+
+::-webkit-scrollbar {
+    // width: 1px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 
 
 .messages {
