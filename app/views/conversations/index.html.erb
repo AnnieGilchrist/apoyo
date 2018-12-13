@@ -2,7 +2,7 @@
 
   <div class="dashboard-title">
     <h1>Welcome to your <u>Inbox</u><strong class="dot">.</strong></h1>
-    <hr>
+    <br>
 <!--       <p class="secondary-txt"></p> -->
   </div>
 
@@ -11,41 +11,51 @@
 
       <%= link_to conversation_path(conversation) do %>
 
-        <div class="conversation-container-flex">
-          <% partner = conversation.chatting_with(current_user.organisation) %>
-          <% if conversation.partnership.nil? %>
-            <%= cl_image_tag partner.logo, class: "charity-image" %>
-          <% else %>
-            <%= cl_image_tag conversation.partnership.mission.image, class: "mission-image" %>
-          <% end %>
+        <div class="conversation-container-flex" style=<%= "background-color:#f4f4f4" if !conversation.empty? && conversation.recipient?(current_user.organisation) && conversation.any_message_unread? %>>
+          <div class="logo">
+            <% partner = conversation.chatting_with(current_user.organisation) %>
+            <% if conversation.partnership.nil? %>
+              <%= cl_image_tag partner.logo, class: "organisation-img" %>
+            <% else %>
+              <%= cl_image_tag conversation.partnership.mission.image, class: "mission-img" %>
+            <% end %>
+          </div>
 
-          <div class="conversation-detail-flex">
-            <div class="conversation-info">
-              <p class="conversation-partner"><%= conversation.partnership.mission.name if !conversation.partnership.nil? %></p>
-              <p class="conversation-time">Your conversation with <%= partner.name %>
-              </p>
-            </div>
-            <div class="conversation-body">
-              <% if conversation.empty? %>
-                <p>Nobody has sent a message yet...</p>
+          <div class="conversation-partner">
+            <p>
+              <% if !conversation.partnership.nil? %>
+                <strong><%= partner.name %></strong><br><br>
+                Subject: <%= conversation.partnership.mission.name %>
               <% else %>
-                <%= conversation.most_recent_message.content %>
+                <strong><%= partner.name %></strong><br><br>No subject
               <% end %>
-            </div>
-            <% if !conversation.empty? && conversation.recipient?(current_user.organisation) %>
-              <% if conversation.any_message_unread? %>
-                <div class="read-status">
-                 <p class="green-dot">.</p>
-                </div>
-              <% end %>
+            </p>
+          </div>
+
+          <div class="conversation-body">
+            <% if conversation.empty? %>
+              Nobody has sent a message yet...
+            <% else %>
+              <%= conversation.most_recent_message.content %>
             <% end %>
           </div>
 
           <div class="time">
             <% unless conversation.empty? %>
-              <p class="conversation-time">Most recent message sent by <strong><%= conversation.recipient?(current_user.organisation) ? partner.name : "you" %></strong><br><%= conversation.most_recent_message.message_time %></p>
+                Most recent message sent by <strong><%= conversation.recipient?(current_user.organisation) ? partner.name : "you" %></strong>
+                <br><br>
+                <%= conversation.most_recent_message.message_time %>
             <% end %>
           </div>
+
+          <div class="read-status green-dot">
+            <% if !conversation.empty? && conversation.recipient?(current_user.organisation) && conversation.any_message_unread? %>
+              <i class="fas fa-circle"></i>
+            <% end %>
+          </div>
+
+
+
         </div>
       <% end %>
     <% end %>

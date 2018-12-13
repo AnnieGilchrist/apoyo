@@ -1,7 +1,7 @@
 class ConversationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.belongs_to(user.organisation)
     end
   end
 

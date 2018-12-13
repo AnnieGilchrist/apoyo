@@ -30,6 +30,9 @@
       <p class="count" id="count" data-toggle="modal" data-target="#followModal">
         <strong><%= @charity.followers.length %></strong> <%= "follower".pluralize(@charity.followers.length) %>
       </p>
+
+      <%= render "conversation_form" %>
+
     </div>
 
     <div class="profile-content">

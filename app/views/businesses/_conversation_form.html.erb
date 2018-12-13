@@ -1,0 +1,11 @@
+<%= simple_form_for(@conversation, url: conversations_path) do |f| %>
+  <%= f.input :participant_b_id,
+              as: :hidden,
+              required: true,
+              input_html: { value: @business.id } %>
+  <%= f.input :participant_b_type,
+              as: :hidden,
+              required: true,
+              input_html: { value: "Business" } %>
+  <%= f.button :submit, "Send #{@business.name} a message", class: 'medium-btn purple-btn rounded nohover' %>
+<% end %>
