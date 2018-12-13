@@ -7,7 +7,7 @@ class PartnershipsController < ApplicationController
     @active_partnerships = []
     @finished_partnerships = []
     @partnerships.each do |partnership|
-      if partnership.status == 'completed'
+      if partnership.status == 'completed' || partnership.status == 'declined'
         @finished_partnerships << partnership
       else
         @active_partnerships << partnership
@@ -52,7 +52,7 @@ class PartnershipsController < ApplicationController
     elsif Partnership.where(business_id: @business.id, mission_id: @mission.id).exists?
       redirect_to mission_path(@mission), notice: 'You already have an active partnership for this mission.'
     else
-      redirect_to mission_path(@mission), notice: 'Failed to create partnership request.'
+      redirect_to mission_path(@mission), notice: 'Failed to create partnership request. Make sure you write a message.'
     end
   end
 
@@ -64,7 +64,14 @@ class PartnershipsController < ApplicationController
     authorize @partnership
     @partnership.status = params[:status]
     if @partnership.save
-      redirect_to partnerships_path, notice: 'Status changed'
+      if @partnership.status == "completed"
+        message = "#{@partnership.mission.name} is marked as completed. Find your completed partnerships in Past Partnerships."
+      elsif @partnership.status == "declined"
+        message = "You've declined #{@partnership.business.name}'s request."
+      else
+        message = "You've accepted #{@partnership.business.name}'s request."
+      end
+      redirect_to partnerships_path, notice: "#{message}"
     end
   end
 

@@ -21,14 +21,24 @@
               <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
               <%= link_to "Message History", partnership_path(partnership), class: "small-btn white-btn" %>
             </div>
-            <div class="status identifier" style="background-color:<%= partnership.color %> !important;">
-                 Status: <%= partnership.status.capitalize %>
-            </div>
+            <% if partnership.status == 'completed' %>
+              <div class="status identifier" style="background-color: #5B00FF !important;">
+                   <i class="fas fa-check"></i> <%= partnership.status.capitalize %>
+              </div>
+            <% else %>
+              <div class="status identifier" style="background-color: #C4C4C4 !important;">
+                  <%= partnership.status.capitalize %>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>
 
     </div>
+    <% else %>
+  <br>
+  <p class="secondary-txt center">&nbsp&nbsp&nbspYou do not have any past partnerships right now..</p>
+
 
   <% end %>
 </div>
