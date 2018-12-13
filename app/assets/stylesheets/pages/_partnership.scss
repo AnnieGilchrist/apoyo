@@ -1,40 +1,3 @@
-.partnership-container-small {
-  border: 1px solid $grey;
-  margin-top: 30px;
-  position: relative;
-  width: 250px;
-  text-align:center;
-  padding: 10px 10px;
-  align-self: start;
-
-  &:hover {
-   box-shadow: 0 2px 3px rgba(0,0,0,0.2);
-  }
-
-  .identifier {
-    position: absolute;
-    top: 10px;
-    right: -15px;
-    opacity: 0.9;
-    font-weight: bold;
-    color: white;
-
-
-  }
-
-}
-
-
-.chat-bubble-purple  {
-  border-radius: 10px;
-  max-width: 450px;
-
-  padding: 10px 15px;
-  background-color: $purple;
-  color: white;
-
-}
-
 .chat-bubble-grey {
   border-radius: 10px;
   max-width: 450px;
@@ -42,24 +5,6 @@
   padding: 10px 15px;
   background-color: rgba(204, 204, 204, 0.3);
   margin-left:0px;
-}
-
-.messages-container {
-  padding: 10px 10px;
-  margin-left: 100px;
-  margin-right: 50px;
-  margin-top: 30px;
-  flex-grow: 1;
-  // width: 700px;
-
-}
-
-.my-message-container {
-  align-self: flex-end;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-
 }
 
 .your-message-container {
@@ -74,8 +19,6 @@
 .button-container {
   display: flex;
   justify-content:  flex-end;
-  margin-bottom: 50px;
-
 }
 
 .text-between {
@@ -93,6 +36,63 @@
 
 .flex-box-chat {
   display: flex;
+  .partnership-container-small {
+    flex: 0 0 250px;
+    border: 1px solid $grey;
+    margin-top: 30px;
+    position: relative;
+    text-align:center;
+    padding: 20px;
+    align-self: start;
+    width: 250px !important;
+    &:hover {
+     box-shadow: 0 2px 3px rgba(0,0,0,0.2);
+    }
+    .img {
+      .image {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+  }
+  .messages-container {
+    flex: 1 1 auto;
+    padding: 10px 10px;
+    margin-left: 100px;
+    margin-right: 50px;
+    margin-top: 30px;
+    max-height: auto;
+    overflow: hidden;
+    .one-message-container.purple {
+      border: 2px solid $purple;
+    }
+    .one-message-container {
+      width: 100%;
+      border: 2px solid $grey;
+      margin-bottom: 5px;
+      .message-subject {
+        padding: 10px 15px;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $grey;
+        // background-color: #f4f4f4;
+        .conversation-time {
+          font-size: 12px;
+        }
+      }
+      .chat-bubble-purple  {
+        width: 100% !important;
+        padding: 20px 15px;
+        font-size: 16px;
+        // color: white;
+      }
+    }
+    .txt-form {
+      padding: 10px 15px 10px 0;
+
+    }
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -119,8 +119,10 @@
 
 
 .messages {
-  max-height: 60vh;
+  width: 100%;
+  max-height: 50vh;
   overflow-y: scroll;
+  box-sizing: content-box;
   overflow-x: hidden;
 }
 
@@ -129,7 +131,6 @@
   height: 99px;
   border-radius: 50px;
   border: 3px solid $yellow;
-
 }
 
 .chat-input {

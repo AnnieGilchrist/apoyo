@@ -7,5 +7,7 @@
               as: :hidden,
               required: true,
               input_html: { value: "Charity" } %>
-  <%= f.button :submit, "Send #{@charity.name} a message", class: 'medium-btn purple-btn rounded nohover' %>
+  <%= button_tag type: 'submit', class: "envelope-btn" do %>
+    <i class="fas fa-envelope"></i>
+  <% end %>
 <% end %>

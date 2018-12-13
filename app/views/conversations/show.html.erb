@@ -5,12 +5,14 @@
 <div class="flex-box-chat">
   <%= link_to partner.class == Charity ? charity_path(partner) : business_path(partner) do %>
     <div class="partnership-container-small">
-      <% if partner.logo.url %>
-        <%= cl_image_tag partner.logo, class: "charity-image-small" %>
-      <% else %>
-        <%= image_tag "mission.jpg", width: 400 %>
-      <% end %>
-
+      <div class="img">
+        <% if partner.logo.url %>
+          <%= cl_image_tag partner.logo, class: "image" %>
+        <% else %>
+          <%= image_tag "mission.jpg", class: "image" %>
+        <% end %>
+      </div>
+      <br>
       <div class="card-content">
         <h1 class="card-title"><%= partner.name %></h1>
          <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= partner.address %></p>
@@ -20,40 +22,54 @@
 
 
     <div class="messages-container">
-      <div class="messages">
-      <div id="messages" class="messages-flex-box">
+      <div class="messages" id="messages">
+      <div class="messages-flex-box">
 
       <% @conversation.messages.each do |message| %>
 
         <% if message.sender?(current_user.organisation) %>
 
 
-          <div class="my-message-container">
-            <div class="chat-bubble-purple">
-              <%= message.content %>
+          <div class="one-message-container purple">
+            <div class="message-subject">
+              <div class="send-receive">
+                From: <%= current_user.organisation.name %><br>
+                To: <%= partner.name %><br><br>
+                Subject: <%= !@conversation.partnership.nil? ? @conversation.partnership.mission.name : "none" %>
+              </div>
+              <div class="conversation-time">
+                <%= message.message_time %>
+              </div>
             </div>
-            <p class="conversation-time"><%= message.message_time %></p>
+            <div class="chat-bubble-purple">
+              <%= message.content.html_safe %>
+            </div>
           </div>
 
         <% else %>
-
-          <div class="your-message-container">
-
-            <div class="chat-bubble-grey">
-             <%= message.content %>
+          <div class="one-message-container">
+            <div class="message-subject">
+              <div class="send-receive">
+                From: <%= partner.name %><br>
+                To: <%= current_user.organisation.name %><br><br>
+                Subject: <%= !@conversation.partnership.nil? ? @conversation.partnership.mission.name : "none" %>
+              </div>
+              <div class="conversation-time">
+                <%= message.message_time %>
+              </div>
             </div>
-            <p class="conversation-time"><%= message.message_time %></p>
+            <div class="chat-bubble-purple">
+              <%= message.content.html_safe %>
+            </div>
           </div>
 
         <% end %>
       <% end %>
       </div>
-      </div>
-    <%= render 'message_form', conversation: @conversation, message: @message, partner: partner_name %>
-
+    </div>
+    <div class="txt-form">
+      <%= render 'message_form', conversation: @conversation, message: @message, partner: partner_name %>
+    </div>
   </div>
-
-
-
 </div>
 </div>

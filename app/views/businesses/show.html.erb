@@ -27,15 +27,25 @@
       </p>
 
       <div class="profile-stats flex-box">
-        <p class="count" data-toggle="modal" data-target="#partnerModal">
-          <strong><%= @business.partners.count %></strong> charity partnerships
-        </p>
-        <p class="count" id="count" data-toggle="modal" data-target="#followModal">
-          <strong><%= @business.followers.length %></strong> <%= "follower".pluralize(@business.followers.length) %>
-        </p>
+        <div class="counts">
+          <div class="count" data-toggle="modal" data-target="#partnerModal">
+            <strong><%= @business.partners.count %></strong> charity partnerships
+          </div>
+          <div class="count" id="count" data-toggle="modal" data-target="#followModal">
+            <strong><%= @business.followers.length %></strong> <%= "follower".pluralize(@business.followers.length) %>
+          </div>
+        </div>
 
-        <%= render "conversation_form" %>
-
+        <div class="envelope">
+          <% if Conversation.chat_between(@business, current_user.organisation).exists? %>
+            <% @conversation = Conversation.chat_between(@business, current_user.organisation).first %>
+            <%= link_to conversation_path(@conversation), class: 'envelope-btn' do %>
+              <i class="fas fa-envelope"></i>
+            <% end %>
+          <% else %>
+            <%= render "conversation_form" %>
+          <% end %>
+        </div>
       </div>
 
       <div class="profile-content">
