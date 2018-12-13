@@ -13,8 +13,8 @@
             <div class="card-content">
               <h1 class="card-title"><%= partnership.mission.name %></h1>
               <p class="card-text-grey"><%= partnership.business.name %> is partnered with <%= partnership.mission.charity.name%></p>
-              <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= partnership.mission.charity.address %></p>
-              <p class="card-description"> <%= partnership.mission.description.first(400) + '...'%></p>
+              <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= partnership.mission.charity.location %></p>
+              <div class="card-description"> <%= partnership.mission.description %></div>
             </div>
               <div class="mission-buttons">
                 <div class="row">

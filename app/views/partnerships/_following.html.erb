@@ -1,8 +1,15 @@
 
   <div class="following-cards">
-    <p class="secondary-txt center">
-      "You're following..."
-    </p>
+    <% if @following.empty?  %>
+      <p class="secondary-txt center">
+      You're not following anyone at this moment...
+      <%#= link_to "Click to explore", feed_path %>
+      </p>
+    <% else %>
+      <p class="secondary-txt center">
+        You're following...
+      </p>
+    <% end %>
 
     <div class="row">
       <% @following.each do |following| %>
@@ -26,10 +33,16 @@
     </div>
 
     <br>
+    <% if @followers.empty? %>
+      <p class="secondary-txt center">
+      You don't have any followers at this moment...
+      </p>
+    <% else %>
+      <p class="secondary-txt center">
+        These people are following you...
+      </p>
+    <% end %>
 
-    <p class="secondary-txt center">
-      "These people are following you..."
-    </p>
 
     <div class="row">
       <% @followers.each do |follow| %>
@@ -52,6 +65,12 @@
       <% end %>
     </div>
 
+    <br>
+    <% if @following.empty? && @followers.empty? %>
+
+      <%= link_to "Explore and connect", feed_path, class: "secondary-txt center", id: "purple-link"  %>
+
+    <% end %>
 
   </div>
 
