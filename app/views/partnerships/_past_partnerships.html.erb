@@ -1,6 +1,6 @@
-<div class="tab-container">
-  <% if @finished_partnerships.count > 0 %>
 
+<% if @finished_partnerships.count > 0 %>
+  <div class="tab-container">
     <div class="row">
 
       <% @finished_partnerships.each do |partnership| %>
@@ -33,12 +33,14 @@
           </div>
         </div>
       <% end %>
-
     </div>
-    <% else %>
-  <br>
-  <p class="secondary-txt center">&nbsp&nbsp&nbspYou do not have any past partnerships right now..</p>
+  </div>
+<% else %>
 
+  <div class="following-cards">
+    <p class="secondary-txt center"><em>Declined</em> and <em>completed</em> partnerships will show up here.</p><br>
+    <p class="secondary-txt center">You do not have any past partnerships right now...</p>
+  </div>
 
-  <% end %>
-</div>
+<% end %>
+

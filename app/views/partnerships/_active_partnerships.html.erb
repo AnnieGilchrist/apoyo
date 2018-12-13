@@ -48,8 +48,20 @@
       <% end %>
     </div>
   <% else %>
-  <br>
-  <p class="secondary-txt center">&nbsp&nbsp&nbspYou do not have any active partnerships right now..</p>
-  <% end %>
-</div>
+  </div>
+  <div class="following-cards">
+    <% partner = current_user.organisation_type == 'Chairty' ? 'business' : 'charity' %>
+    <p class="secondary-txt center">A <em>partnership</em> is an alliance between you and a <%= partner %> to achieve a common goal.</p><br>
+
+    <% if current_user.organisation.class == Charity %>
+     <p class="secondary-txt center">Requests to join your missions will show up here...</p><br>
+      <p class="secondary-txt center">You do not have any active partnerships right now...</p><br>
+     <%= link_to "View my missions", charity_path(current_user.organisation), class: "secondary-txt center", id: "purple-link"  %>
+    <% else %>
+      <p class="secondary-txt center">Your requests to join missions will show up here...</p><br>
+      <%= link_to "Find a mission", feed_path, class: "secondary-txt center", id: "purple-link"  %>
+    <% end %>
+  </div>
+<% end %>
+
 
