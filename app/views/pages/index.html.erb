@@ -39,7 +39,10 @@
             <div class="col-md-6 card-box" data-type="charity">
               <%= link_to charity_path(element) do %>
                 <div class="browse-card format-card floated">
-                  <%= cl_image_tag element.logo.url, class: "charity-image" %>
+                  <div class="img">
+                    <%= cl_image_tag element.logo.url, class: "charity-image" %>
+                  </div>
+
                   <div class="card-content-wrap">
                     <h1 class="card-title"><%= element.name %></h1>
                     <p class="card-text-grey"><%= element.category.capitalize %></p>
@@ -98,8 +101,6 @@
         <% end %>
       </div>
     </div>
-
-
     <div class="follow-cards">
       <h1 class="medium-text text-center">Suggested for you</h1>
       <% @suggestions.each do |suggestion| %>
@@ -131,13 +132,9 @@
               <% end %>
             </div>
           </div>
-
         </div>
       <% end %>
-
-
     </div>
-
   </div>
 </div>
 
