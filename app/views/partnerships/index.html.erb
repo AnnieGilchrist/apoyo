@@ -16,9 +16,14 @@
 
     <!-- Tab panes -->
     <div class="tab-content">
-      <div role="tabpanel" class="tab-pane active" id="active-partnerships"><%= render 'active_partnerships' %></div>
-      <div role="tabpanel" class="tab-pane" id="following"><%= render 'following' %></div>
-      <div role="tabpanel" class="tab-pane" id="past-partnerships"><%= render 'past_partnerships' %></div>
+      <div role="tabpanel" class="tab-pane active" id="active-partnerships"><%= render 'active_partnerships' %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="following">
+        <%= render 'following' %>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="past-partnerships">
+        <%= render 'past_partnerships' %>
+      </div>
       <div role="tabpanel" class="tab-pane" id="edit-org">
         <% if current_user.organisation_type == 'Business' %>
           <%= link_to "Click here to edit your business profile...", edit_business_path(current_user.organisation), class: 'dash-link' %>
