@@ -86,6 +86,12 @@
     background-color: white;
     border: 2px solid $forest-green;
     color: $forest-green;
+    transition: transform .2s;
+
+    &:hover {
+      transform: scale(1.05);
+
+    }
   }
   .declined-btn {
     width: 100px;
@@ -95,15 +101,28 @@
     background-color: white;
     border: 2px solid $pink-red;
     color: $pink-red;
+    transition: transform .2s;
+
+    &:hover {
+      transform: scale(1.05);
+
+    }
   }
   .completed-btn {
     width: 100px;
     position: absolute;
-    top: 120px;
+    top: 50px;
     right: -10px;
     background-color: white;
-    border: 2px solid #C4C4C4;
-    color: #C4C4C4;
+    border: 2px solid $purple;
+    color: $purple;
+    transition: transform .2s;
+
+    &:hover {
+      transform: scale(1.05);
+
+    }
+
   }
   .mission-buttons {
     position: absolute;
@@ -175,7 +194,29 @@
 }
 
 #purple-link {
-  text-decoration: underline $purple;
+  background-color: $purple; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  border-radius: 5px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+
+  &:hover {
+     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+
+
+  }
 
 }
 
+// .fa-hands-helping {
+//   color: $purple;
+//   font-size: 30px;
+// }
