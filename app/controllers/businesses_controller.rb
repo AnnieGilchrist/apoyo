@@ -15,6 +15,7 @@ class BusinessesController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/businesses/map_window", locals: { business: @business }) }
       }
     end
+    @conversation = Conversation.new
   end
 
   def new

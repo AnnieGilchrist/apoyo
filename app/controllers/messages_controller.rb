@@ -6,10 +6,10 @@ class MessagesController < ApplicationController
     @message.conversation = @conversation
 
     if current_user.organisation == @conversation.participant_a
-      @direction = "a to b"
+      @direction = "a-to-b"
       @recipient = @conversation.participant_b
     else
-      @direction = "b to a"
+      @direction = "b-to-a"
       @recipient = @conversation.participant_a
     end
 

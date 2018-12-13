@@ -4,6 +4,7 @@ class Partnership < ApplicationRecord
   belongs_to :mission
   belongs_to :business
   validates :business_id, uniqueness: { scope: :mission_id }
+  has_many :conversations, dependent: :destroy
 
   def color
     if self.status == 'pending'

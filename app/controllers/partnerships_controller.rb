@@ -43,6 +43,9 @@ class PartnershipsController < ApplicationController
     if @partnership.save
       @conversation.partnership = @partnership
       @conversation.save
+      @message = Message.new(content: "#{@partnership.details}", direction: "b-to-a")
+      @message.conversation = @conversation
+      @message.save
       PartnershipMailer.creation_notification_charity(@partnership).deliver_now
       PartnershipMailer.creation_notification_business(@partnership).deliver_now
       redirect_to partnerships_path, notice: 'Partnership request successfully created.'

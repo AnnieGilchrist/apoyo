@@ -3,6 +3,10 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = policy_scope(Conversation)
+    # @conversations = []
+    # @convos.each do |conversation|
+    #   @conversations << [conversation, conversation.most_recent_message]
+    # end
     Conversation.joins(:messages).order("messages.created_at desc").uniq
   end
 
@@ -16,9 +20,9 @@ class ConversationsController < ApplicationController
     @conversation.participant_a = current_user.organisation
     authorize @conversation
     if @conversation.save
-      redirect_to conversations_path, notice: 'Conversation created'
+      redirect_to conversation_path(@conversation), notice: 'Conversation created'
     else
-      redirect_to conversations_path, notice: 'Conversation could not be created'
+      redirect_back(fallback_location: conversations_path, notice: 'Conversation could not be created')
     end
   end
 

@@ -15,6 +15,7 @@ class CharitiesController < ApplicationController
         infoWindow: { content: render_to_string(partial: "/charities/map_window", locals: { charity: @charity }) }
       }
     end
+    @conversation = Conversation.new
   end
 
   def new
