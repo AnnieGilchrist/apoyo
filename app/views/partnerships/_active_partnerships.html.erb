@@ -50,11 +50,11 @@
   <% else %>
   </div>
   <div class="following-cards">
-    <% partner = current_user.organisation_type == 'Chairty' ? 'business' : 'charity' %>
+    <% partner = current_user.organisation.class == Charity  ? 'business' : 'charity' %>
     <p class="secondary-txt center">A <em>partnership</em> is an alliance between you and a <%= partner %> to achieve a common goal.</p><br>
 
     <% if current_user.organisation.class == Charity %>
-     <p class="secondary-txt center">Requests to join your missions will show up here...</p><br>
+     <p class="secondary-txt center">When a business requests to join your mission, it will show up here... </p><br>
      <%= link_to "View my missions", charity_path(current_user.organisation), class: "secondary-txt center", id: "purple-link"  %>
     <% else %>
       <p class="secondary-txt center">Your requests to join missions will show up here...</p><br>
