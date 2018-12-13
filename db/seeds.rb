@@ -48,7 +48,7 @@ earthwatch = Charity.create(name: 'Earthwatch Institute', category: 'environment
 
 puts "Creating businesses..."
 
-freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: '65 Fleet St, London EC4Y 1HT, UK', location: 'London, UK', website: 'www.freshfields.org', charity_preferences: 'healthcare', services_offered: 'legal')
+freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: '65 Fleet St, London EC4Y 1HT, UK', location: 'London, UK', website: 'www.freshfields.org', charity_preferences: 'environment', services_offered: 'legal advice')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544102858/tfpxjmf7zctn7qu3dhly.png'
   freshfields.remote_logo_url = url
   freshfields.save!
@@ -64,6 +64,24 @@ lewagon = Business.new(name: 'Le Wagon', description: "Le Wagon is Europe's best
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544193521/lewagon.png'
   lewagon.remote_logo_url = url
   lewagon.save!
+
+linklaters = Business.new(name: 'Linklaters', description: "Linklaters LLP is a multinational law firm headquartered in London. Founded in 1838, it is a member of the Magic Circle of elite British law firms. It currently employs over 2,000 lawyers across 29 offices in 20 countries.", address: "One Silk St, London, EC2Y 8HQ, UK", location: 'London, UK', website: 'https://www.linklaters.com', charity_preferences: 'environment', services_offered: 'legal advice'
+  )
+  url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544717390/linklaters_1.png'
+  linklaters.remote_logo_url = url
+  linklaters.save!
+
+cliffordchance = Business.new(name: 'Clifford Chance LLP', description: "Clifford Chance LLP is a multinational law firm headquartered in London, United Kingdom, and a member of the Magic Circle of leading British law firms. It is one of the ten largest law firms in the world measured both by number of lawyers and revenue.", address: "10 Upper Bank Street London E14 5JJ ", location: 'London, UK', website: 'https://www.cliffordchance.com', charity_preferences: 'environment', services_offered: 'legal advice'
+  )
+  url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544714782/CC.jpg'
+  cliffordchance.remote_logo_url = url
+  cliffordchance.save!
+
+nortonrose = Business.new(name: 'Norton Rose Fulbright LLP', description: "Norton Rose Fulbright is an international law firm, with more than 4000 lawyers and other legal staff based in 33 countries across Europe, the United States, Canada, Latin America, Asia, Australia, Africa, the Middle East and Central Asia.", address: "3 More London Riverside, London SE1 2AQ, UK", location: 'London, UK', website: 'http://www.nortonrosefulbright.com/', charity_preferences: 'environment', services_offered: 'legal advice'
+  )
+  url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544717525/norton-rose-fulbright-logo.png'
+  nortonrose.remote_logo_url = url
+  nortonrose.save!
 
 puts "Creating users..."
 annie = User.new(email: 'annie@mail.com', password: '12345678')
@@ -102,6 +120,18 @@ ian.save!
 xun = User.new(email: 'xun@mail.com', password: '12345678')
 xun.organisation = cancer_research
 xun.save!
+
+links_user = User.new(email: 'links@mail.com', password: '12345678')
+links_user.organisation = linklaters
+links_user.save!
+
+cc_user = User.new(email: 'cc@mail.com', password: '12345678')
+cc_user.organisation = cliffordchance
+cc_user.save!
+
+nrf_user = User.new(email: 'nrf@mail.com', password: '12345678')
+nrf_user.organisation = nortonrose
+nrf_user.save!
 
 
 puts "Creating missions..."
