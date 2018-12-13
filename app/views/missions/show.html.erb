@@ -8,9 +8,11 @@
     </div>
     <% end %>
 
-    <div class="form-div">
-      <%= render 'partner_form', class: "profile-form" %>
-    </div>
+    <% if current_user.organisation.class == Business %>
+      <div class="form-div">
+        <%= render 'partner_form', class: "profile-form" %>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -21,7 +23,7 @@
   </div>
 
   <div class="content">
-    
+
     <div class="top">
       <p><%= @mission.description %></p>
       <% if @mission.duration.nil? || @mission.duration == 0 %>

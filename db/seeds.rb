@@ -30,7 +30,7 @@ wwf = Charity.create(name: 'World Wildlife Fund for Nature', category: 'environm
   wwf.remote_logo_url = url
   wwf.save!
 
-wildlife = Charity.create(name: 'Defenders of Wildlife', category: 'environment', description: 'Defenders of Wildlife is a 501 non-profit conservation organization based in the United States. Its mission is to protect all native animals and plants throughout North America in their natural communities.', address: 'Defenders of Wildlife, 1130, N Street Northwest, Dupont Circle, Washington, District of Columbia, 20037, USA', location: 'Washington, D.C., United States', website: 'https://defenders.org/')
+wildlife = Charity.create(name: 'Defenders of Wildlife', category: 'environment', description: 'Defenders of Wildlife is a 501 non-profit conservation organization based in the United States. Its mission is to protect all native animals and plants throughout North America in their natural communities.', address: 'Defenders of Wildlife, Dupont Circle, Washington, 20037, USA', location: 'Washington D.C., United States', website: 'https://defenders.org/')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544550005/wildlife.jpg'
   wildlife.remote_logo_url = url
   wildlife.save!
