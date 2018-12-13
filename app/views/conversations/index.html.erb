@@ -3,6 +3,10 @@
   <div class="dashboard-title">
     <h1>Welcome to your <u>Inbox</u><strong class="dot">.</strong></h1>
     <br>
+
+    <% if @conversations == [] %>
+    <p class="secondary-txt">You don't have any messages yet!</p>
+    <% end %>
 <!--       <p class="secondary-txt"></p> -->
   </div>
 
@@ -14,29 +18,22 @@
         <div class="conversation-container-flex" style=<%= "background-color:#f4f4f4" if !conversation.empty? && conversation.recipient?(current_user.organisation) && conversation.any_message_unread? %>>
           <div class="logo">
             <% partner = conversation.chatting_with(current_user.organisation) %>
-            <% if conversation.partnership.nil? %>
-              <%= cl_image_tag partner.logo, class: "organisation-img" %>
-            <% else %>
-              <%= cl_image_tag conversation.partnership.mission.image, class: "mission-img" %>
-            <% end %>
+              <strong><%= partner.name %></strong>
           </div>
 
           <div class="conversation-partner">
-            <p>
               <% if !conversation.partnership.nil? %>
-                <strong><%= partner.name %></strong><br><br>
-                Subject: <%= conversation.partnership.mission.name %>
+                <%= conversation.partnership.mission.name %>
               <% else %>
-                <strong><%= partner.name %></strong><br><br>No subject
+                No subject
               <% end %>
-            </p>
           </div>
 
           <div class="conversation-body">
             <% if conversation.empty? %>
-              Nobody has sent a message yet...
+              <em>Nobody has sent a message yet...</em>
             <% else %>
-              <%= conversation.most_recent_message.content %>
+              <em><%= conversation.most_recent_message.content.gsub("<br>", " ").html_safe %></em>
             <% end %>
           </div>
 

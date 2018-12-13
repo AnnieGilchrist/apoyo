@@ -3,11 +3,8 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = policy_scope(Conversation)
-    # @conversations = []
-    # @convos.each do |conversation|
-    #   @conversations << [conversation, conversation.most_recent_message]
-    # end
-    Conversation.joins(:messages).order("messages.created_at desc").uniq
+    # @empty_convos = Conversation.includes(:messages).where(messages: { id: nil })
+    # @conversations = @empty_convos + @convos
   end
 
   def show

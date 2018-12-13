@@ -25,6 +25,8 @@ gem 'geocoder'
 gem "jquery-rails"
 gem "letter_opener", group: :development
 gem 'postmark-rails'
+gem 'trix'
+
 
 
 group :development do
