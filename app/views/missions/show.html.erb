@@ -25,7 +25,7 @@
   <div class="content">
 
     <div class="top">
-      <p><%= @mission.description %></p>
+      <p><%= @mission.description.html_safe %></p>
       <% if @mission.duration.nil? || @mission.duration == 0 %>
         <p><strong>Duration: </strong>not specified</p>
       <% else %>
