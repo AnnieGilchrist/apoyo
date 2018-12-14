@@ -48,7 +48,7 @@ earthwatch = Charity.create(name: 'Earthwatch Institute', category: 'environment
 
 puts "Creating businesses..."
 
-freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: '65 Fleet St, London EC4Y 1HT, UK', location: 'London, UK', website: 'www.freshfields.org', charity_preferences: 'environment', services_offered: 'legal advice')
+freshfields = Business.new(name: 'Freshfields Bruckhaus Deringer LLP', description: 'Freshfields Bruckhaus Deringer LLP, considered to have been founded in 1743, is a multinational law firm headquartered in London and a member of the Magic Circle of elite British law firms.', address: '65 Fleet St, London EC4Y 1HT, UK', location: 'London, UK', website: 'www.freshfields.org', charity_preferences: 'humanitarian', services_offered: 'legal advice')
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544102858/tfpxjmf7zctn7qu3dhly.png'
   freshfields.remote_logo_url = url
   freshfields.save!
@@ -59,7 +59,7 @@ disney = Business.new(name: 'The Walt Disney Company', description: 'The Walt Di
   disney.remote_logo_url = url
   disney.save!
 
-lewagon = Business.new(name: 'Le Wagon', description: "Le Wagon is Europe's best coding bootcamp for creative people & entrepreneurs. Learn to code in 9 weeks with our fullstack coding bootcamp.", address: "Carrer d'en Grassot, 101, 08025 Barcelona", location: 'Barcelona, Spain', website: 'www.lewagon.com', charity_preferences: 'education', services_offered: 'web design'
+lewagon = Business.new(name: 'Le Wagon', description: "Le Wagon is Europe's best coding bootcamp for creative people & entrepreneurs. Learn to code in 9 weeks with our fullstack coding bootcamp.", address: "Carrer d'en Grassot, 101, 08025 Barcelona", location: 'Barcelona, Spain', website: 'www.lewagon.com', charity_preferences: 'humanitarian', services_offered: 'web design'
   )
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544193521/lewagon.png'
   lewagon.remote_logo_url = url
@@ -77,7 +77,7 @@ cliffordchance = Business.new(name: 'Clifford Chance LLP', description: "Cliffor
   cliffordchance.remote_logo_url = url
   cliffordchance.save!
 
-nortonrose = Business.new(name: 'Norton Rose Fulbright LLP', description: "Norton Rose Fulbright is an international law firm, with more than 4000 lawyers and other legal staff based in 33 countries across Europe, the United States, Canada, Latin America, Asia, Australia, Africa, the Middle East and Central Asia.", address: "3 More London Riverside, London SE1 2AQ, UK", location: 'London, UK', website: 'http://www.nortonrosefulbright.com/', charity_preferences: 'environment', services_offered: 'legal advice'
+nortonrose = Business.new(name: 'Norton Rose Fulbright LLP', description: "Norton Rose Fulbright is an international law firm, with more than 4000 lawyers and other legal staff based in 33 countries across Europe, the United States, Canada, Latin America, Asia, Australia, Africa, the Middle East and Central Asia.", address: "3 More London Riverside, London SE1 2AQ, UK", location: 'London, UK', website: 'http://www.nortonrosefulbright.com/', charity_preferences: 'humanitarian', services_offered: 'legal advice'
   )
   url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544717525/norton-rose-fulbright-logo.png'
   nortonrose.remote_logo_url = url
