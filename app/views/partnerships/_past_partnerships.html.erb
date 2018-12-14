@@ -1,6 +1,6 @@
-<div class="tab-container">
-  <% if @finished_partnerships.count > 0 %>
 
+<% if @finished_partnerships.count > 0 %>
+  <div class="tab-container">
     <div class="row">
 
       <% @finished_partnerships.each do |partnership| %>
@@ -21,14 +21,26 @@
               <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
               <%= link_to "Message History", partnership_path(partnership), class: "small-btn white-btn" %>
             </div>
-            <div class="status identifier" style="background-color:<%= partnership.color %> !important;">
-                 Status: <%= partnership.status.capitalize %>
-            </div>
+            <% if partnership.status == 'completed' %>
+              <div class="status identifier" style="background-color: #5B00FF !important;">
+                   <i class="fas fa-check"></i> <%= partnership.status.capitalize %>
+              </div>
+            <% else %>
+              <div class="status identifier" style="background-color: #C4C4C4 !important;">
+                  <%= partnership.status.capitalize %>
+              </div>
+            <% end %>
           </div>
         </div>
       <% end %>
-
     </div>
+  </div>
+<% else %>
 
-  <% end %>
-</div>
+  <div class="following-cards">
+    <p class="secondary-txt center"><em>Declined</em> and <em>completed</em> partnerships will show up here.</p><br>
+    <p class="secondary-txt center">You do not have any past partnerships right now...</p>
+  </div>
+
+<% end %>
+

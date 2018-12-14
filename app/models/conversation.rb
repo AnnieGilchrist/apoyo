@@ -20,6 +20,10 @@ class Conversation < ApplicationRecord
     Conversation.where(participant_a_id: first.id, participant_a_type: "#{first.class}", participant_b_id: second.id, participant_b_type: "#{second.class}").or(Conversation.where(participant_a_id: second.id, participant_a_type: "#{second.class}", participant_b_id: first.id, participant_b_type: "#{first.class}"))
   end
 
+  def self.chat_between(first, second)
+    Conversation.where(participant_a_id: first.id, participant_a_type: "#{first.class}", participant_b_id: second.id, participant_b_type: "#{second.class}", partnership_id: nil).or(Conversation.where(participant_a_id: second.id, participant_a_type: "#{second.class}", participant_b_id: first.id, participant_b_type: "#{first.class}", partnership_id: nil))
+  end
+
   def self.conversation_for_partnership(partnership)
     Conversation.find_by(partnership_id: partnership.id)
   end

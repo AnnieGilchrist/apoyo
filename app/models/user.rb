@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   belongs_to :organisation, polymorphic: true, optional: true
-  after_create :send_welcome_email
+  #after_create :send_welcome_email
 
   private
 

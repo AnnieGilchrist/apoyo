@@ -1,5 +1,13 @@
 <%= simple_form_for([conversation, message]) do |form| %>
-  <%= form.input :content, label: false, input_html: { class: "first-input chat-input"}, placeholder: "Write a message to #{partner} here..." %>
+
+  <%#= form.input :content, label: false, input_html: { class: "first-input chat-input"}, placeholder: "Write a message to #{partner} here..." %>
+
+  <div class="form-group text required message_content">
+    <input id="x" type="hidden" name="message[content]">
+    <trix-editor class="trix-content" placeholder="Write a message to <%= partner %> here..." input='x' name="message[content]" id="message_content"></trix-editor>
+
+  </div>
+
   <div class="button-container">
     <%= form.button :submit, value: "Send", class: "button small-btn white-btn" %>
   </div>

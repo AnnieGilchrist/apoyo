@@ -10,9 +10,11 @@ class Partnership < ApplicationRecord
     if self.status == 'pending'
       '#FFD300'
     elsif self.status == 'accepted'
-      '#5B00FF'
+      # '#5B00FF'
+      '#24c98c'
     else
       '#C4C4C4'
+      #e0415e
     end
   end
 end
