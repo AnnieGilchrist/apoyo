@@ -6,6 +6,7 @@
   margin-left: 0px;
   position: relative;
   padding: 20px 20px 20px 20px;
+  transition: opacity 0.3s ease;
   // background-color: $yellow;
   .feed-identifier {
     position: absolute;
@@ -78,4 +79,12 @@
       text-overflow: ellipsis;
     }
   }
+}
+
+.feed-card-outer:hover{
+  box-shadow: 0 3px 18px rgba(0,0,0,0.25);
+}
+
+.browse-card:hover {
+  box-shadow: 0 3px 18px rgba(0,0,0,0.25);
 }
