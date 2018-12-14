@@ -147,7 +147,7 @@ puts "Creating missions..."
     grow.save
 
 
-  crisis = Mission.new(name: 'Rights in Crisis', description: "Globally we are witnessing a rise in the scale and frequency of humanitarian crises and their impacts on vulnerable people. The gap is widening between humanitarian needs and the ability or willingness of governments and international humanitarian actors, including NGOs like Oxfam, to meet them. We need your organization's strength to influence governments to behave moraly", duration: "Irregular time depending on the world's crises", charity_id: oxfam.id)
+  crisis = Mission.new(name: 'Rights in Crisis', description: "Globally we are witnessing a rise in the scale and frequency of humanitarian crises and their impacts on vulnerable people. The gap is widening between humanitarian needs and the ability or willingness of governments and international humanitarian actors, including NGOs like Oxfam, to meet them. We need your organization's strength to influence governments to behave moraly.", duration: "Irregular time depending on the world's crises", charity_id: oxfam.id)
     url = 'https://res.cloudinary.com/iahuiahuia/image/upload/v1544543611/crisis.jpg'
     crisis.remote_image_url = url
     crisis.save
