@@ -125,38 +125,40 @@
     </div>
 
     <div class="follow-cards">
-      <h1 class="medium-text text-center">Suggested for you</h1>
-      <% @suggestions.each do |suggestion| %>
+      <div class="moving-cards">
+        <h1 class="medium-text text-center">Suggested for you</h1>
+        <% @suggestions.each do |suggestion| %>
 
-        <div class="follow-card">
-          <div class="img">
-            <% if suggestion.logo.url %>
-              <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
-                <%= cl_image_tag suggestion.logo, class: "charity-img" %>
-              <% end %>
-            <% else %>
-              <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
-                <%= image_tag "mission.jpg", class: "charity-img" %>
-              <% end %>
-            <% end %>
-          </div>
-
-
-          <div class="card-content-wrap">
-            <div class="card-title">
-              <%= suggestion.name %>
-            </div>
-
-            <div id="<%= "#{suggestion.id}-#{suggestion.class.to_s.downcase}" %>">
-              <% if suggestion.charity? %>
-                <%= render "shared/charity_button", charity: suggestion %>
+          <div class="follow-card">
+            <div class="img">
+              <% if suggestion.logo.url %>
+                <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
+                  <%= cl_image_tag suggestion.logo, class: "charity-img" %>
+                <% end %>
               <% else %>
-                <%= render "shared/business_button", business: suggestion %>
+                <%= link_to suggestion.charity? ? charity_path(suggestion) : business_path(suggestion) do %>
+                  <%= image_tag "mission.jpg", class: "charity-img" %>
+                <% end %>
               <% end %>
             </div>
+
+
+            <div class="card-content-wrap">
+              <div class="card-title">
+                <%= suggestion.name %>
+              </div>
+
+              <div id="<%= "#{suggestion.id}-#{suggestion.class.to_s.downcase}" %>">
+                <% if suggestion.charity? %>
+                  <%= render "shared/charity_button", charity: suggestion %>
+                <% else %>
+                  <%= render "shared/business_button", business: suggestion %>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

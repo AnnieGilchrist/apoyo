@@ -1,9 +1,10 @@
 <div class="tab-container">
-  <% if @active_partnerships.count > 0 %>
-    <div class="row">
-      <% @active_partnerships.reverse.each do |partnership| %>
+  <div class="row">
+    <% @active_partnerships.reverse.each do |partnership| %>
+
         <div class="col-xs-12">
           <div class="full-length-card">
+
             <% if partnership.mission.image.url %>
               <%= cl_image_tag partnership.mission.image, class: "mission-image" %>
             <% else %>
@@ -16,19 +17,13 @@
               <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= partnership.mission.charity.location %></p>
               <div class="card-description"> <%= partnership.mission.description %></div>
             </div>
-              <div class="mission-buttons">
-                <div class="row">
-                    <%  %>
-                    <%= link_to "Message History", conversation_path(Conversation.conversation_for_partnership(partnership)), class: "small-btn white-btn" %>
-                    <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
 
-
-                    <% if partnership.status == 'accepted' %>
-                      <%#= social_share_button_tag(Partnership.find(6).details) %>
-                    <% end %>
-
-                </div>
+            <div class="mission-buttons">
+              <div class="row">
+                <%= link_to "Message History", conversation_path(Conversation.conversation_for_partnership(partnership)), class: "small-btn white-btn" %>
+                <%= link_to "Mission Info", mission_path(partnership.mission), class: "small-btn white-btn" %>
               </div>
+            </div>
 
 
             <div class="status identifier" style="background-color:<%= partnership.color %> !important;">
@@ -43,33 +38,12 @@
                 <%= link_to "Completed", partnership_path(partnership, status: 'completed'), method: :patch, class: "status completed-btn" %>
               <% end %>
             <% end %>
+
           </div>
         </div>
-      <% end %>
-    </div>
-    </div>
-  <% else %>
 
-    <div class="following-cards">
-      <% partner = current_user.organisation.class == Charity  ? 'business' : 'charity' %>
-
-      <p class="secondary-txt center">
-        A <em>partnership</em> is an alliance between you and a <%= partner %> to achieve a common goal.
-      </p><br>
-
-      <% if current_user.organisation.class == Charity %>
-        <p class="secondary-txt center">
-          When a business requests to join your mission, it will show up here...
-        </p>
-        <br>
-        <%= link_to "View my missions", charity_path(current_user.organisation), class: "secondary-txt center", id: "purple-link"  %>
-      <% else %>
-        <p class="secondary-txt center">Your requests to join missions will show up here...</p><br>
-        <%= link_to "Find a mission", feed_path, class: "secondary-txt center", id: "purple-link"  %>
-      <% end %>
-    </div>
-
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 
