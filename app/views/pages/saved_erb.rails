@@ -1,0 +1,40 @@
+          <% elsif element.class == Business %>
+
+            <div class="col-md-6 card-box" data-type="business">
+              <%= link_to business_path(element) do %>
+                <div class="browse-card format-card floated">
+                  <%= cl_image_tag element.logo.url, class: "charity-image" %>
+                  <div class="card-content-wrap">
+                    <h1 class="card-title"><%= element.name %></h1>
+                    <p class="card-text-grey">Interested in: <%= element.charity_preferences.capitalize %> charities</p>
+                    <p class="card-text-grey">Offering: <%= element.services_offered.capitalize %></p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.location %></p>
+
+                    <p class="card-description"><%= element.description.first(170) + '...'%></p>
+                  </div>
+                  <div class="identifier business">
+                    Business
+                  </div>
+                </div>
+              <% end %>
+            </div>
+
+          <% else %>
+
+            <div class="col-md-6 card-box" data-type="mission">
+                <div type="button" class="browse-card format-card" data-toggle="modal" data-target="#myModal" data-name='<%= element.name %>' data-charity='<%= element.charity.name %>' data-location='<%= element.charity.location %>' data-description='<%= element.description %>' data-charity-path='<%= charity_path(element.charity) %>' data-apply-path='<%= mission_path(element) %>'>
+                  <%= cl_image_tag element.image.url, class: "mission-image" %>
+
+                  <div class="card-content">
+                    <h1 class="card-title"><%= element.name %></h1>
+                    <p class="card-text-grey"><%= element.charity.name%></p>
+                    <p class="card-location"><i class="fas fa-map-marker-alt"></i> <%= element.charity.location %></p>
+                    <p class="card-description"> <%= element.description.first(80) + '...'%></p>
+                  </div>
+
+                  <div class="identifier mission">
+                    Mission
+                  </div>
+
+                </div>
+            </div>

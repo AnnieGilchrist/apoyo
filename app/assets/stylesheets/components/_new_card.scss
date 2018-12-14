@@ -1,0 +1,81 @@
+.feed-card-outer {
+  border: 1px solid #C4C4C4;
+  width: 100%;
+  height: 300px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  position: relative;
+  padding: 20px 20px 20px 20px;
+  // background-color: $yellow;
+  .feed-identifier {
+    position: absolute;
+    top: 10px;
+    right: -12px;
+    color: white;
+    font-weight: bold;
+    width: 70px;
+    text-align: center;
+    font-size: 14px;
+    padding: 2px;
+    opacity: 0.8;
+    border-radius: 2px;
+  }
+  .charity {
+    background-color: $purple;
+  }
+  .business {
+    background-color: $yellow;
+  }
+  .feed-card-inner {
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    position: relative;
+    .feed-image {
+      width: 35%;
+      height: 130px;
+      text-align: center;
+      line-height: 130px;
+      .feed-org-image {
+        max-width: 100%;
+        max-height: 100%;
+        vertical-align: middle;
+      }
+    }
+    .feed-card-info {
+      // background-color: $forest-green;
+      width: 65%;
+      height: 130px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 15px 10px 10px 15px;
+      .feed-card-title {
+        padding-right: 20px;
+        width: 100%;
+        height: 50px;
+        font-size: 100%;
+        font-weight: bold;
+        overflow: hidden;
+      }
+      .feed-category {
+        margin-top: 10px;
+        height: 65px;
+        font-size: 14px;
+        overflow: hidden;
+      }
+    }
+    .feed-card-desc {
+      // background-color: $pink;
+      padding-top: 15px;
+      font-size: 16px;
+      width: 100%;
+      height: calc(100% - 130px);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
