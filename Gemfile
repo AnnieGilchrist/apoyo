@@ -19,7 +19,7 @@ gem 'uglifier'
 gem 'webpacker'
 gem 'faker'
 gem 'cloudinary', '~> 1.9.1'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'social-share-button'
 gem 'geocoder'
 gem "jquery-rails"
